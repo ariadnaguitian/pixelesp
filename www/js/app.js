@@ -43,7 +43,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/start",
       views: {
         'menuContent' :{
-          templateUrl: "templates/social/start-fullscreen.html"
+          templateUrl: "templates/social/start-fullscreen.html",
+          controller: 'EntrarCtrl'
         }
       }
     })
@@ -208,6 +209,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-comunidad.html',
+         
+       
+
+ }
+ }
+ })
+
+  .state('app.admin', {
+ url: '/admin',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/admin.html',
       
        
 
@@ -232,7 +245,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/usuarios.html',
-     controllers:'AppCtrl'
+     controller:'UsuarioslistsCtrl'
       
        
 
@@ -246,6 +259,19 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent' :{
      templateUrl: 'templates/social/cadausuario.html',
     controller: 'UsuarioCtrl'
+       
+
+ }
+ }
+ })
+
+  .state('app.crearusuario', {
+ url: '/crearusuario',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/crearusuario.html',
+      controller:'UsuarioNuevoCtrl'
+   
        
 
  }

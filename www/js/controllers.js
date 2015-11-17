@@ -15,39 +15,81 @@ angular.module('starter.controllers', [])
   });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
 
 
-  $scope.usuarios = [];
 
-  $http.get('http://pixelesp-api.herokuapp.com/usuarios').then(function(resp) {
-    $scope.usuarios = resp.data.data;
-  }, function(err) {
-    console.error('ERR', err);
-   // err.status will contain the status code
-  });  
 })
 
 
+.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location ) {
+  
+    $rootScope.userToken = ''; 
+        $scope.user={};
+        $scope.user.email='';
+        $scope.user.password =''; 
+  
+   $scope.doLogin = function() {
+      $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
+        console.log(resp.data);
 
+         $rootScope.userToken = resp.data.token;
+
+         var alertPopup = $ionicPopup.alert({
+             title: 'Logeado con exito',
+             template: 'Ingresa ahora'
+           });
+           alertPopup.then(function(resp) {
+             $location.path('/app/usuarios');
+           });
+          
+    }, function(err) {
+      console.error('ERR', err);
+      var alertPopup = $ionicPopup.alert({
+             title: 'Error en el ingreso',
+             template: 'Email o contraseña invalido'
+           });
+           alertPopup.then(function(resp) {
+             $location.path('/app/start');
+           });
+      // err.status will contain the status code
+    });
+    };
+  
+})
+
+.controller('UsuarioslistsCtrl', function($rootScope, $scope, $http, $location) {
+    
+    console.log($rootScope.userToken);     
+    
+    $scope.user = [];
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+      $scope.user = resp.data.data;
+      console.log('Succes', resp.data.data);
+      $location.path('/app/usuarios');
+    }, function(err) {
+      console.error('ERR', err);
+      $location.path('/app/start');
+      // err.status will contain the status code
+    }); /*var alertPopup = $ionicPopup.alert({
+             title: 'Tienes que logearte',
+             template: 'Se nuestro amigo'
+           });
+           alertPopup.then(function(res) {
+             $location.path('/app/entrar');
+           });*/ 
+
+  $scope.usuarios = [];
+   $scope.$on('$ionicView.beforeEnter', function() {
+    $http.get('http://pixelesp-api.herokuapp.com/usuarios').then(function(resp) {
+      $scope.usuarios = resp.data.data;
+      console.log('Succes', resp.data.data);
+    }, function(err) {
+      console.error('ERR', err);
+      // err.status will contain the status code
+    });
+  });
+
+})
  
 
 .controller('UsuarioCtrl', function($scope, $stateParams, $http, $location) {
@@ -89,4 +131,45 @@ angular.module('starter.controllers', [])
   
 
 
- });
+ })
+
+.controller('UsuarionuevoCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
+    
+      $scope.user = [];
+    $http.get('http://pixelesp-api.herokuapp.com/me', {withCredentials: true}).then(function(resp) {
+      $scope.user = resp.data.data;
+      console.log('Succes', resp.data.data);
+      $location.path('/app/usuarionuevo');
+    }, function(err) {
+      console.error('ERR', err);
+      $location.path('/app/start');
+      // err.status will contain the status code
+    });
+        
+        $scope.user={};
+        $scope.user.picture='';
+        $scope.user.name='';
+        $scope.user.email='';
+        $scope.user.id =''; 
+  
+   $scope.doRegister = function() {
+      $http.post('http://pixelesp-api.herokuapp.com/usuarios',$scope.user ).then(function(resp) {
+        console.log(resp.data);
+         var alertPopup = $ionicPopup.alert({
+             title: 'Usuario Creado con exito',
+             template: 'Ingresa ahora'
+           });
+           alertPopup.then(function(res) {
+             $location.path('/app/usuarios');
+           });
+          
+    }, function(err) {
+      console.error('ERR', err);
+      // err.status will contain the status code
+    });
+    };
+  
+});
+
+
+
