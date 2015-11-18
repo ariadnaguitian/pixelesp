@@ -209,6 +209,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-comunidad.html',
+     controller: 'UsuariosCtrl'
          
        
 
@@ -233,7 +234,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/usuario.html',
-    controller: 'UsuarioCtrl'
+    controller: 'UsuariocomunidadCtrl'
        
 
  }
@@ -265,11 +266,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  })
 
-  .state('app.crearusuario', {
- url: '/crearusuario',
+  .state('app.registrarse', {
+ url: '/registrarse',
  views: {
         'menuContent' :{
-     templateUrl: 'templates/social/crearusuario.html',
+     templateUrl: 'templates/social/registrarse.html',
       controller:'UsuarioNuevoCtrl'
    
        

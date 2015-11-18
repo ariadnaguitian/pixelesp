@@ -1,7 +1,7 @@
 <!-- View header bar is hidden using attribute 'hide-nav-bar="true"' -->
-<ion-view title="Login-Fullscreen" hide-nav-bar="true">
+<ion-view title="Login-Fullscreen" hide-nav-bar="true" hide-tabs="true">
   <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
-  <ion-content class="gem-splash_background">
+  <ion-content class="gem-splash_background" hide-tabs="true">
     <div class="gem-form text-center">
       <!-- Logo as you please -->
       <div class="gem-splash-logo">
@@ -25,7 +25,7 @@
         </label>
         <div class="text-center padding">
           <div class="padding">Not yet registered?</div>
-          <button  class="button button-positive" type="submit">Sign up for free</button>
+        <a href="#/app/registrarse" target="_self" class="button button-positive">Registrate!</a>
         </div>
       </div>
     </form>
