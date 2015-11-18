@@ -277,6 +277,19 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
  }
  }
+ })
+
+  .state('app.crearnoticia', {
+ url: '/crearnoticia',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/crearnoticia.html',
+      controller:'NoticiaNuevaCtrl'
+   
+       
+
+ }
+ }
  });
  
    

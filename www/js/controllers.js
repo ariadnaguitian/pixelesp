@@ -208,5 +208,31 @@ angular.module('starter.controllers', [])
   
 })
 
+.controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
+            
+        $scope.noticia={};
+        $scope.noticia.Titulo='';
+        $scope.noticia.Descripcion='';
+        $scope.noticia.id =''; 
+  
+   $scope.doRegister = function() {
+      $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia ).then(function(resp) {
+        console.log(resp.data);
+         var alertPopup = $ionicPopup.alert({
+             title: 'Noticia creada con exito',
+             template: 'OK'
+           });
+           alertPopup.then(function(res) {
+             $location.path('/app/inicio');
+           });
+          
+    }, function(err) {
+      console.error('ERR', err);
+      // err.status will contain the status code
+    });
+    };
+  
+})
+
 
 
