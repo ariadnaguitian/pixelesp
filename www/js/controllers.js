@@ -87,7 +87,7 @@ angular.module('starter.controllers', [])
              template: 'Ingresa ahora'
            });
            alertPopup.then(function(resp) {
-             $location.path('/app/usuarios');
+             $location.path('/app/inicio');
            });
           
     }, function(err) {
@@ -105,7 +105,44 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('UsuarioslistsCtrl', function($rootScope, $scope, $http, $location) {
+.controller('EntrarAdminCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location ) {
+  
+    $rootScope.userToken = ''; 
+        $scope.user={};
+        $scope.user.email='';
+        $scope.user.password ='';
+        
+  
+   $scope.doLogin = function() {
+      $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
+        console.log(resp.data);
+
+         $rootScope.userToken = resp.data.token;
+
+         var alertPopup = $ionicPopup.alert({
+             title: 'Logeado con exito',
+             template: 'Ingresa ahora'
+           });
+           alertPopup.then(function(resp) {
+             $location.path('/app/admin');
+           });
+          
+    }, function(err) {
+      console.error('ERR', err);
+      var alertPopup = $ionicPopup.alert({
+             title: 'Error en el ingreso',
+             template: 'Email o contraseña invalido'
+           });
+           alertPopup.then(function(resp) {
+             $location.path('/app/inicio');
+           });
+      // err.status will contain the status code
+    });
+    };
+  
+})
+
+.controller('AdminCtrl', function($rootScope, $scope, $http, $location) {
     
     console.log($rootScope.userToken);     
     
@@ -113,18 +150,16 @@ angular.module('starter.controllers', [])
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
       $scope.user = resp.data.data;
       console.log('Succes', resp.data.data);
-      $location.path('/app/usuarios');
+      $location.path('/app/admin');
     }, function(err) {
       console.error('ERR', err);
-      $location.path('/app/start');
+      $location.path('/app/EntrarAdmin');
       // err.status will contain the status code
-    }); /*var alertPopup = $ionicPopup.alert({
-             title: 'Tienes que logearte',
-             template: 'Se nuestro amigo'
-           });
-           alertPopup.then(function(res) {
-             $location.path('/app/entrar');
-           });*/ 
+    }); 
+})
+.controller('UsuarioslistsCtrl', function($rootScope, $scope, $http, $location) {
+    
+ 
 
   $scope.usuarios = [];
    $scope.$on('$ionicView.beforeEnter', function() {
@@ -206,6 +241,84 @@ angular.module('starter.controllers', [])
     });
     };
   
+})
+
+.controller('NoticiaslistsCtrl', function($rootScope, $scope, $http, $location) {
+    
+
+
+  $scope.noticias = [];
+   $scope.$on('$ionicView.beforeEnter', function() {
+    $http.get('http://pixelesp-api.herokuapp.com/noticias').then(function(resp) {
+      $scope.noticias = resp.data.data;
+      console.log('Succes', resp.data.data);
+    }, function(err) {
+      console.error('ERR', err);
+      // err.status will contain the status code
+    });
+  });
+
+})
+ 
+
+.controller('NoticiaCtrl', function($scope, $stateParams, $http, $location) {
+
+  $scope.noticia = {};
+
+  $http.get('http://pixelesp-api.herokuapp.com/noticias/'+ $stateParams.NoticiaId).then(function(resp) {
+    $scope.noticia = resp.data.data;
+
+     
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  }); 
+
+  $scope.doSave = function() {
+    $http.put('http://pixelesp-api.herokuapp.com/noticias/'+ $stateParams.NoticiaId, $scope.noticia).then(function(resp) {
+      console.log(resp.data);  
+      $location.path('/app/noticias');
+    }, function(err) {
+      console.error('ERR', err);
+     
+      // err.status will contain the status code
+    });
+     };
+
+    $scope.doDelete = function() {
+   $http.delete('http://pixelesp-api.herokuapp.com/noticias/'+ $stateParams.NoticiaId, $scope.noticia).then(function(resp) {
+      console.log(resp.data);
+      $location.path('/app/noticias');
+    }, function(err) {
+      console.error('ERR', err);
+      
+      // err.status will contain the status code
+    });
+
+
+  };
+  
+
+
+ })
+
+
+.controller('NoticiasCtrl', function($scope, $http, $location) {
+
+
+  $scope.noticias = [];
+   $scope.$on('$ionicView.beforeEnter', function() {
+    
+    $http.get('http://pixelesp-api.herokuapp.com/noticias').then(function(resp) {
+      $scope.noticias = resp.data.data;
+
+    }, function(err) {
+      console.error('ERR', err);
+      // err.status will contain the status code
+    });
+
+  });
+
 })
 
 .controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {

@@ -24,11 +24,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-      url: "/app",
-      abstract: true,
+      url: "/app",   
+        abstract: true, 
       templateUrl: "templates/social/menu.html",
       controller: 'AppCtrl'
     })
+
+        .state('tabs', {
+    url: '/tabs',
+    abstract: true,
+    templateUrl: 'templates/social/tabs.html'
+  })
 
     .state('app.feed', {
       url: "/feed",
@@ -45,6 +51,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent' :{
           templateUrl: "templates/social/start-fullscreen.html",
           controller: 'EntrarCtrl'
+        }
+      }
+    })
+
+     .state('app.EntrarAdmin', {
+      url: "/EntrarAdmin",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/EntrarAdmin.html",
+          controller: 'EntrarAdminCtrl'
         }
       }
     })
@@ -165,7 +181,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
+ 
  // setup an abstract state for the tabs directive 
  // Each tab has its own nav history stack:
  
@@ -174,6 +190,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-inicio.html',
+     controller: 'NoticiasCtrl',
+       
        
 
  }
@@ -217,17 +235,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  })
 
-  .state('app.admin', {
- url: '/admin',
- views: {
-        'menuContent' :{
-     templateUrl: 'templates/social/admin.html',
-      
-       
-
- }
- }
- })
 
  .state('app.usuario', {
  url: '/comunidad/:UsuarioId',
@@ -266,6 +273,31 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  })
 
+ .state('app.noticias', {
+ url: '/noticias',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/noticias.html',
+     controller:'NoticiaslistsCtrl'
+      
+       
+
+ }
+ }
+ })
+
+ .state('app.cadanoticia', {
+ url: '/noticias/:NoticiaId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadanoticia.html',
+    controller: 'NoticiaCtrl'
+       
+
+ }
+ }
+ })
+
   .state('app.registrarse', {
  url: '/registrarse',
  views: {
@@ -279,6 +311,21 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  })
 
+   .state('app.admin', {
+ url: '/admin',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/admin.html',
+      controller:'AdminCtrl'
+   
+       
+
+ }
+ }
+ })
+
+
+
   .state('app.crearnoticia', {
  url: '/crearnoticia',
  views: {
@@ -290,7 +337,9 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
  }
  }
- });
+ })
+
+   ;
  
    
   // if none of the above states are matched, use this as the fallback

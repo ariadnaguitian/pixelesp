@@ -30,6 +30,49 @@
     </div><!-- End Media section --> 
 
     <!-- News Item (With Poster and content text summary) -->
+      <ion-list>
+      <ion-item ng-repeat="noticia in noticias">
+      <div class="news-item">
+      <!-- Poster Thumb -->
+      <div class="news-thumb">
+        <img src="img/gemionic/profile-image.jpg" alt="" class="img">
+      </div>
+      <!-- End Poster -->
+
+      <!-- Content -->
+      <div class="news-content">
+        <h2>{{noticia.Titulo}}</h2>
+       {{noticia.Descripcion}}
+        
+        <div class="other-stats">
+          <button class="button button-balanced button-borderless button-small"><i class="ion-heart"></i> 82</button>
+          <button class="button button-stable button-outline button-small"><i class="ion-heart"></i> 82</button>
+        </div>
+        <!-- End Stat Section -->
+
+        <!-- Stat Section (With Date) -->
+        <div class="gem-tiny-text news-item-stats">
+          <i class="icon ion-clock"></i>{{noticia.created_at}}
+          <span class="news-comment-summary">
+            <i class="icon ion-heart"></i> 2 
+            <i class="icon ion-chatbubble"></i> 3
+          </span>
+        </div>
+        <!-- Stat Section -->
+
+      </div>
+      <!-- End Content -->
+
+      <!-- Mock trigger button for action sheet for this post -->
+      <div class="news-more-action">
+        <i class="icon ion-more"></i>
+      </div>
+      <!-- End Button -->
+
+    </div>
+     </ion-item>
+    </ion-list>
+
     <div class="news-item">
       <!-- Poster Thumb -->
       <div class="news-thumb">
