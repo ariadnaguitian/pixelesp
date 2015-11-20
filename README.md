@@ -2,7 +2,7 @@
 
 Issues:
 abm de imágenes
-añadir favoritos
+añadir favoritos (y guardarlos al teléfono)
 mensajes privados
 abm de mensajes en el foro
 abm de trabajos
