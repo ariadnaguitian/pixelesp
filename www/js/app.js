@@ -188,7 +188,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  
  // setup an abstract state for the tabs directive 
  // Each tab has its own nav history stack:
- 
+
  .state('app.inicio', {
  url: '/inicio',
  views: {
@@ -213,7 +213,42 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  })
  
+ .state('app.imagen', {
+ url: '/imagenes',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/imagenes.html',
+     controller:'imagenlistsCtrl'
+      
+       
 
+ }
+ }
+ })
+
+ .state('app.cadaimagen', {
+ url: '/imagenes/:imagenId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadaimagen.html',
+    controller: 'imagenCtrl'
+       
+
+ }
+ }
+ })
+  .state('app.crearimagen', {
+ url: '/crearimagen',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/crearpost.html',
+      controller:'PostNuevoCtrl'
+   
+       
+
+ }
+ }
+ })
  
  .state('app.foro', {
  url: '/foro',

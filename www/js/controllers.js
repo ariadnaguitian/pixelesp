@@ -347,5 +347,105 @@ angular.module('starter.controllers', [])
   
 })
 
+.controller('PostNuevoCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
+            
+        $scope.imagen={};
+        $scope.imagen.Titulo='';
+        $scope.imagen.Descripcion='';
+        $scope.imagen.id =''; 
+  
+   $scope.doRegister = function() {
+      $http.post('http://pixelesp-api.herokuapp.com/imagenes',$scope.imagen ).then(function(resp) {
+        console.log(resp.data);
+         var alertPopup = $ionicPopup.alert({
+             title: 'imagen creada con exito',
+             template: 'OK'
+           });
+           alertPopup.then(function(res) {
+             $location.path('/app/galeria');
+           });
+          
+    }, function(err) {
+      console.error();
+      // err.status will contain the status code
+    });
+    };
+  
+})
+.controller('imagenlistsCtrl', function($rootScope, $scope, $http, $location) {
+    
 
 
+  $scope.imagen = [];
+   $scope.$on('$ionicView.beforeEnter', function() {
+    $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
+      $scope.imagen = resp.data.data;
+      console.log('Succes', resp.data.data);
+    }, function(err) {
+      console.error('', err);
+      // err.status will contain the status code
+    });
+  });
+
+})
+ 
+
+.controller('imagenCtrl', function($scope, $stateParams, $http, $location) {
+
+  $scope.imagen = {};
+
+  $http.get('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.imagenId).then(function(resp) {
+    $scope.imagen = resp.data.data;
+
+     
+  }, function(err) {
+    console.error('', err);
+    // err.status will contain the status code
+  }); 
+
+  $scope.doSave = function() {
+    $http.put('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.imagenId, $scope.imagen).then(function(resp) {
+      console.log(resp.data);  
+      $location.path('/app/imagenes');
+    }, function(err) {
+      console.error('', err);
+     
+      // err.status will contain the status code
+    });
+     };
+
+    $scope.doDelete = function() {
+   $http.delete('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.imagenId, $scope.imagen).then(function(resp) {
+      console.log(resp.data);
+      $location.path('/app/imagenes');
+    }, function(err) {
+      console.error('', err);
+      
+      // err.status will contain the status code
+    });
+
+
+  };
+  
+
+
+ })
+
+
+.controller('imagenCtrl', function($scope, $http, $location) {
+
+
+  $scope.imagen = [];
+   $scope.$on('$ionicView.beforeEnter', function() {
+    
+    $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
+      $scope.imagen = resp.data.data;
+
+    }, function(err) {
+      console.error('', err);
+      // err.status will contain the status code
+    });
+
+  });
+
+})
