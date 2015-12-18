@@ -31,7 +31,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/app",   
         abstract: true, 
       templateUrl: "templates/social/menu.html",
-      controller: 'AppCtrl'
+      controller: 'AppCtrl' ['UsuariosCtrl']
+
     })
 
         .state('tabs', {
@@ -188,7 +189,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  
  // setup an abstract state for the tabs directive 
  // Each tab has its own nav history stack:
- 
+
  .state('app.inicio', {
  url: '/inicio',
  views: {
@@ -207,6 +208,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-galeria.html',
+     controller:'imagenesCtrl'
        
 
  }
@@ -214,6 +216,29 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  })
  
 
+ .state('app.cadaimagen', {
+ url: '/imagenes/:imagenId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadaimagen.html',
+    controller: 'imagenCtrl'
+       
+
+ }
+ }
+ })
+  .state('app.crearimagen', {
+ url: '/crearimagen',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/crearpost.html',
+      controller:'PostNuevoCtrl'
+   
+       
+
+ }
+ }
+ })
  
  .state('app.foro', {
  url: '/foro',
@@ -342,6 +367,65 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  }
  })
+
+
+//trabajo
+ .state('app.trabajos', {
+ url: '/trabajos',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/trabajos.html',
+     controller:'TrabajoslistsCtrl'
+      
+       
+
+ }
+ }
+ })
+
+ .state('app.cadatrabajo', {
+ url: '/trabajos/:TrabajoId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadatrabajo.html',
+    controller: 'TrabajoCtrl'
+       
+
+ }
+ }
+ })
+
+
+
+
+
+  .state('app.creartrabajo', {
+ url: '/creartrabajo',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/creartrabajo.html',
+      controller:'TrabajoNuevoCtrl'
+   
+       
+
+ }
+ }
+ })
+
+ 
+ .state('app.trabajo', {
+ url: '/trabajo',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/tab-empleo.html',
+     controller:'TrabajosCtrl'
+       
+
+ }
+ }
+ })
+ 
+
 
    ;
  
