@@ -1,0 +1,133 @@
+[33mcommit 05f9ae81f69d8b2e915f28dc03c4353953ebbfc1[m
+Author: PixelArg <Agustinazar4c@gmail.com>
+Date:   Mon Dec 14 18:07:23 2015 -0300
+
+    'actualizacion'
+
+[33mcommit 730a58ab466a51425cdc0e0e05ddfbf988db5561[m
+Author: PixelArg <Agustinazar4c@gmail.com>
+Date:   Mon Dec 14 05:21:31 2015 -0300
+
+    'actualizacionapp'
+
+[33mcommit 10a1e7bc371987e73b9d89f82c4c86c47eab45f1[m
+Merge: 5db8b16 1e3753f
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Sun Dec 6 16:03:39 2015 -0300
+
+    Merge branch 'master' of https://bitbucket.org/pixelesp/aplicacion
+
+[33mcommit 5db8b1662a3c4ca73859d93809c589c331dceda3[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Sun Dec 6 16:01:01 2015 -0300
+
+    'deploy'
+
+[33mcommit 1e3753fbbfb4fbd352648d835df6a992cecc3b27[m
+Author: Catriel Müller <catrielmuller@gmail.com>
+Date:   Fri Nov 20 22:12:39 2015 +0000
+
+    README.md edited online with Bitbucket
+
+[33mcommit f2d95dc434d70fe45db1060618701d8ab4bb3b3d[m
+Author: Catriel Müller <catrielmuller@gmail.com>
+Date:   Fri Nov 20 22:12:23 2015 +0000
+
+    README.md edited online with Bitbucket
+
+[33mcommit 9b6e304faa808e88cdd175fd35b3ae5ced08cabf[m
+Author: Unknown Name <Agustinazar4c@gmail.com>
+Date:   Fri Nov 20 21:59:04 2015 +0000
+
+    README.md edited online with Bitbucket
+
+[33mcommit 357668412c1fa4ebab895c24c9ae8629990fda78[m
+Author: Unknown Name <Agustinazar4c@gmail.com>
+Date:   Fri Nov 20 21:32:48 2015 +0000
+
+    README.md edited online with Bitbucket
+
+[33mcommit cae4e290e0119f1ed263a80e2b13d16ee85b34e9[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Nov 20 16:45:44 2015 -0300
+
+    'hastaaca'
+
+[33mcommit 29256be2205b2c573ab066a19eaad793715384d1[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Tue Nov 17 23:12:16 2015 -0300
+
+    crearnoticias
+
+[33mcommit 5a4c43250f1c264250c710daa737c8aaa012228d[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Tue Nov 17 22:39:46 2015 -0300
+
+    registro
+
+[33mcommit 0ff54c9a37c2b0ed40c8cfb4770c66431cd3952e[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Tue Nov 17 17:44:47 2015 -0300
+
+    deploy
+
+[33mcommit f9f11f878f7570f6736de7a37a7928f6a1f911c9[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Nov 13 16:56:06 2015 -0300
+
+    'login'
+
+[33mcommit fc9c13ef9bbacbf014ed493b832f2573318f7244[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Sun Nov 8 21:29:31 2015 -0300
+
+    'update'
+
+[33mcommit 77f9d0466c56735dd230614814023069e6fd3938[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Sun Nov 8 21:25:47 2015 -0300
+
+    'updateindex'
+
+[33mcommit 05fcbcc45011efee72f160aabf02ef5f8745f406[m
+Merge: 3e4fd84 7ecd21b
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Nov 6 11:03:26 2015 -0300
+
+    Merge branch 'master' of https://bitbucket.org/pixelesp/aplicacion
+
+[33mcommit 3e4fd846176d8a58ac4fffbdab4912ab35d9e059[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Nov 6 11:02:12 2015 -0300
+
+    'update'
+
+[33mcommit 7ecd21b9ce0c0b99929db3417b0b6f4f82239573[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Oct 30 16:08:26 2015 -0300
+
+    aplicacion
+
+[33mcommit cfea15e91e557654bcd764128d8961aa920806ac[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Oct 30 13:03:17 2015 -0300
+
+    'Update'
+
+[33mcommit 5c994629b81d838ba060929fc88033ee0d65d9d3[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Oct 30 02:17:00 2015 -0300
+
+    'GitIgnore'
+
+[33mcommit 75e5d78b2ffe2b0eb42957aa4f9893adef572b38[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Oct 30 01:54:24 2015 -0300
+
+    'GitIgnore'
+
+[33mcommit 23f2263fa2052c7578d579e14db2eeb215db783f[m
+Author: AriadnaGuitian <ariadnaguitian@gmail.com>
+Date:   Fri Oct 30 00:46:43 2015 -0300
+
+    api

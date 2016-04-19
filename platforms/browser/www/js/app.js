@@ -4,31 +4,44 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
+
 angular.module('starter', ['ionic', 'starter.controllers'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+.run(function ($ionicPlatform) {
+            $ionicPlatform.ready(function () {
+                if (window.cordova && window.cordova.plugins.Keyboard) {
+                    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+                    // for form inputs)
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+                    // Don't remove this line unless you know what you are doing. It stops the viewport
+                    // from snapping when text inputs are focused. Ionic handles this internally for
+                    // a much nicer keyboard experience.
+                    cordova.plugins.Keyboard.disableScroll(true);
+                }
+                if (window.StatusBar) {
+                    StatusBar.styleDefault();
+                }
+            });
+        })
+
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
     .state('app', {
-      url: "/app",
-      abstract: true,
+      url: "/app",   
+        abstract: true, 
       templateUrl: "templates/social/menu.html",
-      controller: 'AppCtrl'
+      controller: 'AppCtrl' ['UsuariosCtrl']
+
     })
+
+        .state('tabs', {
+    url: '/tabs',
+    abstract: true,
+    templateUrl: 'templates/social/tabs.html'
+  })
 
     .state('app.feed', {
       url: "/feed",
@@ -45,6 +58,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         'menuContent' :{
           templateUrl: "templates/social/start-fullscreen.html",
           controller: 'EntrarCtrl'
+        }
+      }
+    })
+
+     .state('app.EntrarAdmin', {
+      url: "/EntrarAdmin",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/EntrarAdmin.html",
+          controller: 'EntrarAdminCtrl'
         }
       }
     })
@@ -165,15 +188,17 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         }
       }
     })
-
+ 
  // setup an abstract state for the tabs directive 
  // Each tab has its own nav history stack:
- 
+
  .state('app.inicio', {
  url: '/inicio',
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-inicio.html',
+     controller: 'NoticiasCtrl',
+       
        
 
  }
@@ -185,6 +210,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-galeria.html',
+     controller:'imagenesCtrl'
        
 
  }
@@ -192,6 +218,29 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  })
  
 
+ .state('app.cadaimagen', {
+ url: '/imagenes/:imagenId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadaimagen.html',
+    controller: 'imagenCtrl'
+       
+
+ }
+ }
+ })
+  .state('app.crearimagen', {
+ url: '/crearimagen',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/crearpost.html',
+      controller:'PostNuevoCtrl'
+   
+       
+
+ }
+ }
+ })
  
  .state('app.foro', {
  url: '/foro',
@@ -209,31 +258,21 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-comunidad.html',
-      
+     controller: 'UsuariosCtrl'
+         
        
 
  }
  }
  })
 
-  .state('app.admin', {
- url: '/admin',
- views: {
-        'menuContent' :{
-     templateUrl: 'templates/social/admin.html',
-      
-       
-
- }
- }
- })
 
  .state('app.usuario', {
  url: '/comunidad/:UsuarioId',
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/usuario.html',
-    controller: 'UsuarioCtrl'
+    controller: 'UsuariocomunidadCtrl'
        
 
  }
@@ -264,19 +303,133 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  }
  })
- 
-  .state('app.crearusuario', {
- url: '/crearusuario',
+
+ .state('app.noticias', {
+ url: '/noticias',
  views: {
         'menuContent' :{
-     templateUrl: 'templates/social/crearusuario.html',
-      controller:'AppCtrl'
+     templateUrl: 'templates/social/noticias.html',
+     controller:'NoticiaslistsCtrl'
+      
+       
+
+ }
+ }
+ })
+
+ .state('app.cadanoticia', {
+ url: '/noticias/:NoticiaId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadanoticia.html',
+    controller: 'NoticiaCtrl'
+       
+
+ }
+ }
+ })
+
+  .state('app.registrarse', {
+ url: '/registrarse',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/registrarse.html',
+      controller:'UsuarioNuevoCtrl'
    
        
 
  }
  }
- });
+ })
+
+   .state('app.admin', {
+ url: '/admin',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/admin.html',
+      controller:'AdminCtrl'
+   
+       
+
+ }
+ }
+ })
+
+
+
+  .state('app.crearnoticia', {
+ url: '/crearnoticia',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/crearnoticia.html',
+      controller:'NoticiaNuevaCtrl'
+   
+       
+
+ }
+ }
+ })
+
+
+//trabajo
+ .state('app.trabajos', {
+ url: '/trabajos',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/trabajos.html',
+     controller:'TrabajoslistsCtrl'
+      
+       
+
+ }
+ }
+ })
+
+ .state('app.cadatrabajo', {
+ url: '/trabajos/:TrabajoId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadatrabajo.html',
+    controller: 'TrabajoCtrl'
+       
+
+ }
+ }
+ })
+
+
+
+
+
+  .state('app.creartrabajo', {
+ url: '/creartrabajo',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/creartrabajo.html',
+      controller:'TrabajoNuevoCtrl'
+   
+       
+
+ }
+ }
+ })
+
+ 
+ .state('app.trabajo', {
+ url: '/trabajo',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/tab-empleo.html',
+     controller:'TrabajosCtrl'
+       
+
+ }
+ }
+ })
+ 
+
+
+   ;
  
    
   // if none of the above states are matched, use this as the fallback

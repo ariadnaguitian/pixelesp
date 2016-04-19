@@ -1,0 +1,36 @@
+<ion-view view-title="Editar Noticia">
+  <ion-content>
+  	<div class="card">
+		<div class="item item-text-wrap">
+						  <div class="gem-profile-media">
+      <div class="gem-profile-details profile2">
+        <div class="text-center">
+        <h1>{{noticia.Titulo}}</h1>
+          <p class="uppercase"></p>
+        </div>
+      </div>
+    </div>
+			<div class="list">
+			  <label class="item item-input  item-stacked-label">
+			   <span class="input-label">Titulo</span>
+			    <input type="text" placeholder="Nombre" ng-model="noticia.Titulo">
+			  </label>
+			  <label class="item item-input  item-stacked-label">
+			   <span class="input-label">Descripcion</span>
+			    <input type="text" placeholder="E-Mail" ng-model="noticia.Descripcion">
+			  </label>			
+			<label class="item item-input  item-stacked-label">
+			 <span class="input-label">Fecha de creación</span>
+			    <input type="text" placeholder="Ciudad" ng-model="noticia.created_at">
+			  </label>			
+			</div>
+			<button ng-click="doSave()" class="button button-energized">
+			  Modificar
+			</button>
+			<button ng-click="doDelete()" class="button button-assertive">
+			  Borrar
+			</button>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>

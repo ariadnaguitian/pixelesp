@@ -24,15 +24,12 @@
     <div class="item item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" ng-model="Query" >
       </label>
     </div>    
     <!-- End Search box-->
 
-    <!-- standard small heading title -->
-    <div class="label-title">32 miembros</div>
-    <!-- end title -->
-
+  
 
 
     
@@ -43,16 +40,17 @@
 
 
     <ion-list>
-      <ion-item ng-repeat="usuario in usuarios" href="#/app/comunidad/{{usuario.id}}">
+      <ion-item ng-repeat="usuario in usuarios | filter:Query" href="#/app/comunidad/{{usuario.id}}">
       
           <!-- Single Friend Item -->
           
             <!-- thumb image (round) -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic"> 
+            <img src="img/avatar/{{usuario.imagen}}" alt="" class="gem-friend-list-profile-pic"> 
 
 <div class="gem-friend-list-text">
-              <b>  {{usuario.name}}</b>
-              <span class="signature"><i class="icon ion-record gem-color-success"></i> Online | "Status Update"</span>
+              <b>{{usuario.name}} </b>
+              <span class="signature">{{usuario.email}}  </span>
+                   <span class="signature"> {{usuario.city}} - {{usuario.country}} </span>
             </div>
 
       </ion-item>

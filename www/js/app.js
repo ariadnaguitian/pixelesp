@@ -5,23 +5,28 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'starter.controllers'])
-
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if(window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
 
 
+
+angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'])
+
+.run(function ($ionicPlatform) {
+            $ionicPlatform.ready(function () {
+                if (window.cordova && window.cordova.plugins.Keyboard) {
+                    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+                    // for form inputs)
+                    cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+                    // Don't remove this line unless you know what you are doing. It stops the viewport
+                    // from snapping when text inputs are focused. Ionic handles this internally for
+                    // a much nicer keyboard experience.
+                    cordova.plugins.Keyboard.disableScroll(true);
+                }
+                if (window.StatusBar) {
+                    StatusBar.styleDefault();
+                }
+            });
+        })
 
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -31,7 +36,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: "/app",   
         abstract: true, 
       templateUrl: "templates/social/menu.html",
-      controller: 'AppCtrl'
+      controller: 'AppCtrl' ['UsuariosCtrl']
+
     })
 
         .state('tabs', {
@@ -207,24 +213,25 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/tab-galeria.html',
+     controller:'imagenesCtrl'
+       
+
+ }
+ }
+ })
+
+  .state('app.imagen', {
+ url: '/galeria/:ImagenId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/imagen.html',
+    controller: 'ImagengaleriaCtrl'
        
 
  }
  }
  })
  
- .state('app.imagen', {
- url: '/imagenes',
- views: {
-        'menuContent' :{
-     templateUrl: 'templates/social/imagenes.html',
-     controller:'imagenlistsCtrl'
-      
-       
-
- }
- }
- })
 
  .state('app.cadaimagen', {
  url: '/imagenes/:imagenId',
@@ -237,6 +244,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  }
  })
+
   .state('app.crearimagen', {
  url: '/crearimagen',
  views: {
@@ -377,6 +385,65 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  }
  })
+
+
+//trabajo
+ .state('app.trabajos', {
+ url: '/trabajos',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/trabajos.html',
+     controller:'TrabajoslistsCtrl'
+      
+       
+
+ }
+ }
+ })
+
+ .state('app.cadatrabajo', {
+ url: '/trabajos/:TrabajoId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/cadatrabajo.html',
+    controller: 'TrabajoCtrl'
+       
+
+ }
+ }
+ })
+
+
+
+
+
+  .state('app.creartrabajo', {
+ url: '/creartrabajo',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/creartrabajo.html',
+      controller:'TrabajoNuevoCtrl'
+   
+       
+
+ }
+ }
+ })
+
+ 
+ .state('app.trabajo', {
+ url: '/trabajo',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/tab-empleo.html',
+     controller:'TrabajosCtrl'
+       
+
+ }
+ }
+ })
+ 
+
 
    ;
  
