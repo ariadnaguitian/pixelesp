@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
 
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
@@ -552,6 +556,7 @@ angular.module('starter.controllers', [])
 
 //imagenes:
 
+<<<<<<< HEAD
 
 .controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $location) {
 
@@ -574,6 +579,10 @@ angular.module('starter.controllers', [])
 .controller('imagenesCtrl', function ($scope, $ionicModal, $ionicSlideBoxDelegate, $http, $location) {
 
 
+=======
+.controller('imagenesCtrl', function ($scope, $ionicModal, $ionicSlideBoxDelegate, $http, $location) {
+    
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
        $scope.imagenes = [];
    $scope.$on('$ionicView.beforeEnter', function() {
     
@@ -639,7 +648,11 @@ angular.module('starter.controllers', [])
       $scope.slideIndex = index;
     };
   }
+<<<<<<< HEAD
 )
+=======
+);
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
 
 
 ;

@@ -8,6 +8,7 @@
   ====================== -->
 
   
+<<<<<<< HEAD
 <div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light ">
     <div class="tabs">
       <a class="tab-item active" href="#">
@@ -45,11 +46,51 @@
     </packery-item>
 </packery>
 
+=======
+
+      <ion-content class="has-header">
+       <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="Query" >
+      </label>
+    </div> 
+
+
+
+
+     
+                      <a ng-click="openModal()"></a>
+
+                  <div class="button-bar">
+                  <div ng-repeat="imagen in imagenes | filter:Query" >
+                      <a ng-click="goToSlide({{imagen.id}})"><img src ="img/imagenes/{{imagen.Previa}}"></a>
+                      </div>
+                  </div>
+        
+
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
 
 
 
 
 
+<<<<<<< HEAD
+=======
+          <script id="image-modal.html" type="text/ng-template">
+              <div class="modal image-modal transparent" 
+                   ng-click="closeModal()">
+                <ion-slide-box on-slide-changed="slideChanged(index)" 
+                               show-pager="false">
+                  <ion-slide ng-repeat="imagen in imagenes">
+                    <img ng-src="img/imagenes/{{imagen.Imagen}}" class="fullscreen-image" />
+                
+                    <p class="info">{{imagen.Descripcion}}</p>
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          </script>
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
         
         </ion-content>
       

@@ -371,6 +371,7 @@ border-top: 1px solid rgba(0, 0, 0, 0.2);}
   height: 100%;
 }
 
+<<<<<<< HEAD
 
 
 /* clear fix */
@@ -399,6 +400,8 @@ border-top: 1px solid rgba(0, 0, 0, 0.2);}
 
 
 
+=======
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
 p.info {
   position: absolute;
   bottom: 55px;

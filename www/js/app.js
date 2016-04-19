@@ -214,6 +214,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
         'menuContent' :{
      templateUrl: 'templates/social/tab-galeria.html',
      controller:'imagenesCtrl'
+<<<<<<< HEAD
        
 
  }
@@ -226,6 +227,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
         'menuContent' :{
      templateUrl: 'templates/social/imagen.html',
     controller: 'ImagengaleriaCtrl'
+=======
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
        
 
  }
@@ -244,7 +247,10 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  }
  })
+<<<<<<< HEAD
 
+=======
+>>>>>>> efbf5507e0571da3b4917376fc653b68dd1bf2d0
   .state('app.crearimagen', {
  url: '/crearimagen',
  views: {
