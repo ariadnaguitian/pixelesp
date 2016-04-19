@@ -7,105 +7,92 @@
   RIGHT SIDE BUTTON
   ====================== -->
   <ion-nav-buttons side="right">
-    <button class="button button-icon icon ion-search"></button>
+    <a href="#/app/crearnoticia" target="_self" button class="button button-icon icon ion-compose"></button></a>
   </ion-nav-buttons>
   
   <!-- ======================
   MAIN CONTENT SECTION
   ====================== -->
-  <ion-content class="has-header gem-ion-content" >
+
+
+  <ion-content class="has-header gem-ion-content " >
+
+
+
+
+   <ks-swiper-container initial-slide="1" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="10" pagination-clickable="false" on-ready="onReadySwiper(swiper)">
+    <ks-swiper-slide class="swiper-slide" data-ng-repeat="imagen in imagenes">
+         <div  class="contenedor5"><div class="cont-image5"> <img src ="img/imagenes/{{imagen.Previa}}"></div> </div>
+    </ks-swiper-slide>            
+</ks-swiper-container>
+
+
+
+
     <!-- Media section (Picture, Video, Map, etc) -->
-    <div class="news-media">
-      <!-- Image 100% width -->
-      <img src="img/gemionic/news-image.jpg" alt="" class="fluid-image"> 
-
-      <!-- Stats (Absolutely positioned right) -->
-      <div class="media-social-stats stat-label"> 
-        <span class="news-comment-summary">
-          <i class="icon ion-heart"></i> 2 
-          <i class="icon ion-chatbubble"></i> 3
-        </span>
-      </div>
-
-    </div><!-- End Media section --> 
+<!-- End Media section --> 
 
     <!-- News Item (With Poster and content text summary) -->
-    <div class="news-item">
+
+      <ion-list>
+      <ion-item ng-repeat="noticia in noticias" class="item item-avatar">
+    
       <!-- Poster Thumb -->
-      <div class="news-thumb">
-        <img src="img/gemionic/profile-image.jpg" alt="" class="img">
-      </div>
+   
+        <img src="img/paintprogram.png" alt="" class="img">
+   
       <!-- End Poster -->
 
       <!-- Content -->
+
       <div class="news-content">
-        <h4>Agustin Azar</h4>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus quo illum, soluta aut illo magni consequuntur iste rerum culpa voluptatum autem, officiis deserunt aliquid dolorum voluptatibus necessitatibus animi provident corporis rem. Rerum mollitia quibusdam doloremque ab quidem molestias nemo voluptate cumque odio atque, esse vel hic, repellendus maiores blanditiis debitis minus incidunt laudantium. Enim dolor incidunt hic dolore asperiores eligendi magni unde excepturi eos sunt in aliquam officiis, quam fugiat aspernatur. Repudiandae minima doloribus, nobis blanditiis modi soluta tenetur non, nostrum, iste saepe alias perspiciatis. Molestiae temporibus numquam ab, soluta similique, dicta a inventore, blanditiis, sapiente praesentium pariatur alias vitae?
+        <h2>{{noticia.Titulo}}</h2>
 
-        <!-- Stat Section (Absolutely Positioned Right) Version 1-->
-        <div class="other-stats">
-          <button class="button button-balanced button-borderless button-small"><i class="ion-heart"></i> 82</button>
-          <button class="button button-stable button-outline button-small"><i class="ion-heart"></i> 82</button>
-        </div>
-        <!-- End Stat Section -->
+            <h4>
+          por <a href="#" >Agustin Azar</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
+        </h4>
+       <p>{{noticia.Descripcion}}</p>
 
-        <!-- Stat Section (With Date) -->
-        <div class="gem-tiny-text news-item-stats">
-          <i class="icon ion-clock"></i> 2 days ago
-          <span class="news-comment-summary">
-            <i class="icon ion-heart"></i> 2 
-            <i class="icon ion-chatbubble"></i> 3
-          </span>
-        </div>
+
         <!-- Stat Section -->
+        <div class="other-stats" >
+                <div class="news-more-action">
+        <i class="icon ion-more"></i>
 
-      </div>
-      <!-- End Content -->
+      
+
+</div>
+
+
+
+
+      <h4 class="item-note"><i class="ion-heart"></i> 82 - <i class="ion-chatbox"></i> 82 -  <i class="ion-android-done-all"></i> 90 vistos</h4></
+      </br>
+      <div class="row">
+
+          <button class="button button-balanced button-borderless button-small"><i class="ion-heart"></i> Me gusta</button> 
+          <button class="button button-balanced button-outline button-small"><i class="ion-chatbox"></i> Comentar</button>
+          <button class="button button-stable button-outline button-small"><i class="ion-android-share-alt"></i> </button>
+          </div>
+        </div> 
+     </div>
+
+
+
+       <!-- End Content -->
 
       <!-- Mock trigger button for action sheet for this post -->
-      <div class="news-more-action">
-        <i class="icon ion-more"></i>
-      </div>
+    
       <!-- End Button -->
 
-    </div>
+   
+     </ion-item>
+    </ion-list>
+
+
     <!-- End News Item -->
 
     <!-- News Item (For Album Art, Artist Name and Player) -->
-    <div class="news-media">
 
-      <!-- Album Art -->
-      <div class="image">
-        <!-- Fluid image -->
-        <img src="img/gemionic/news-image.jpg" alt="" class="fluid-image">
-        <!-- Social Stats (Absolutely Positioned Right) -->
-        <div class="media-social-stats">
-          <button class="button button-borderless button-small button-assertive">
-            <i class="ion-heart"></i> 3440
-          </button>
-        </div>
-      </div>
-      <!-- End Album Art -->
-
-      <!-- Media description (can be used for album artist name and action) -->
-      <div class="news-media-info">
-        <!-- Thumb (Absolute Positioning, fixed width) -->
-        <div class="thumb">
-          <img src="img/gemionic/sqr-box.jpg" alt="" class="img">
-        </div>
-
-        <!-- Text (static, margin-left shifts out of thumb's way ) -->
-        <div class="text">
-          <h3 class="title">Daft Punk</h3>
-          <h5 class="subtitle">Discovery</h5>
-        </div>
-
-        <!-- further action (absolute position right for further action trigger) -->
-        <div class="media-action">
-          <i class="icon ion-play"></i>
-        </div>
-      </div>
-      <!-- End Media Description -->
-    </div>
   </ion-content>
 </ion-view>

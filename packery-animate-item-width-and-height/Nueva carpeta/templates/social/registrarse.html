@@ -1,0 +1,41 @@
+<!-- View header bar is hidden using attribute 'hide-nav-bar="true"' -->
+<ion-view title="Login-Fullscreen" hide-nav-bar="true">
+  <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
+  <ion-content class="gem-splash_background">
+    <div class="gem-form text-center">
+      <!-- Logo as you please -->
+      <div class="gem-splash-logo">
+        <img src="img/gemionic/gem-logo.png" alt="Logo" width="100">
+        <h3 class="gem-white">PixelEsp</h3>
+      </div>
+      <!-- end Logo -->
+
+    <form ng-submit="doRegister()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Nombre</span>
+          <input type="text" ng-model="usuario.name" placeholder="Username">
+        </label>
+         <label class="item item-input">
+          <span class="input-label">Email</span>
+          <input type="text" ng-model="usuario.email" placeholder="Email">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="usuario.password" placeholder="Password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-dark">Registrarse</button>
+        </label>
+      
+      </div>
+    </form>
+  
+
+      <!-- buttons. .button-rounded can be added for more roundness -->
+      <button menu-toggle="left" class="button button-borderless button-rounded button-balanced">Menu</button>
+      <a href="#/app/inicio" target="_self" class="button button-outline button-rounded gem-white">Entrar</a>
+      <!-- end buttons -->
+    </div>    
+  </ion-content>
+</ion-view>

@@ -6,56 +6,61 @@
   <!-- ======================
   RIGHT SIDE BUTTON
   ====================== -->
-  <ion-nav-buttons side="right">
-    <a href="#/app/crearimagen" target="_self" button class="button button-icon icon ion-compose"> Crear imagen</button></a>
-  </ion-nav-buttons>
+
   
-  <!-- ======================
-  MAIN CONTENT SECTION
-  ====================== -->
-  <ion-content class="has-header gem-ion-content" >
+<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light ">
+    <div class="tabs">
+      <a class="tab-item active" href="#">
+    NUEVOS
+       
+      </a>
+      <a class="tab-item" href="#">
+        SEMANALES
+      </a>
+      <a class="tab-item" href="#">
+        MEJORES
+      </a>
+    </div>
+  </div>
 
 
-    <!-- Media section (Picture, Video, Map, etc) -->
-<!-- End Media section --> 
+ <ion-content class="has-subheader">
+ 
 
-    <!-- News Item (With Poster and content text summary) -->
-      <ion-list>
-      <ion-item ng-repeat="imagen in imagenes" class="item item-avatar">
-    
-      <!-- Poster Thumb -->
-   
-        <img src="img/gemionic/profile-image.jpg" alt="" class="img">
-   
-      <!-- End Poster -->
+       <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="Query" >
+      </label>
+    </div> 
 
-      <!-- Content -->
-      <div class="news-content">
-        <h2>{{imagen.Titulo}}</h2>
+     
+                 
+                     
+                
+        
+        <packery class="grid-item grid-item--width2"  data-packery-options='{ "columnWidth": 10 }' >
+    <packery-item  data-ng-repeat="imagen in imagenes | filter:Query">
+      <a  href="#/app/galeria/{{imagen.id}}"><img src ="img/imagenes/{{imagen.Previa}}"></a>
+    </packery-item>
+</packery>
 
+
+
+
+
+
+        
+        </ion-content>
       
-       <p>{{imagen.Descripcion}}</p>
-
-      <h4>
-          <i class="icon ion-clock"></i>{{imagen.created_at}}
-        </h4>
-        <!-- Stat Section -->
-
-      </div>
-      <!-- End Content -->
-
-      <!-- Mock trigger button for action sheet for this post -->
+    </ion-view>
+  </body>
+</html>
     
-      <!-- End Button -->
+        <script src="js/index.js"></script>
 
-   
-     </ion-item>
-    </ion-list>
-
-
-    <!-- End News Item -->
-
-    <!-- News Item (For Album Art, Artist Name and Player) -->
-
-  </ion-content>
-</ion-view>
+    
+    
+    
+  </body>
+</html>

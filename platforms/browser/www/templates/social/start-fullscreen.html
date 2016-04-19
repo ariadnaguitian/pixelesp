@@ -1,7 +1,7 @@
 <!-- View header bar is hidden using attribute 'hide-nav-bar="true"' -->
-<ion-view title="Login-Fullscreen" hide-nav-bar="true">
+<ion-view title="Login-Fullscreen" hide-nav-bar="true" >
   <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
-  <ion-content class="gem-splash_background">
+  <ion-content class="gem-splash_background" hide-tabs="true">
     <div class="gem-form text-center">
       <!-- Logo as you please -->
       <div class="gem-splash-logo">
@@ -11,29 +11,24 @@
       <!-- end Logo -->
 
     <form ng-submit="doLogin()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">Username</span>
-          <input type="text" ng-model="user.email" placeholder="Username">
+      <div class="list fondoinicio">
+        <label class="item item-input fondoinput">
+          <input type="text" ng-model="user.email" placeholder="Email">
         </label>
-        <label class="item item-input">
-          <span class="input-label">Password</span>
-          <input type="password" ng-model="user.password" placeholder="Password">
+        <label class="item item-input fondoinput">
+          <input type="password" ng-model="user.password" placeholder="Contraseña">
         </label>
         <label class="item">
-          <button class="button button-block button-dark">Log in</button>
+          <button class="button button-block button-balanced">Entrar</button>
         </label>
-        <div class="text-center padding">
-          <div class="padding">Not yet registered?</div>
-          <button  class="button button-positive" type="submit">Sign up for free</button>
-        </div>
-      </div>
+ </div>
     </form>
-  
+   <div class="text-center padding">
+        <a href="#/app/registrarse" target="_self" class="button button-assertive">Registrate!</a>
+        </div>
 
       <!-- buttons. .button-rounded can be added for more roundness -->
-      <button menu-toggle="left" class="button button-borderless button-rounded button-balanced">Menu</button>
-      <a href="#/app/inicio" target="_self" class="button button-outline button-rounded gem-white">Entrar</a>
+    
       <!-- end buttons -->
     </div>    
   </ion-content>

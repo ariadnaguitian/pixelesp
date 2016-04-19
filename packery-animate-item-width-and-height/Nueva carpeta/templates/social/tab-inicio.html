@@ -1,0 +1,61 @@
+<ion-view title="PixelEsp" >
+<ion-nav-buttons>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="right">
+    <a href="#/app/crearnoticia" target="_self" button class="button button-icon icon ion-compose"> Crear noticia</button></a>
+  </ion-nav-buttons>
+  
+  <!-- ======================
+  MAIN CONTENT SECTION
+  ====================== -->
+  <ion-content class="has-header gem-ion-content" >
+
+
+    <!-- Media section (Picture, Video, Map, etc) -->
+<!-- End Media section --> 
+
+    <!-- News Item (With Poster and content text summary) -->
+      <ion-list>
+      <ion-item ng-repeat="noticia in noticias" class="item item-avatar">
+    
+      <!-- Poster Thumb -->
+   
+        <img src="img/gemionic/profile-image.jpg" alt="" class="img">
+   
+      <!-- End Poster -->
+
+      <!-- Content -->
+      <div class="news-content">
+        <h2>{{noticia.Titulo}}</h2>
+
+      
+       <p>{{noticia.Descripcion}}</p>
+
+      <h4>
+          <i class="icon ion-clock"></i>{{noticia.created_at}}
+        </h4>
+        <!-- Stat Section -->
+
+      </div>
+      <!-- End Content -->
+
+      <!-- Mock trigger button for action sheet for this post -->
+    
+      <!-- End Button -->
+
+   
+     </ion-item>
+    </ion-list>
+
+
+    <!-- End News Item -->
+
+    <!-- News Item (For Album Art, Artist Name and Player) -->
+
+  </ion-content>
+</ion-view>

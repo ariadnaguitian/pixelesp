@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Ionic Fullscreen Image with Slide Box</title>
+  
+    <link href="//code.ionicframework.com/1.0.0-rc.1/css/ionic.min.css" rel="stylesheet">
+    <script src="//code.ionicframework.com/1.0.0-rc.1/js/ionic.bundle.js"></script>
+  </head>
+  <body ng-app="ionicApp">
+    <ion-view ng-controller="MainCtrl">     
+      <ion-content class="has-header">
+          <div class="card">
+              <div class="item item-divider">
+                  Fullscreen images + Slide Box
+              </div>
+              <div class="item item-text-wrap">
+                  <div class="button-bar">
+                      <a class="button" ng-click="openModal()">Show images from start</a>
+                  </div>
+              </div>
+          </div>
+
+          <script id="image-modal.html" type="text/ng-template">
+              <div class="modal image-modal transparent" 
+                  >
+                <ion-slide-box on-slide-changed="slideChanged(index)" 
+                               show-pager="false">
+                  <ion-slide ng-repeat="imagen in imagenes">
+                    <img ng-src="{{imagen.Imagen}" class="fullscreen-image" />
+                    <p class="info">{{imagen.Descripcion}}</p>
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          </script>
+        
+      	</ion-content>
+      
+		</ion-view>
+  </body>
+</html>
