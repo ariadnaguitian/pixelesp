@@ -7,25 +7,18 @@
   RIGHT SIDE BUTTON
   ====================== -->
 
-  
-<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light ">
-    <div class="tabs">
-      <a class="tab-item active" href="#">
-    NUEVOS
-       
-      </a>
-      <a class="tab-item" href="#">
-        SEMANALES
-      </a>
-      <a class="tab-item" href="#">
-        MEJORES
-      </a>
-    </div>
-  </div>
 
 
- <ion-content class="has-subheader">
- 
+
+
+
+
+        <ion-content scroll="false">
+
+    <ion-slide-box show-pager="false" ion-slide-tabs>
+        <ion-slide ion-slide-tab-label="NUEVOS">
+
+
 
        <div class="item item-input-inset">
       <label class="item-input-wrapper">
@@ -43,17 +36,14 @@
     <packery-item  data-ng-repeat="imagen in imagenes | filter:Query">
       <a  href="#/app/galeria/{{imagen.id}}"><img src ="img/imagenes/{{imagen.Previa}}"></a>
     </packery-item>
-</packery>
-
-
-
-
-
-
-        
-        </ion-content>
+</packery></ion-slide>
+        <ion-slide ion-slide-tab-label="SEMANALES"><h1>Tab 2</h1></ion-slide>
+        <ion-slide ion-slide-tab-label="MEJORES"><h1>Tab 3</h1></ion-slide>
+    </ion-slide-box>
+</ion-content>
       
     </ion-view>
+    
   </body>
 </html>
     

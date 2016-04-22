@@ -8,7 +8,7 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'])
+angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ionic.contrib.ui.ionThread',])
 
 .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {

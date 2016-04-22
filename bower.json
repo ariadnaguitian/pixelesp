@@ -3,5 +3,9 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.1.0"
+  },
+  "dependencies": {
+    "ionic-rating": "^0.3.0",
+    "ionic-ratings": "^0.2.0"
   }
 }
