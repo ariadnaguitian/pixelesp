@@ -317,8 +317,8 @@ angular.module('starter.controllers', [])
 
   });
 
-      $scope.imagenes = [];
-   $scope.$on('$ionicView.beforeEnter', function() {
+  $scope.imagenes = [];
+  $scope.$on('$ionicView.beforeEnter', function() {
     
     $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
       $scope.imagenes = resp.data.data;
@@ -385,17 +385,16 @@ angular.module('starter.controllers', [])
 })
 .controller('imagenlistsCtrl', function($rootScope, $scope, $http, $location) {
     
-
-
   $scope.imagen = [];
-   $scope.$on('$ionicView.beforeEnter', function() {
-    $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
-      $scope.imagen = resp.data.data;
-      console.log('Succes', resp.data.data);
-    }, function(err) {
-      console.error('', err);
-      // err.status will contain the status code
-    });
+  
+  $scope.$on('$ionicView.beforeEnter', function() {
+      $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
+        $scope.imagen = resp.data.data;
+        console.log('Succes', resp.data.data);
+      }, function(err) {
+        console.error('', err);
+        // err.status will contain the status code
+      });
   });
 
 })
@@ -590,73 +589,40 @@ angular.module('starter.controllers', [])
 
 .controller('imagenesCtrl', function ($scope, $ionicModal, $ionicSlideBoxDelegate, $http, $location) {
 
+    $scope.imagenes = [];
 
-       $scope.imagenes = [];
-   $scope.$on('$ionicView.beforeEnter', function() {
-    
-    $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
-      $scope.imagenes = resp.data.data;
+    $scope.$on('$ionicView.beforeEnter', function() {
+      
+      $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
+        $scope.imagenes = resp.data.data;
+        //$scope.imgLoadedCallback();
 
-    }, function(err) {
-      console.error('ERR', err);
-      // err.status will contain the status code
-    });
+      }, function(err) {
+        console.error('ERR', err);
+        // err.status will contain the status code
+      });
 
-  });
-
-
-    $ionicModal.fromTemplateUrl('image-modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
-    }).then(function(modal) {
-      $scope.modal = modal;
-    });
-
-    $scope.openModal = function() {
-      $ionicSlideBoxDelegate.slide(0);
-      $scope.modal.show();
-    };
-
-    $scope.closeModal = function() {
-      $scope.modal.hide();
-    };
-
-    // Cleanup the modal when we're done with it!
-    $scope.$on('$destroy', function() {
-      $scope.modal.remove();
-    });
-    // Execute action on hide modal
-    $scope.$on('modal.hide', function() {
-      // Execute action
-    });
-    // Execute action on remove modal
-    $scope.$on('modal.removed', function() {
-      // Execute action
-    });
-    $scope.$on('modal.shown', function() {
-      console.log('Modal is shown!');
     });
 
     // Call this functions if you need to manually control the slides
     $scope.next = function() {
       $ionicSlideBoxDelegate.next();
     };
-  
+
     $scope.previous = function() {
       $ionicSlideBoxDelegate.previous();
     };
-  
+
     $scope.goToSlide = function(index) {
       $scope.modal.show();
       $ionicSlideBoxDelegate.slide(index);
-    }
-  
+    };
+
     // Called each time the slide changes
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
     };
+
+  
   }
-)
-
-
-;
+);
