@@ -1,7 +1,7 @@
 <ion-side-menus>
 
-  <ion-side-menu-content>
-    <ion-nav-bar class="bar-light nav-title-slide-ios7">
+  <ion-side-menu-content >
+    <ion-nav-bar class="bar-dark nav-title-slide-ios7">
       <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Atras</ion-nav-back-button>
     </ion-nav-bar>
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
@@ -17,16 +17,31 @@
       </div>
       <!-- End Profile Box -->
       <ion-list>        
-        <ion-item nav-clear menu-close href="#/app/inicio">Noticias</ion-item>
-        <ion-item nav-clear menu-close href="#/app/galeria">Galeria</ion-item>
-        <ion-item nav-clear menu-close href="#/app/trabajo">Trabajo</ion-item>
-        <ion-item nav-clear menu-close href="#/app/comunidad">Comunidad</ion-item>
-        <ion-item nav-clear menu-close href="#/app/login">Cerrar sesion</ion-item>
-        <ion-item nav-clear menu-close href="#/app/EntrarAdmin">Admin</ion-item>
+        <ion-item nav-clear menu-close href="#/app/inicio" class="item-icon-left"><i class=" icon ion-document"></i> Noticias</ion-item>
+        <ion-item nav-clear menu-close href="#/app/galeria" class="item-icon-left"><i class="icon ion-image"></i>   Galeria</ion-item>
+        <ion-item nav-clear menu-close href="#/app/trabajo" class="item-icon-left"><i class="icon ion-bag"></i>   Trabajo</ion-item>
+        <ion-item nav-clear menu-close href="#/app/comunidad" class="item-icon-left"><i class="icon ion-person-stalker"></i>    Comunidad</ion-item>
+          
+       
+        <ion-item nav-clear menu-close href="#/app/EntrarAdmin" class="item-icon-left"><i class="icon ion-person"></i>   Admin</ion-item>
 
+ </ion-list>
+         
 
-      </ion-list>
     </ion-content>
+    
+
+     <ion-footer-bar class="gem-sidebar dark">
+
+        <ion-item nav-clear  menu-close href="#/app/login"  style="left:0;right:0;margin:0; padding: 0;top: 0; bottom: 0; width:100%;position: fixed;" class="item-icon-right" >    Cerrar sesión <i class="icon ion-log-out"></i></ion-item>
+
+
+    </ion-footer-bar>
+     
+     </ion-side-menu>
+     </ion-side-menus>
+
+
+
     <!-- End sidemenu content -->
-  </ion-side-menu>
-</ion-side-menus>
+

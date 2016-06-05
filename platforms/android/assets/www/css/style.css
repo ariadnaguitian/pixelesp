@@ -116,7 +116,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .gem-ion-content {color: #
       .article-actions {padding: 5px 0;}
 
 /*Login Screen*/
-.gem-splash_background {background:#222224 url('../img/gemionic/fondo.png');}
+.gem-splash_background {background:#7FAD71 url('../img/gemionic/fondo.png') repeat-x;}
 .gem-form {margin: 25% 3%;}
 .gem-form .button {margin: 15px 5px;}
 .gem-form .item.item-input,  .gem-form .item.item-input .input-label, .gem-form .item {background: none;}
@@ -438,3 +438,134 @@ p.info {
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
+
+ .ionic_ratings .icon {
+    font-size: 30px;
+  }
+
+   .swiper-container {
+        width: 100%;
+        height: 100%;
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+
+    .ion-slide {
+    background-color: #f0f0f0;
+
+}
+
+.ion-slide:nth-child(2n) {
+   background-color: #fff;
+}
+
+.slider {
+    height: 100%;
+      width: 100%;
+}
+
+.slidingTabs {
+    height: 48px;
+    z-index: 10;
+     width: 100%;
+
+
+      
+}
+
+.slidingTabs .scroll {
+    height: auto;
+    min-width: 100%;
+
+  width: 100%;
+
+ 
+}
+
+.slidingTabs ul {
+    background-color: #8BC34A;
+    height: 48px;
+      width: 100%;
+
+ 
+
+
+}
+
+.slidingTabs ul li {
+
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    float: left;
+    left:20%;
+
+    margin: 0;
+    padding: 0 12px 20px 12px;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    -webkit-transition: color .25s ease-in-out;
+    transition: color .25s ease-in-out;
+    position: relative;
+    overflow: hidden;
+
+    
+}
+
+.slidingTabs ul li.tab-active {
+    color: #fff;
+}
+
+.slidingTabs ul li .ink {
+    display: block;
+    position: absolute;
+    background: #6C9E31;
+    border-radius: 100%;
+    transform: scale(0);
+
+}
+
+.slidingTabs ul li .ink.animate {
+    -webkit-animation: ripple 0.65s linear;
+    animation: ripple 0.65s linear;
+}
+
+.slidingTabs .tab-indicator-wrapper {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    -webkit-transform: translateY(-2px);
+    position: absolute;
+}
+
+.slidingTabs .tab-indicator-wrapper .tab-indicator {
+    height: 100%;
+    background-color: #fff;
+    width: 70px;
+    position: relative;
+}
+
+@-webkit-keyframes ripple {
+    100% {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+}
+

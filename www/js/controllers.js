@@ -74,7 +74,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG ) {
   
     $rootScope.userToken = ''; 
         $scope.user={};
@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
         $scope.user.password =''; 
   
    $scope.doLogin = function() {
-      $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
+      $http.post(CONFIG.APIURL+'login',$scope.user).then(function(resp) {
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
@@ -119,7 +119,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('EntrarAdminCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('EntrarAdminCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG ) {
   
     $rootScope.userToken = ''; 
         $scope.user={};
@@ -128,7 +128,7 @@ angular.module('starter.controllers', [])
         
   
    $scope.doLogin = function() {
-      $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
+      $http.post(CONFIG.APIURL+'login',$scope.user).then(function(resp) {
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
@@ -228,11 +228,11 @@ angular.module('starter.controllers', [])
 
 .controller('UsuarioNuevoCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
             
-        $scope.usuario={};
-        $scope.usuario.password='';
-        $scope.usuario.name='';
-        $scope.usuario.email='';
-        $scope.usuario.id =''; 
+  $scope.usuario={};
+  $scope.usuario.password='';
+  $scope.usuario.name='';
+  $scope.usuario.email='';
+  $scope.usuario.id =''; 
   
    $scope.doRegister = function() {
       $http.post('http://pixelesp-api.herokuapp.com/usuarios',$scope.usuario ).then(function(resp) {
