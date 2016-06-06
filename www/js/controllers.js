@@ -82,7 +82,7 @@ angular.module('starter.controllers', [])
         $scope.user.password =''; 
   
    $scope.doLogin = function() {
-      $http.post(CONFIG.APIURL+'login',$scope.user).then(function(resp) {
+      $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
@@ -253,13 +253,13 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('NoticiaslistsCtrl', function($rootScope, $scope, $http, $location) {
+.controller('NoticiaslistsCtrl', function($rootScope, $scope, $http, $location, CONFIG) {
     
 
 
   $scope.noticias = [];
    $scope.$on('$ionicView.beforeEnter', function() {
-    $http.get('http://pixelesp-api.herokuapp.com/noticias').then(function(resp) {
+    $http.get(CONFIG.APIURL+'noticias').then(function(resp){  
       $scope.noticias = resp.data.data;
       console.log('Succes', resp.data.data);
     }, function(err) {
@@ -315,13 +315,13 @@ angular.module('starter.controllers', [])
  })
 
 
-.controller('NoticiasCtrl', function($scope, $http, $location) {
+.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope) {
 
 
   $scope.noticias = [];
-   $scope.$on('$ionicView.beforeEnter', function() {
-    
-    $http.get('http://pixelesp-api.herokuapp.com/noticias').then(function(resp) {
+  $scope.$on('$ionicView.beforeEnter', function() {
+  
+    $http.get(CONFIG.APIURL+'noticias').then(function(resp) {
       $scope.noticias = resp.data.data;
 
     }, function(err) {
@@ -334,7 +334,7 @@ angular.module('starter.controllers', [])
   $scope.imagenes = [];
   $scope.$on('$ionicView.beforeEnter', function() {
     
-    $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
+    $http.get(CONFIG.APIURL+'imagenes').then(function(resp) {
       $scope.imagenes = resp.data.data;
 
     }, function(err) {
@@ -342,6 +342,49 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     });
 
+  });
+
+  $scope.abrirComentarios = function  (noticia) {
+    var viewNoticia = noticia;
+    $scope.viewNoticia = viewNoticia;
+    $scope.newCommentario = {text:''};
+    $scope.modal.show();
+  }
+  $scope.guardarComentario = function  (newCommentarioForm) {
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+        console.log(newCommentarioForm);
+        console.log(resp);
+        var newCommentario = {
+          idusuario : resp.data.data.id,
+          id_noticia : $scope.viewNoticia.id,
+          text : newCommentarioForm.text,
+        };
+        $http.post(CONFIG.APIURL+'newscomments',newCommentario ).then(function(resp) {
+          console.log(resp.data);
+
+           $state.go($state.current, {}, {reload: true});
+           $scope.modal.hide();
+           $scope.viewNoticia = {};
+           $scope.newCommentario = {text:''};
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
+    }, function(err) {
+      console.error('ERR', err);
+     
+    }); 
+    // $scope.viewNoticia = viewNoticia;
+    // $scope.modal.show();
+  }
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+  }).then(function(modal) {
+    $scope.modal = modal;
   });
 
 })
@@ -354,7 +397,7 @@ angular.module('starter.controllers', [])
         $scope.noticia.id =''; 
   
    $scope.doRegister = function() {
-      $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia ).then(function(resp) {
+    $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia ).then(function(resp) {
         console.log(resp.data);
          var alertPopup = $ionicPopup.alert({
              title: 'Noticia creada con exito',

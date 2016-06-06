@@ -29,7 +29,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
         })
 
 .constant('CONFIG', {
-  APIURL: "http://pixelesp-api.herokuapp.com/",
+  // APIURL: "http://pixelesp-api.herokuapp.com/",
+  APIURL: "http://localhost/pixelsApp/api/index.php/",
 })
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
