@@ -7,62 +7,79 @@
   RIGHT SIDE BUTTON
   ====================== -->
 
-  
-<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light ">
-    <div class="tabs">
-      <a class="tab-item active" href="#">
-    NUEVOS
-       
+<section class="tab" ng-app="starter" ng-controller="TabController as tab">
+<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light" >
+    <div class="tabs" >
+      
+
+      <a href  ng-class="{ active: tab.isSet(1) }" ng-click="tab.setTab(1)" class="tab-item" >
+    NUEVOS       
       </a>
-      <a class="tab-item" href="#">
+      
+     <a ng-class="{ active: tab.isSet(2) }" href  ng-click="tab.setTab(2)" class="tab-item" >
         SEMANALES
       </a>
-      <a class="tab-item" href="#">
+     
+     <a href ng-class="{ active: tab.isSet(3) }" ng-click="tab.setTab(3)" class="tab-item" >
         MEJORES
       </a>
     </div>
   </div>
 
 
- <ion-content class="has-subheader">
-     
-       <div class="item item-input-inset">
-      <label class="item-input-wrapper">
+
+      <ion-content class="has-subheader">
+
+
+<<<<<<< HEAD
+       <div class="list list-inset">
+      <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="text" placeholder="Search" ng-model="Query" >
       </label>
     </div> 
 
 
-<a-carousel
-      item-directive="name-of-your-directive"
-      carousel-options="::vm.carouselOptions"
-      array-provider="::vm.carouselData"
-      on-select="vm.onSelectCarousel(item)">
-</a-carousel>
 
-     
-                      <a ng-click="openModal()"></a>
+  <div ng-show="tab.isSet(2)">
+        <packery reload-on-show class="grid-item grid-item--width2"  data-packery-options='{ "columnWidth": 10 }' >
+    <packery-item  data-ng-repeat="imagen in imagenes | filter:Query">
+      <a  href="#/app/galeria/{{imagen.id}}"><img src ="img/imagenes/{{imagen.Previa}}"></a>
+    </packery-item>
+</packery>
+  </div>
+  <div ng-show="tab.isSet(3)">
+        <packery reload-on-show class="grid-item grid-item--width2"  data-packery-options='{ "columnWidth": 10 }' >
+    <packery-item  data-ng-repeat="imagen in imagenes | filter:Query">
+      <a  href="#/app/galeria/{{imagen.id}}"><img src ="img/imagenes/{{imagen.Imagen}}"></a>
+    </packery-item>
+</packery>
+  </div>
+  <div ng-show="tab.isSet(1)">
+ <a ng-click="openModal()"></a>
 
-                  <div class="button-bar">
+                  <div class="button-bar galeriafloleft">
                   <div ng-repeat="imagen in imagenes | filter:Query" >
-                      <a ng-click="goToSlide({{imagen.id}})"><img src ="img/imagenes/{{imagen.Previa}}"></a>
-                      </div>
-                  </div>
-        
-
-
+                      <a ng-click="goToSlide({{imagen.id}})"><div>
+  <div id="" class="contenedor5"><div class="cont-image5">
+    <img class="centrado5" src="img/imagenes/{{imagen.Previa}}"> </div>
+  </div>
+</div></a>
+  </div>
+</section>
 
 
 
 
           <script id="image-modal.html" type="text/ng-template">
-              <div class="modal image-modal transparent" 
-                   ng-click="closeModal()">
+                <div class="bar bar-header bar-dark">
+  <h1 class="title">{{imagen.Descripcion}}</h1>      
+</div>
+              <div class="modal image-modal transparent">
                 <ion-slide-box on-slide-changed="slideChanged(index)" 
                                show-pager="false">
                   <ion-slide ng-repeat="imagen in imagenes">
-                   <div><img ng-src="img/imagenes/{{imagen.Imagen}}" class="fullscreen-image" /></div>
+                    <div class="badge z11" ng-click="closeModal()"><h1>X</h1></div><img ng-src="img/imagenes/{{imagen.Imagen}}" class="fullscreen-image" />
                 
                     <p class="info">{{imagen.Descripcion}}</p>
 
@@ -76,6 +93,31 @@
 
         
         </ion-content>
+=======
+        <ion-content scroll="false">
+
+    <ion-slide-box show-pager="false" ion-slide-tabs>
+        <ion-slide ion-slide-tab-label="NUEVOS">
+
+            <div class="item item-input-inset">
+              <label class="item-input-wrapper">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="Query" >
+              </label>
+            </div> 
+            <packery class="grid-item grid-item--width2"  data-packery-options='{ "columnWidth": 3, "gutter": 10 }' >
+                <packery-object  data-ng-repeat="imagen in imagenes | filter:Query">
+                  <a  href="#/app/galeria/{{imagen.id}}"><img ng-src="img/imagenes/{{imagen.Previa}}"></a>
+                </packery-object>
+            </packery>
+
+        </ion-slide>
+
+        <ion-slide ion-slide-tab-label="SEMANALES"><h1>Tab 2</h1></ion-slide>
+        <ion-slide ion-slide-tab-label="MEJORES"><h1>Tab 3</h1></ion-slide>
+    </ion-slide-box>
+</ion-content>
+>>>>>>> 3a0fd114f7360df778b1a3b81a6bd728e7fccd98
       
     </ion-view>
   </body>

@@ -5,7 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 
-angular.module('starter', ['ionic', 'starter.controllers'])
+
+
+
+<<<<<<< HEAD
+angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages'])
+=======
+angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings'])
+>>>>>>> 3a0fd114f7360df778b1a3b81a6bd728e7fccd98
 
 .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
@@ -216,6 +223,18 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  }
  })
+
+  .state('app.imagen', {
+ url: '/galeria/:ImagenId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/imagen.html',
+    controller: 'ImagengaleriaCtrl'
+       
+
+ }
+ }
+ })
  
 
  .state('app.cadaimagen', {
@@ -229,6 +248,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
  }
  }
  })
+
   .state('app.crearimagen', {
  url: '/crearimagen',
  views: {

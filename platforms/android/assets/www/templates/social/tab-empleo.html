@@ -9,14 +9,14 @@
   <ion-nav-buttons side="right">
     <a href="#/app/creartrabajo" target="_self" button class="button button-icon icon ion-compose"> Crear trabajo</button></a>
   </ion-nav-buttons>
-  
+
   <!-- ======================
   MAIN CONTENT SECTION
   ====================== -->
   <ion-content class="has-header gem-ion-content" >
 
-   <div class="item item-input-inset">
-      <label class="item-input-wrapper">
+   <div class="list list-inset">
+      <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
         <input type="text" placeholder="Search" ng-model="Query" >
       </label>
@@ -27,7 +27,7 @@
 <!-- End Media section --> 
 
     <!-- News Item (With Poster and content text summary) -->
-      <ion-list>
+        <ion-list>
       <ion-item ng-repeat="trabajo in trabajos | filter:Query" class="item item-avatar">
     
       <!-- Poster Thumb -->
@@ -37,19 +37,38 @@
       <!-- End Poster -->
 
       <!-- Content -->
+
       <div class="news-content">
         <h2>{{trabajo.Titulo}}</h2>
+                   <h4>
+          Por <a href="#" >Administrador</a> - <i class="icon ion-clock"></i> {{trabajo.created_at}}</h4>
 
-      
        <p>{{trabajo.Descripcion}}</p>
 
-      <h4>
-          <i class="icon ion-clock"></i>{{trabajo.created_at}}
-        </h4>
-        <!-- Stat Section -->
 
-      </div>
-      <!-- End Content -->
+        <!-- Stat Section -->
+        <div class="other-stats" >
+                <div class="news-more-action">
+        <i class="icon ion-more"></i>
+
+      
+
+</div>
+
+
+<div class="floatright">
+      <h4 class="item-note"><i class="ion-chatbox"></i> 82 -  <i class="ion-android-done-all"></i> 90 vistos -  <i class="ion-android-share-alt"></i></h4></div>
+<div class="floatleft">
+ 
+        </div>
+        
+
+        </div> 
+     </div>
+     <div class="floatright">
+     <button class="button button-balanced button-borderless button-small"><i class="ion-tshirt"></i> Aplicar</button> 
+      <!-- End Content --></div>
+
 
       <!-- Mock trigger button for action sheet for this post -->
     

@@ -6873,13 +6873,19 @@ a.button {
  * Button Bar
  * --------------------------------------------------
  */
+.galeriafb {
+    display: block;
+  float: left;
+}
+
+
 .button-bar {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
   display: -moz-flex;
   display: -ms-flexbox;
-  display: flex;
+  display: block;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -moz-box-flex: 1;
@@ -7491,6 +7497,8 @@ a.button {
   -webkit-transition: all ease-in-out 250ms;
   transition: all ease-in-out 250ms; }
 
+ 
+
 @-webkit-keyframes scaleOut {
   from {
     -webkit-transform: scale(1);
@@ -7610,3 +7618,8 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+
+
+
+

@@ -48,7 +48,33 @@
                 swiper: '=',
                 overrideParameters: '='
             },
+
+            
             controller: function($scope, $element, $timeout) {
+           
+                 var swiper = new Swiper('.swiper-container', {
+  // Default parameters
+  slidesPerView: 4,
+  spaceBetween: 40,
+  // Responsive breakpoints
+  breakpoints: {
+    // when window width is <= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetweenSlides: 10
+    },
+    // when window width is <= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetweenSlides: 20
+    },
+    // when window width is <= 640px
+    640: {
+      slidesPerView: 3,
+      spaceBetweenSlides: 30
+    }
+  }
+})
                 var uuid = createUUID();
 
                 $scope.swiper_uuid = uuid;
@@ -63,6 +89,8 @@
                     initialSlide: $scope.initialSlide || 0,
                     showNavButtons: false
                 };
+
+
 
                 if (!angular.isUndefined($scope.autoplay) && typeof $scope.autoplay === 'number') {
                     params = angular.extend({}, params, {

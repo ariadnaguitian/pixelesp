@@ -1,5 +1,10 @@
-      <div class="news-content" ng-repeat="imagen in imagenes">
-     <img src="img/imagenes/{{imagen.Previa}}" alt="" class="img">
+     <ion-view title="PixelEsp" >
+
+ <ion-content class="has-header">
+<ion-nav-buttons>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons> <div class="news-content" ng-repeat="imagen in imagenes">
+     <img ng-src="img/imagenes/{{imagen.Previa}}" alt="" class="img">
 
 
 <form ng-submit="doRegister()">
@@ -11,3 +16,7 @@
           <button class="button button-block button-dark">Enviar</button>
         </label>
         </form>
+
+          </ion-content>
+      
+    </ion-view>

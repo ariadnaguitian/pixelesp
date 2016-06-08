@@ -20,10 +20,13 @@
 
 
 
-   <ks-swiper-container initial-slide="1" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="3" space-between="10" pagination-clickable="false" on-ready="onReadySwiper(swiper)">
+   <ks-swiper-container initial-slide="1" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="40" pagination-clickable="true" on-ready="onReadySwiper(swiper)">
+    
     <ks-swiper-slide class="swiper-slide" data-ng-repeat="imagen in imagenes">
-         <div  class="contenedor5"><div class="cont-image5"> <img src ="img/imagenes/{{imagen.Previa}}"></div> </div>
-    </ks-swiper-slide>            
+         <div  class="contenedor5"><div class="cont-image5"> <img ng-src="img/imagenes/{{imagen.Previa}}"></div> </div>
+    </ks-swiper-slide>  
+  
+ <ks-swiper-pagination> </ks-swiper-pagination>   
 </ks-swiper-container>
 
 
