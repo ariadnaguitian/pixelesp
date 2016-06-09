@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .gem-ion-content {color: #
 
 /*Login Screen*/
 .gem-splash_background {background:#7FAD71 url('../img/gemionic/fondo.png') repeat-x;}
-.gem-form {margin: 25% 3%;}
+.gem-form {margin: 0% 3%;}
 .gem-form .button {margin: 15px 5px;}
 .gem-form .item.item-input,  .gem-form .item.item-input .input-label, .gem-form .item {background: none;}
 .gem-bar-clear {background: none;}
