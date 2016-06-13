@@ -74,7 +74,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG ) {
+.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG, $ionicSideMenuDelegate) {
   
     $rootScope.userToken = ''; 
         $scope.user={};
@@ -102,7 +102,7 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     });
     };
-  
+  $ionicSideMenuDelegate.canDragContent(false)
 })
 
 .controller('TabController', function(){
