@@ -1,6 +1,7 @@
 angular.module('starter.controllers', [])
 
- 
+
+
 
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
@@ -78,7 +79,7 @@ angular.module('starter.controllers', [])
   
     $rootScope.userToken = ''; 
         $scope.user={};
-        $scope.user.email='';
+        $scope.user.username='';
         $scope.user.password =''; 
   
    $scope.doLogin = function() {
@@ -94,7 +95,7 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
       var alertPopup = $ionicPopup.alert({
              title: 'Error en el ingreso',
-             template: 'Email o contraseña invalido'
+             template: 'Usuario o contraseña invalido'
            });
            alertPopup.then(function(resp) {
              $location.path('/app/start');
@@ -103,6 +104,8 @@ angular.module('starter.controllers', [])
     });
     };
   $ionicSideMenuDelegate.canDragContent(false)
+
+
 })
 
 .controller('TabController', function(){
@@ -123,12 +126,13 @@ angular.module('starter.controllers', [])
   
     $rootScope.userToken = ''; 
         $scope.user={};
-        $scope.user.email='';
+        $scope.user.username='';
         $scope.user.password ='';
+      
         
   
    $scope.doLogin = function() {
-      $http.post(CONFIG.APIURL+'login',$scope.user).then(function(resp) {
+      $http.post(CONFIG.APIURL+'loginadmin',$scope.user).then(function(resp) {
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
@@ -141,7 +145,7 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
       var alertPopup = $ionicPopup.alert({
              title: 'Error en el ingreso',
-             template: 'Email o contraseña invalido'
+             template: 'Acceso denegado'
            });
            alertPopup.then(function(resp) {
              $location.path('/app/EntrarAdmin');
@@ -231,6 +235,7 @@ angular.module('starter.controllers', [])
   $scope.usuario={};
   $scope.usuario.password='';
   $scope.usuario.name='';
+  $scope.usuario.username='';
   $scope.usuario.email='';
   $scope.usuario.id =''; 
   
@@ -247,8 +252,18 @@ angular.module('starter.controllers', [])
           
     }, function(err) {
       console.error('ERR', err);
-      // err.status will contain the status code
-    });
+        var alertPopup = $ionicPopup.alert({
+             title: 'Error en el ingreso',
+             template: 'Volver'
+           });
+           alertPopup.then(function(resp) {
+             $location.path('/app/registrarse');
+           });
+     
+    });  
+
+     
+
     };
   
 })
