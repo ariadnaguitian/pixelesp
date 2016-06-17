@@ -7294,7 +7294,13 @@ a.button {
     content: "."; }
 
 .full-image {
-  width: 100%; }
+display: block;
+margin: auto;
+top:0;
+left:0;
+right:0;
+bottom:0;
+}
 
 .clearfix {
   *zoom: 1; }
