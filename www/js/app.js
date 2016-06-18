@@ -212,7 +212,18 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  }
  })
- 
+  .state('app.imagenes', {
+ url: '/imagenes',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/imagenes.html',
+     controller:'imagenlistsCtrl'
+      
+       
+
+ }
+ }
+ })
  .state('app.galeria', {
  url: '/galeria',
  views: {

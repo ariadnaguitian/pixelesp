@@ -457,11 +457,11 @@ angular.module('starter.controllers', [])
 })
 .controller('imagenlistsCtrl', function($rootScope, $scope, $http, $location) {
     
-  $scope.imagen = [];
+  $scope.imagenes = [];
   
   $scope.$on('$ionicView.beforeEnter', function() {
       $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
-        $scope.imagen = resp.data.data;
+        $scope.imagenes = resp.data.data;
         console.log('Succes', resp.data.data);
       }, function(err) {
         console.error('', err);
@@ -521,10 +521,10 @@ angular.module('starter.controllers', [])
     
 
 
-  $scope.trabajo = [];
+  $scope.trabajos = [];
    $scope.$on('$ionicView.beforeEnter', function() {
     $http.get('http://pixelesp-api.herokuapp.com/trabajos').then(function(resp) {
-      $scope.trabajo = resp.data.data;
+      $scope.trabajos = resp.data.data;
       console.log('Succes', resp.data.data);
     }, function(err) {
       console.error('ERR', err);
@@ -533,6 +533,8 @@ angular.module('starter.controllers', [])
   });
 
 })
+
+  
  
 
 .controller('TrabajoCtrl', function($scope, $stateParams, $http, $location) {

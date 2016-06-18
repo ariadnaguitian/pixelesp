@@ -19,114 +19,112 @@
     ====================== -->
     <div class="gem-profile-media">
       <div class="gem-profile-details profile2">
-        
-        <h3 class="gem-white">{{usuario.name}}{{usuario.Apellido}}</h3>
-        <h4>{{usuario.email}}</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias eius laborum hic similique beatae officiis.</p>
+       <img src="img/avatar/{{usuario.imagen}}" alt="" class="profile-image">
+        <h3 class="gem-white">{{usuario.name}}</h3>
+        <h4 class="gem-white">{{usuario.username}} ({{usuario.email}})</h4>
+       
+        <h5 class="gem-white">{{usuario.city}} , {{usuario.country}}</h5>
+        {{usuario.biografia}}
         <div class="gem-center">
-          <i class="icon ion-chatbubble"></i> 2003 | <i class="icon ion-heart"></i> 2044
+      20045 Seguidores| 1547 Siguiendo
         </div>
-      </div>
+     
+         <div class="gem-center padding">
+      <div class="button button-light"> <i class="icon ion-email"></i> Enviar Mensaje</div> <div class="button button-balanced"> <i class="icon ion-person-add"></i> Seguir</div>
+    </div>
+  </div>
+     
       <!-- Background Image -->
       <img src="img/gemionic/post-img.jpg" alt="" class="fluid-image profile-background-image">
+
     </div>
+
 
     <!-- Profile Stats - ionic '.row' extended with profile-3. .gem-center centralizes -->
-    <div class="row profile-stats profile-3 gem-center">
-      <div class="col stat">
-        <h5 class="gem-white"><i class="ion-heart gem-white"></i> 352</h5>
-      </div>
-      <div class="col stat">
-        <h5 class="gem-white"><i class="ion-chatbubble gem-white"></i> 6233</h5>
-      </div>
-      <div class="col stat">
-        <h5 class="gem-white"><i class="ion-person gem-white"></i> 564</h5>
-      </div>
-      <div class="col stat">
-        <h5 class="gem-white"><i class="ion-android-star gem-white"></i> 564</h5>
-      </div>
-    </div>
-
     <!-- Profile Feed -->
     <div class="profile-feed">
         <!-- Title and Button -->
-        <div class="title">
-          <h4><i class="ion-images"></i> <b>48 Pictures</b> <a href="" class="button button-positive button-small gem-more-button">View More <i class="ion-chevron-right"></i></a></h4>
-        </div>
+  
         <!-- Title and Button -->
 
         <!-- Gemionic Gallery (extends .row with .row-wrap for easy ng-repeat) -->
-        <div class="gem-gallery row row-wrap">
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-1.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-2.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-3.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-4.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-5.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-1.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-2.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-3.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-4.jpg" alt=""></div>
-        </div>
-        <!-- End Gemionic Gallery -->
+        <section class="tab" ng-app="starter" ng-controller="TabController as tab">
+<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light" >
+    <div class="tabs tabs3linea" >
 
-        <div class="title padding">
-          <h4>
-            <i class="ion-images"></i> <b>4 Videos</b> 
-            <a href="" class="button button-light button-small gem-more-button">
-              View More 
-              <i class="ion-chevron-right"></i>
-            </a>
-          </h4>
+      <a href ng-class="{ active: tab.isSet(1) }" ng-click="tab.setTab(1)" class="tab-item" >
+            <div class="col stat">
+        <h5 class="gem-white"><i class="ion-images gem-white"></i> 543</h5>
+      </div>
+      </a>
+      <a href  ng-class="{ active: tab.isSet(2) }" ng-click="tab.setTab(2)" class="tab-item" >
+            <div class="col stat">
+        <h5 class="gem-white"><i class="ion-heart gem-white"></i> 352</h5>
+      </div>     
+      </a>
+      
+     <a ng-class="{ active: tab.isSet(3) }" href  ng-click="tab.setTab(3)" class="tab-item" >
+            <div class="col stat">
+        <h5 class="gem-white"><i class="ion-chatbubble gem-white"></i> 985</h5>
+      </div>
+      </a>
+     
+     <a href ng-class="{ active: tab.isSet(4) }" ng-click="tab.setTab(4)" class="tab-item" >
+            <div class="col stat">
+        <h5 class="gem-white"><i class="ion-person gem-white"></i> 349</h5>
+      </div>
+      </a>
+           <a href ng-class="{ active: tab.isSet(5) }" ng-click="tab.setTab(5)" class="tab-item" >
+            <div class="col stat">
+        <h5 class="gem-white"><i class="ion-android-star gem-white"></i> 1536</h5>
+      </div>
+      </a>
+    </div>
+  </div>
+
+
+
+  <div ng-show="tab.isSet(1)">
+      <div class="title">
+          <h4><i class="ion-images"></i> <b>543 imagenes</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
+  </div>
+  <div ng-show="tab.isSet(2)">
+     <div class="title">
+          <h4><i class="ion-heart"></i> <b>352 favoritos</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
+        </div>
+  </div>
+
+  <div ng-show="tab.isSet(3)">
+     <div class="title">
+          <h4><i class="ion-chatbubble"></i> <b>985 comentarios</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
+        </div>
+        </div>
+                  <div ng-show="tab.isSet(4)">
+     <div class="title">
+          <h4><i class="ion-person"></i> <b>349 amigos</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
+        </div>
+        </div>
+          <div ng-show="tab.isSet(5)">
+     <div class="title">
+          <h4><i class="ion-android-star"></i> <b>1536 ratings</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
+        </div>
+  </div>
+
+</section>
+
+
 
         <!-- Gemionic Gallery (extends .row with .row-wrap for easy ng-repeat) -->
-        <div class="gem-gallery row row-wrap">
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-1.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-2.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-3.jpg" alt=""></div>
-          <div class="col-33 thumb"><img src="img/gemionic/gall-item-4.jpg" alt=""></div>
-        </div>
+
         <!-- End Gemionic Gallery -->
 
         <!-- Title box -->
-        <div class="title padding">
-          <h4>
-            <i class="ion-images"></i> <b>18 Friends</b> 
-            <a href="" class="button button-light button-small gem-more-button">
-              View More 
-              <i class="ion-chevron-right"></i>
-            </a>
-          </h4>
-        </div>
+
         <!-- End Title box -->
 
         <!-- Friend List (Grid) Refer to templates/social/friend-grid.html -->
-        <div class="gem-friend-grid clearfix">
-          <div class="friend-item">  
-            <!-- Round Image here. Fluid width and Colored ring stating statust -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic">
-          </div>
-          <div class="friend-item">  
-            <!-- Round Image here. Fluid width and Colored ring stating statust -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic">
-          </div>
-          <div class="friend-item">  
-            <!-- Round Image here. Fluid width and Colored ring stating statust -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic">
-          </div>
-          <div class="friend-item">  
-            <!-- Round Image here. Fluid width and Colored ring stating statust -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic">
-          </div>
-          <div class="friend-item">  
-            <!-- Round Image here. Fluid width and Colored ring stating statust -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic">
-          </div>
-          <div class="friend-item">  
-            <!-- Round Image here. Fluid width and Colored ring stating statust -->
-            <img src="img/gemionic/profile-image.jpg" alt="" class="gem-friend-list-profile-pic">
-          </div>
-        </div>
+        
         <!-- End Friend list (Grid) -->
 
       </div>
