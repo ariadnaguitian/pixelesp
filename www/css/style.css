@@ -560,6 +560,10 @@ p.info {
     position: absolute;
 }
 
+.linksinestilo {
+  text-decoration: none;
+}
+
 .slidingTabs .tab-indicator-wrapper .tab-indicator {
     height: 100%;
     background-color: #fff;

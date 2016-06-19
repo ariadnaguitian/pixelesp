@@ -4,12 +4,13 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $http) {
 
  
 
   // Form data for the login modal
   $scope.loginData = {};
+
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/social/login.html', {
@@ -29,6 +30,19 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     });
   });
+  $scope.user = $rootScope.user;
+     $scope.user = [];
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+      $scope.user = resp.data.data;
+      console.log('Succes', resp.data.data);
+    }, function(err) {
+      console.error('ERR', err);
+      $location.path('/app/inicio');
+      // err.status will contain the status code
+    });
+
+
+
 
 
 

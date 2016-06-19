@@ -458,8 +458,29 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  }
  })
- 
+  .state('app.miperfil', {
+ url: '/miperfil',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/miperfil.html',
+     controller:'MiperfilCtrl'
+       
 
+ }
+ }
+ })
+
+
+   .state('app.msg', {
+      url: "/msg",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/mensajes.html",
+        }
+      }
+    })
+
+   
 
    ;
  

@@ -16,7 +16,29 @@
         
       </div>
       <!-- End Profile Box -->
-      <ion-list>        
+      <ion-list>
+
+        <div class="row gem-sidebar-profile-box">
+        <!-- Profile Thumb -->
+        <div class="col col-25">
+          <a href="#/app/comunidad/262" class="linksinestilo"><img src="img/avatar/ari.png" class="gem-profile-image" alt=""></a>
+        </div>
+        <!-- End Profile Thumb -->
+
+        <!-- Profile Name -->
+        <div class="col col-50">
+          <h5 class="title"><a href="#/app/comunidad/262" class="linksinestilo">{{user.email}} {{usuario.email}}Ariadna</a></h5>
+          <h6 class="action-links"><a href="#/app/comunidad/262" class="linksinestilo">Subir | Editar</a></h6>
+        </div>
+        <!-- End Profile Name -->
+
+        <!-- Account Settings Icon -->
+        <div class="col col-25 gem-text-center">
+          <a href="#/app/comunidad/262" class="linksinestilo"><i class="gem-profile-settings-icon icon ion-gear-b"></i></a>
+        </div>
+        <!-- End Account Settings Icon -->
+        
+      </div>        
         <ion-item nav-clear menu-close href="#/app/inicio" class="item-icon-left"><i class=" icon ion-document"></i> Noticias</ion-item>
         <ion-item nav-clear menu-close href="#/app/galeria" class="item-icon-left"><i class="icon ion-image"></i>   Galeria</ion-item>
         <ion-item nav-clear menu-close href="#/app/trabajo" class="item-icon-left"><i class="icon ion-bag"></i>   Trabajo</ion-item>
