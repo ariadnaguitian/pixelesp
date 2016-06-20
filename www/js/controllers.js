@@ -432,7 +432,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
             
         $scope.noticia={};
         $scope.noticia.Titulo='';
@@ -440,21 +440,36 @@ angular.module('starter.controllers', [])
         $scope.noticia.id =''; 
   
    $scope.doRegister = function() {
-    $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia ).then(function(resp) {
-        console.log(resp.data);
-         var alertPopup = $ionicPopup.alert({
-             title: 'Noticia creada con exito',
-             template: 'OK'
-           });
-           alertPopup.then(function(res) {
-             $location.path('/app/inicio');
-           });
-          
+    
+    $scope.noticia.name =''; 
+
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+
+
+        $scope.noticia.idusuario = resp.data.data.id;
+
+        $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia).then(function(resp) {
+              console.log(resp.data);
+              var alertPopup = $ionicPopup.alert({
+                 title: 'Noticia creada con exito',
+                 template: 'OK'
+               });
+               alertPopup.then(function(res) {
+                 $location.path('/app/inicio');
+               });
+              
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
     }, function(err) {
       console.error('ERR', err);
-      // err.status will contain the status code
-    });
-    };
+     
+    }); 
+  };
   
 })
 
