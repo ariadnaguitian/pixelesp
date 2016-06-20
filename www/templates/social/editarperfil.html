@@ -10,7 +10,7 @@
   RIGHT SIDE BUTTON
   ====================== -->
   <ion-nav-buttons side="right">
-    <a href="#/app/usuario/{{usuario.id}}"><button class="button button-icon icon ion-edit"></button></a>
+    <button class="button button-icon icon ion-edit"></button>
   </ion-nav-buttons>
   
   <ion-content class="has-header gem-ion-content">
@@ -19,25 +19,25 @@
     ====================== -->
     <div class="gem-profile-media">
       <div class="gem-profile-details profile2">
-
-         <div class="partesuperior">
+      <div class="partesuperior">
        <img src="img/avatar/{{usuario.imagen}}" alt="" class="profile-image floatleft">
-    
-        <h3 class="gem-white marginpading">{{usuario.name}}</h3>
-        </div>
-
-
-        <h4 class="gem-white">{{usuario.username}} ({{usuario.email}})</h4>
+        <h3 class="gem-white marginpading">{{usuario.username}}</h3>
+</div>
+<div class="list">
+        <label class="item item-input">
+    <input type="text" placeholder="{{usuario.name}}">
+  </label>
        
-        <h5 class="gem-white">{{usuario.city}} , {{usuario.country}}</h5>
-        {{usuario.biografia}}
-        <div class="gem-center">
-      20045 Seguidores| 1547 Siguiendo
-        </div>
-     
-         <div class="gem-center padding padingdos">
-      <a href="#/app/mensajeprivado"><div class="button button-light"> <i class="icon ion-email"></i> Enviar Mensaje</div></a> <div class="button button-balanced"> <i class="icon ion-person-add"></i> Seguir</div>
-    </div>
+   <label class="item item-input">
+    <input type="text" placeholder="{{usuario.email}}">
+  </label>
+     <label class="item item-input">
+    <input type="text" placeholder="{{usuario.city}}">
+  </label>
+  </div>
+  <label class="item item-input biografia">
+    <textarea class="biografia" placeholder="{{usuario.biografia}}"></textarea>
+  </label>
   </div>
      
       <!-- Background Image -->
@@ -94,68 +94,17 @@
       <div class="title">
           <h4><i class="ion-images"></i> <b>543 imagenes</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
-          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>
   </div>
   <div ng-show="tab.isSet(2)">
      <div class="title">
           <h4><i class="ion-heart"></i> <b>352 favoritos</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
-        <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>
   </div>
 
   <div ng-show="tab.isSet(3)">
      <div class="title">
           <h4><i class="ion-chatbubble"></i> <b>985 comentarios</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
-        <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>
         </div>
                   <div ng-show="tab.isSet(4)">
      <div class="title">

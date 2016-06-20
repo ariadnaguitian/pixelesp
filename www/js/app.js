@@ -8,7 +8,7 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages' ])
+angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages'])
 
 
 
@@ -311,6 +311,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  })
 
+
+
  .state('app.usuarios', {
  url: '/usuarios',
  views: {
@@ -469,7 +471,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  }
  })
-
+   .state('app.editar', {
+      url: "/usuario/:UsuarioId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/editarperfil.html",
+              controller:  'UsuarioCtrl'
+        }
+      }
+    })
 
    .state('app.msg', {
       url: "/msg",
@@ -479,7 +489,14 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
         }
       }
     })
-
+   .state('app.enviarmensaje', {
+      url: "/mensajeprivado",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/mensajeprivado.html",
+        }
+      }
+    })
    
 
    ;
@@ -487,5 +504,5 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
    
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/start');
-});
+})
 

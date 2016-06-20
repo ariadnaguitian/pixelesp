@@ -12,9 +12,7 @@
 
     <form ng-submit="doRegister()" name="myForm" novalidate>
       <div class="list fondoinicio">
-        <label class="item item-input">
-          <input name ="name" type="text" ng-model="usuario.name" placeholder="Nombre"  ng-minlength="5"  required>
-        </label>
+      
           <label class="item item-input">
           <input name ="username" type="text" ng-model="usuario.username" placeholder="Usuario"  ng-minlength="5"  required>
         </label>
@@ -28,8 +26,7 @@
       
       </div>
       <ul class="list">
-    <li class="item" ng-show="myForm.name.$error.required">■ Tu nombre es requerido</li>
-            <li class="item" ng-show="myForm.name.$error.minlength">■ Tu nombre tiene que ser mas largo que 5 caracteres</li>
+   
 
              <li class="item" ng-show="myForm.username.$error.required">■ El nombre de usuario es requerido</li>
             <li class="item" ng-show="myForm.username.$error.minlength">■ Tu nombre de usuario tiene que ser mas largo que 5 caracteres</li>

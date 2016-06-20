@@ -1,5 +1,5 @@
 <!-- Title for the ion view -->
-<ion-view title="Nuevo trabajo">
+<ion-view title="Escribir mensaje">
   <!-- ======================
   LEFT SIDE BUTTON
   ====================== -->
@@ -33,17 +33,17 @@
 
           <div class="padding">
       
-    <form ng-submit="doRegister()">
+    <form>
       <div class="list">
         <label class="item item-input">
-          <input type="text" ng-model="trabajo.Titulo" placeholder="Titulo">
+          <input type="text" placeholder="Titulo">
         </label>
          <label class="item item-input">
-          <textarea type="text" ng-model="trabajo.Descripcion" placeholder="Descripcion"></textarea>
+          <textarea type="text" placeholder="Escriba su mensaje"></textarea>
         </label>
        
         <label class="item">
-          <button class="button button-block button-balanced">Crear trabajo</button>
+          <a href="#/app/comunidad/262" class="linksinestilo"><button class="button button-block button-balanced">Enviar mensaje</button></a>
         </label>
       
       </div>

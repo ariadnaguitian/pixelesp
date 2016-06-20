@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $http) {
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $http,$location) {
 
  
 
@@ -30,16 +30,7 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     });
   });
-  $scope.user = $rootScope.user;
-     $scope.user = [];
-    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
-      $scope.user = resp.data.data;
-      console.log('Succes', resp.data.data);
-    }, function(err) {
-      console.error('ERR', err);
-      $location.path('/app/inicio');
-      // err.status will contain the status code
-    });
+
 
 
 
@@ -51,7 +42,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('UsuariosCtrl', function($scope, $http, $location) {
+.controller('UsuariosCtrl', function($scope, $rootScope, $http, $location) {
 
 
   $scope.usuarios = [];
@@ -60,12 +51,19 @@ angular.module('starter.controllers', [])
     $http.get('http://pixelesp-api.herokuapp.com/usuarios').then(function(resp) {
       $scope.usuarios = resp.data.data;
 
+
+
     }, function(err) {
       console.error('ERR', err);
       // err.status will contain the status code
     });
 
+
+
   });
+
+
+
 
 })
 
@@ -101,6 +99,22 @@ angular.module('starter.controllers', [])
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
+         console.log('asdsad: '+$rootScope.userToken);
+
+                    $scope.user = $rootScope.user;
+           $scope.user = {};
+          $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+            $rootScope.user = resp.data.data;
+            console.log('token: '+$rootScope.userToken);
+
+            console.log(resp.data.data);
+
+            console.log('Succes', resp.data.data);
+          }, function(err) {
+            console.error('ERR', err);
+            $location.path('/app/inicio');
+            // err.status will contain the status code
+          });
 
              $location.path('/app/inicio');
           
@@ -248,7 +262,7 @@ angular.module('starter.controllers', [])
             
   $scope.usuario={};
   $scope.usuario.password='';
-  $scope.usuario.name='';
+
   $scope.usuario.username='';
   $scope.usuario.email='';
   $scope.usuario.id =''; 
@@ -714,3 +728,6 @@ angular.module('starter.controllers', [])
   
   }
 );
+
+
+
