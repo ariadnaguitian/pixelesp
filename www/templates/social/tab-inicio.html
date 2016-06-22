@@ -118,10 +118,30 @@
           </ion-header-bar>
 
           <ion-content class="padding">
+              <ion-item class="item item-thumbnail-left" >
+            <img src="img/paintprogram.png" alt="" class="img">
+          <div class="news-content">
+              <h2>{{viewNoticia.Titulo}}</h2>
+
+              <h4>
+                por <a href="#">{{viewNoticia.name}}</a> - <i class="icon ion-clock"></i>{{viewNoticia.created_at}}
+              </h4>
+             <p>{{viewNoticia.Descripcion}}</p>
+
+
+              <!-- Stat Section -->
+              <div class="other-stats" >
+                      <div class="news-more-action">
+
+            
+</div>
+      </div>
+
+</div> 
+</ion-item>
             <div class="list">
               <label class="item item-input">
-                <span class="input-label">Comentario</span>
-                <textarea ng-model="newCommentario.text" ></textarea>
+                <textarea placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
               </label>
               <button class="button button-full button-dark" ng-click="guardarComentario(newCommentario)">Comentar</button>
             </div>
