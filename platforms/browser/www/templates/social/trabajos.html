@@ -1,10 +1,10 @@
-<ion-view view-title="">Trabajos
+<ion-view view-title="Trabajos">
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="trabajo in trabajos" href="#/app/trabajos/{{trabajo.id}}">
         {{trabajo.Titulo}}
       </ion-item>
     </ion-list>
-    <p>{{trabajo.Descripcion}}</p>
+    <p>{{trabajo.Titulo}}</p>
   </ion-content>
 </ion-view>

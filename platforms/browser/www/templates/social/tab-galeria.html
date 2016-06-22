@@ -9,8 +9,7 @@
 
 <section class="tab" ng-app="starter" ng-controller="TabController as tab">
 <div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light" >
-    <div class="tabs" >
-      
+    <div class="tabs" >   
 
       <a href  ng-class="{ active: tab.isSet(1) }" ng-click="tab.setTab(1)" class="tab-item" >
     NUEVOS       
@@ -31,7 +30,6 @@
       <ion-content class="has-subheader">
 
 
-<<<<<<< HEAD
        <div class="list list-inset">
       <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
@@ -93,31 +91,8 @@
 
         
         </ion-content>
-=======
-        <ion-content scroll="false">
 
-    <ion-slide-box show-pager="false" ion-slide-tabs>
-        <ion-slide ion-slide-tab-label="NUEVOS">
 
-            <div class="item item-input-inset">
-              <label class="item-input-wrapper">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="text" placeholder="Search" ng-model="Query" >
-              </label>
-            </div> 
-            <packery class="grid-item grid-item--width2"  data-packery-options='{ "columnWidth": 3, "gutter": 10 }' >
-                <packery-object  data-ng-repeat="imagen in imagenes | filter:Query">
-                  <a  href="#/app/galeria/{{imagen.id}}"><img ng-src="img/imagenes/{{imagen.Previa}}"></a>
-                </packery-object>
-            </packery>
-
-        </ion-slide>
-
-        <ion-slide ion-slide-tab-label="SEMANALES"><h1>Tab 2</h1></ion-slide>
-        <ion-slide ion-slide-tab-label="MEJORES"><h1>Tab 3</h1></ion-slide>
-    </ion-slide-box>
-</ion-content>
->>>>>>> 3a0fd114f7360df778b1a3b81a6bd728e7fccd98
       
     </ion-view>
   </body>

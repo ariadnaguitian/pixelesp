@@ -596,6 +596,40 @@ p.info {
     width: 70px;
     position: relative;
 }
+.blur {
+  -webkit-filter: blur(50px);
+-moz-filter: blur(50px);
+-o-filter: blur(50px);
+-ms-filter: blur(50px);
+filter: blur(50px);
+}
+.containergal {
+    position: static;
+}
+
+.image {
+    position: relative;
+}
+
+
+  .imageOne {
+         z-index: 1;
+  }
+
+  .imageTwo {
+      z-index: 0;
+  }
+  .zindex {
+    z-index: 1;
+  }
+  .galeriablur
+  {
+    left: 0px; top: 0px; position:absolute; opacity: 0.8; z-index: 0; background: rgb(0, 0, 0);
+    transform: scale(1.4, 1);
+-ms-transform: scale(1.4, 1);
+-webkit-transform: scale(1.4, 1);
+  }
+
 
 @-webkit-keyframes ripple {
     100% {
