@@ -44,11 +44,11 @@
 
     <!-- News Item (With Poster and content text summary) -->
 
-      <ion-list>
-      <ion-item ng-repeat="noticia in noticias" class="item item-avatar">
+      <ion-list ng-repeat="noticia in noticias" >
+     
     
-            <!-- Poster Thumb -->
-         
+            <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
+           <ion-item class="item item-thumbnail-left" >
             <img src="img/paintprogram.png" alt="" class="img">
          
             <!-- End Poster -->
@@ -70,22 +70,19 @@
               <i class="icon ion-more"></i>
 
             
-
+</div>
       </div>
 
+</div> 
 
 
+      <h4 class="item-note"><i class="ion-heart"></i> 82 | <i class="ion-chatbox"></i> 82 |  <i class="ion-android-done-all"></i> 90 vistos</h4>
+      
 
-      <h4 class="item-note"><i class="ion-heart"></i> 82 - <i class="ion-chatbox"></i> 82 -  <i class="ion-android-done-all"></i> 90 vistos</h4>
-      </br>
-      <div class="row">
-
-          <button class="button button-balanced button-borderless button-small"><i class="ion-heart"></i> Me gusta</button> 
-          <button class="button button-balanced button-outline button-small" ng-click="abrirComentarios(noticia)"><i class="ion-chatbox"></i> Comentar</button>
-          <button class="button button-stable button-outline button-small"><i class="ion-android-share-alt"></i> </button>
-          </div>
-        </div> 
-     </div>
+     
+     
+        
+     
 
 
 
@@ -96,7 +93,22 @@
       <!-- End Button -->
 
    
-     </ion-item>
+</ion-item><div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#">
+              <i class="icon ion-thumbsup balanced"></i>
+             Me gusta
+            </a>
+
+            <a class="tab-item"  ng-click="abrirComentarios(noticia)">
+              <i class="icon ion-chatbox balanced"></i>
+            Comentar
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share balanced"></i>
+              Compartir
+            </a>
+          </div>
+
     </ion-list>
     <script id="templates/modal.html" type="text/ng-template">
         <ion-modal-view>
