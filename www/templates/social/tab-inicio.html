@@ -37,6 +37,11 @@
   </ks-swiper-container>
 
 
+  <ion-refresher on-refresh="doRefresh()">
+                     
+      </ion-refresher>
+
+
 
 
     <!-- Media section (Picture, Video, Map, etc) -->
@@ -65,14 +70,13 @@
 
 
               <!-- Stat Section -->
-              <div class="other-stats" >
-                      <div class="news-more-action">
-              <i class="icon ion-more"></i>
+             
+                      <div class="news-more-action" >
+             <a ng-click="popover.show($event)"> <i class="icon ion-more" ></i></a>
 
             
 </div>
-      </div>
-
+      
 </div> 
 
 
@@ -143,3 +147,22 @@
 
   </ion-content>
 </ion-view>
+
+<script id="templates/popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-content>
+        <div class="list">
+          <a class="item" href="#">
+              Reportar
+            </a>
+          <a class="item" href="#/app/EntrarAdmin">
+              Editar
+            </a>
+          <a class="item" href="#/app/EntrarAdmin">
+              Eliminar
+            </a>
+        </div>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
