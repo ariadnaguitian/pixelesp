@@ -2,7 +2,7 @@
 <ion-view title="Login-Fullscreen" hide-nav-bar="true">
   <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
   <ion-content class="gem-splash_background">
-    <div class="gem-form text-center">
+    <div class="gem-form ">
       <!-- Logo as you please -->
       <div class="gem-splash-logo">
         <img src="img/gemionic/gem-logo.png" alt="Logo" width="100">
@@ -10,30 +10,42 @@
       </div>
       <!-- end Logo -->
 
-    <form ng-submit="doRegister()">
+    <form ng-submit="doRegister()" name="myForm" novalidate>
       <div class="list fondoinicio">
-              <label class="item item-input">
-          <input type="text" ng-model="usuario.name" placeholder="Nombre real">
-        </label>
-                <label class="item item-input">
-          <input type="text" ng-model="usuario.name" placeholder="Apellido">
-        </label>
-        <label class="item item-input">
-          <input type="text" ng-model="usuario.name" placeholder="Nombre de usuario">
+      
+          <label class="item item-input">
+          <input name ="username" type="text" ng-model="usuario.username" placeholder="Usuario"  ng-minlength="5"  required>
         </label>
          <label class="item item-input">
-          <input type="text" ng-model="usuario.email" placeholder="Email">
+          <input name ="email" type="text" ng-model="usuario.email" placeholder="Email"  ng-minlength="8"  required>
         </label>
         <label class="item item-input">
-          <input type="password" ng-model="usuario.password" placeholder="Contraseña">
-        </label>
-        <label class="item">
-          <button class="button button-block button-balanced">Registrarse</button>
+          <input name ="password" type="password" ng-model="usuario.password" placeholder="Contraseña" ng-minlength="4" required>
         </label>
       
+      
       </div>
+      <ul class="list">
+   
+
+             <li class="item" ng-show="myForm.username.$error.required">■ El nombre de usuario es requerido</li>
+            <li class="item" ng-show="myForm.username.$error.minlength">■ Tu nombre de usuario tiene que ser mas largo que 5 caracteres</li>
+            
+            <li class="item" ng-show="myForm.email.$error.required">■ Email es requerido</li>
+            <li class="item" ng-show="myForm.email.$error.minlength">■ Tu email tiene que ser válido</li>
+            
+            <li class="item" ng-show="myForm.password.$error.required">■ Contraseña es requerida</li>
+            <li class="item" ng-show="myForm.password.$error.minlength">■  Tu contraseña tiene que tener más 5 caracteres</li>
+      </ul>
+
+         <label class="item">
+          <button ng-disabled="myForm.$invalid" class="button button-block button-balanced">Registrarse</button>
+        </label>
     </form>
-  
+
+  <div class="text-center padding">
+        <a href="#/app/start" target="_self" class="button button-royal">Ya estoy registrado!</a>
+        </div>
 
       <!-- buttons. .button-rounded can be added for more roundness -->
 

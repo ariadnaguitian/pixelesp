@@ -4639,6 +4639,11 @@ ion-tabs.tabs-color-active-dark .tab-item {
  * Items
  * --------------------------------------------------
  */
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #f5f5f5 inset;
+}
+
 .item {
   border-color: #ddd;
   background-color: #fff;
@@ -5011,10 +5016,6 @@ a.item-content {
     position: absolute;
     top: 16px;
     left: 16px;
-    max-width: 40px;
-    max-height: 40px;
-    width: 100%;
-    height: 100%;
      }
 
 .item-avatar-right, .item-avatar-right .item-content {
@@ -5032,7 +5033,7 @@ a.item-content {
 
 .item-thumbnail-left, .item-thumbnail-left .item-content {
   padding-top: 8px;
-  padding-left: 106px;
+  padding-left: 65px;
   min-height: 100px; }
   .item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {
     position: absolute;
@@ -5040,8 +5041,7 @@ a.item-content {
     left: 10px;
     max-width: 80px;
     max-height: 80px;
-    width: 100%;
-    height: 100%; }
+  }
 
 .item-avatar.item-complex, .item-avatar-left.item-complex, .item-thumbnail-left.item-complex {
   padding-top: 0;
@@ -5057,8 +5057,7 @@ a.item-content {
     right: 10px;
     max-width: 80px;
     max-height: 80px;
-    width: 100%;
-    height: 100%; }
+  }
 
 .item-avatar-right.item-complex, .item-thumbnail-right.item-complex {
   padding-top: 0;
@@ -5417,8 +5416,10 @@ a.item-content {
   color: #fff; }
 
 .button .badge {
-  position: relative;
-  top: -1px; }
+  position: absolute;
+      top: -2px;
+    left: 25px;
+  font-size: 12px;}
 
 /**
  * Slide Box

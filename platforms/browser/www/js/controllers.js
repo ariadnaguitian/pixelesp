@@ -1,14 +1,16 @@
 angular.module('starter.controllers', [])
 
- 
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
+
+
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $http,$location) {
 
  
 
   // Form data for the login modal
   $scope.loginData = {};
+
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/social/login.html', {
@@ -31,12 +33,16 @@ angular.module('starter.controllers', [])
 
 
 
+
+
+
+
 })
 
 
 
 
-.controller('UsuariosCtrl', function($scope, $http, $location) {
+.controller('UsuariosCtrl', function($scope, $rootScope, $http, $location) {
 
 
   $scope.usuarios = [];
@@ -45,12 +51,19 @@ angular.module('starter.controllers', [])
     $http.get('http://pixelesp-api.herokuapp.com/usuarios').then(function(resp) {
       $scope.usuarios = resp.data.data;
 
+
+
     }, function(err) {
       console.error('ERR', err);
       // err.status will contain the status code
     });
 
+
+
   });
+
+
+
 
 })
 
@@ -74,11 +87,11 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG, $ionicSideMenuDelegate) {
   
     $rootScope.userToken = ''; 
         $scope.user={};
-        $scope.user.email='';
+        $scope.user.username='';
         $scope.user.password =''; 
   
    $scope.doLogin = function() {
@@ -86,6 +99,22 @@ angular.module('starter.controllers', [])
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
+         console.log('asdsad: '+$rootScope.userToken);
+
+                    $scope.user = $rootScope.user;
+           $scope.user = {};
+          $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+            $rootScope.user = resp.data.data;
+            console.log('token: '+$rootScope.userToken);
+
+            console.log(resp.data.data);
+
+            console.log('Succes', resp.data.data);
+          }, function(err) {
+            console.error('ERR', err);
+            $location.path('/app/inicio');
+            // err.status will contain the status code
+          });
 
              $location.path('/app/inicio');
           
@@ -94,7 +123,7 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
       var alertPopup = $ionicPopup.alert({
              title: 'Error en el ingreso',
-             template: 'Email o contraseña invalido'
+             template: 'Usuario o contraseña invalido'
            });
            alertPopup.then(function(resp) {
              $location.path('/app/start');
@@ -102,7 +131,9 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     });
     };
-  
+  $ionicSideMenuDelegate.canDragContent(false)
+
+
 })
 
 .controller('TabController', function(){
@@ -119,16 +150,17 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('EntrarAdminCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('EntrarAdminCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG ) {
   
     $rootScope.userToken = ''; 
         $scope.user={};
-        $scope.user.email='';
+        $scope.user.username='';
         $scope.user.password ='';
+      
         
   
    $scope.doLogin = function() {
-      $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
+      $http.post(CONFIG.APIURL+'loginadmin',$scope.user).then(function(resp) {
         console.log(resp.data);
 
          $rootScope.userToken = resp.data.token;
@@ -141,7 +173,7 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
       var alertPopup = $ionicPopup.alert({
              title: 'Error en el ingreso',
-             template: 'Email o contraseña invalido'
+             template: 'Acceso denegado'
            });
            alertPopup.then(function(resp) {
              $location.path('/app/EntrarAdmin');
@@ -228,11 +260,12 @@ angular.module('starter.controllers', [])
 
 .controller('UsuarioNuevoCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
             
-        $scope.usuario={};
-        $scope.usuario.password='';
-        $scope.usuario.name='';
-        $scope.usuario.email='';
-        $scope.usuario.id =''; 
+  $scope.usuario={};
+  $scope.usuario.password='';
+
+  $scope.usuario.username='';
+  $scope.usuario.email='';
+  $scope.usuario.id =''; 
   
    $scope.doRegister = function() {
       $http.post('http://pixelesp-api.herokuapp.com/usuarios',$scope.usuario ).then(function(resp) {
@@ -247,19 +280,29 @@ angular.module('starter.controllers', [])
           
     }, function(err) {
       console.error('ERR', err);
-      // err.status will contain the status code
-    });
+        var alertPopup = $ionicPopup.alert({
+             title: 'Error en el ingreso',
+             template: 'Volver'
+           });
+           alertPopup.then(function(resp) {
+             $location.path('/app/registrarse');
+           });
+     
+    });  
+
+     
+
     };
   
 })
 
-.controller('NoticiaslistsCtrl', function($rootScope, $scope, $http, $location) {
+.controller('NoticiaslistsCtrl', function($rootScope, $scope, $http, $location, CONFIG) {
     
 
 
   $scope.noticias = [];
    $scope.$on('$ionicView.beforeEnter', function() {
-    $http.get('http://pixelesp-api.herokuapp.com/noticias').then(function(resp) {
+    $http.get(CONFIG.APIURL+'noticias').then(function(resp){  
       $scope.noticias = resp.data.data;
       console.log('Succes', resp.data.data);
     }, function(err) {
@@ -315,13 +358,13 @@ angular.module('starter.controllers', [])
  })
 
 
-.controller('NoticiasCtrl', function($scope, $http, $location) {
+.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope) {
 
 
   $scope.noticias = [];
-   $scope.$on('$ionicView.beforeEnter', function() {
-    
-    $http.get('http://pixelesp-api.herokuapp.com/noticias').then(function(resp) {
+  $scope.$on('$ionicView.beforeEnter', function() {
+  
+    $http.get(CONFIG.APIURL+'noticias').then(function(resp) {
       $scope.noticias = resp.data.data;
 
     }, function(err) {
@@ -334,7 +377,7 @@ angular.module('starter.controllers', [])
   $scope.imagenes = [];
   $scope.$on('$ionicView.beforeEnter', function() {
     
-    $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
+    $http.get(CONFIG.APIURL+'imagenes').then(function(resp) {
       $scope.imagenes = resp.data.data;
 
     }, function(err) {
@@ -344,9 +387,52 @@ angular.module('starter.controllers', [])
 
   });
 
+  $scope.abrirComentarios = function  (noticia) {
+    var viewNoticia = noticia;
+    $scope.viewNoticia = viewNoticia;
+    $scope.newCommentario = {text:''};
+    $scope.modal.show();
+  }
+  $scope.guardarComentario = function  (newCommentarioForm) {
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+        console.log(newCommentarioForm);
+        console.log(resp);
+        var newCommentario = {
+          idusuario : resp.data.data.id,
+          id_noticia : $scope.viewNoticia.id,
+          text : newCommentarioForm.text,
+        };
+        $http.post(CONFIG.APIURL+'newscomments',newCommentario ).then(function(resp) {
+          console.log(resp.data);
+
+           $state.go($state.current, {}, {reload: true});
+           $scope.modal.hide();
+           $scope.viewNoticia = {};
+           $scope.newCommentario = {text:''};
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
+    }, function(err) {
+      console.error('ERR', err);
+     
+    }); 
+    // $scope.viewNoticia = viewNoticia;
+    // $scope.modal.show();
+  }
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
 })
 
-.controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
             
         $scope.noticia={};
         $scope.noticia.Titulo='';
@@ -354,21 +440,36 @@ angular.module('starter.controllers', [])
         $scope.noticia.id =''; 
   
    $scope.doRegister = function() {
-      $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia ).then(function(resp) {
-        console.log(resp.data);
-         var alertPopup = $ionicPopup.alert({
-             title: 'Noticia creada con exito',
-             template: 'OK'
-           });
-           alertPopup.then(function(res) {
-             $location.path('/app/inicio');
-           });
-          
+    
+    $scope.noticia.name =''; 
+
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+
+
+        $scope.noticia.idusuario = resp.data.data.id;
+
+        $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia).then(function(resp) {
+              console.log(resp.data);
+              var alertPopup = $ionicPopup.alert({
+                 title: 'Noticia creada con exito',
+                 template: 'OK'
+               });
+               alertPopup.then(function(res) {
+                 $location.path('/app/inicio');
+               });
+              
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
     }, function(err) {
       console.error('ERR', err);
-      // err.status will contain the status code
-    });
-    };
+     
+    }); 
+  };
   
 })
 
@@ -399,11 +500,11 @@ angular.module('starter.controllers', [])
 })
 .controller('imagenlistsCtrl', function($rootScope, $scope, $http, $location) {
     
-  $scope.imagen = [];
+  $scope.imagenes = [];
   
   $scope.$on('$ionicView.beforeEnter', function() {
       $http.get('http://pixelesp-api.herokuapp.com/imagenes').then(function(resp) {
-        $scope.imagen = resp.data.data;
+        $scope.imagenes = resp.data.data;
         console.log('Succes', resp.data.data);
       }, function(err) {
         console.error('', err);
@@ -463,10 +564,10 @@ angular.module('starter.controllers', [])
     
 
 
-  $scope.trabajo = [];
+  $scope.trabajos = [];
    $scope.$on('$ionicView.beforeEnter', function() {
     $http.get('http://pixelesp-api.herokuapp.com/trabajos').then(function(resp) {
-      $scope.trabajo = resp.data.data;
+      $scope.trabajos = resp.data.data;
       console.log('Succes', resp.data.data);
     }, function(err) {
       console.error('ERR', err);
@@ -475,6 +576,8 @@ angular.module('starter.controllers', [])
   });
 
 })
+
+  
  
 
 .controller('TrabajoCtrl', function($scope, $stateParams, $http, $location) {
@@ -640,3 +743,6 @@ angular.module('starter.controllers', [])
   
   }
 );
+
+
+
