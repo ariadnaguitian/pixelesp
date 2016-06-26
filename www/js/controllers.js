@@ -459,6 +459,11 @@ angular.module('starter.controllers', [])
     $scope.demo = p;
   }
 
+
+
+
+
+
 })
 
 .controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
@@ -772,6 +777,59 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
  
+ //favoritos
+
+$scope.imagen = {};
+    $http.get('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.ImagenId).then(function(resp) {
+      console.log(resp.data);
+      $scope.imagen = resp.data.data;
+    }, function(err) {
+      console.error('ERR', err);
+      // err.status will contain the status code  
+    });
+
+$scope.EventRunning = false;
+
+     $scope.StartEvent = function (event) {
+            event.preventDefault();
+            $scope.EventRunning = true;
+            // your code
+            $scope.imgfavoritos={};
+            $scope.imgfavoritos.idimagen= $scope.imagen.id;
+        
+
+          
+               $http.post('http://pixelesp-api.herokuapp.com/imgfavoritos', $scope.imgfavoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+                 console.log(resp.data);
+
+             }, function(err) {
+               console.error('ERR', err);
+               // err.status will contain the status code
+             });
+
+    }
+
+
+    $scope.StopEvent = function (event) {
+            event.preventDefault();
+            $scope.EventRunning = false;
+            // your code
+            $scope.imgfavoritos={};
+            $scope.imgfavoritos.idimagen = $scope.imagen.id;
+
+               $http.delete('http://api-geoalquiler.herokuapp.com/delfavoritos', $scope.favoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+                 console.log(resp.data);
+
+             }, function(err) {
+               console.error('ERR', err);
+               // err.status will contain the status code+
+
+             });
+
+    }
+
+
+
   
 
 

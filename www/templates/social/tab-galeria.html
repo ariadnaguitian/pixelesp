@@ -42,7 +42,7 @@
   <div ng-show="tab.isSet(2)">
         <packery reload-on-show class="grid-item grid-item--width2"  data-packery-options='{ "columnWidth": 10 }' >
     <packery-item  data-ng-repeat="imagen in imagenes | filter:Query">
-      <a  href="#/app/galeria/{{imagen.id}}"><img src ="img/imagenes/{{imagen.Previa}}"></a>
+      <a  href="#/app/galeria/{{imagen.id}}" ><img src ="img/imagenes/{{imagen.Previa}}"></a>
     </packery-item>
 </packery>
   </div>

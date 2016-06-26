@@ -358,7 +358,7 @@ angular.module('starter.controllers', [])
  })
 
 
-.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope) {
+.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout) {
 
 
   $scope.noticias = [];
@@ -373,6 +373,20 @@ angular.module('starter.controllers', [])
     });
 
   });
+
+   $scope.doRefresh = function() {
+    
+    console.log('Refreshing!');
+    $timeout( function() {
+      //simulate async response
+      
+
+      //Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    
+    }, 1000);
+      
+  };
 
   $scope.imagenes = [];
   $scope.$on('$ionicView.beforeEnter', function() {
@@ -430,6 +444,21 @@ angular.module('starter.controllers', [])
     $scope.modal = modal;
   });
 
+
+  $ionicPopover.fromTemplateUrl('templates/popover.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $scope.demo = 'ios';
+  $scope.setPlatform = function(p) {
+    document.body.classList.remove('platform-ios');
+    document.body.classList.remove('platform-android');
+    document.body.classList.add('platform-' + p);
+    $scope.demo = p;
+  }
+
 })
 
 .controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
@@ -441,7 +470,7 @@ angular.module('starter.controllers', [])
   
    $scope.doRegister = function() {
     
-    $scope.noticia.name =''; 
+    $scope.noticia.username =''; 
 
 
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
@@ -669,7 +698,7 @@ angular.module('starter.controllers', [])
 //imagenes:
 
 
-.controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $location) {
+.controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $location, CONFIG, $ionicModal, $rootScope) {
 
   $scope.imagen = {};
 
@@ -698,6 +727,50 @@ angular.module('starter.controllers', [])
         console.log('Selected rating is : ', rating);
       };
 
+
+
+
+       $scope.abrirComentarios = function  (imagen) {
+    var viewImagen = imagen;
+    $scope.viewImagen = viewImagen;
+    $scope.newCommentario = {text:''};
+  }
+  $scope.guardarComentario = function  (newCommentarioForm) {
+
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+        console.log(newCommentarioForm);
+        console.log(resp);
+        var newCommentario = {
+          idusuario : resp.data.data.id,
+          id_imagen : $scope.viewImagen.id,
+          text : newCommentarioForm.text,
+        };
+        $http.post(CONFIG.APIURL+'imgcomments',newCommentario ).then(function(resp) {
+          console.log(resp.data);
+
+           $state.go($state.current, {}, {reload: true});
+           $scope.viewImagen = {};
+           $scope.newCommentario = {text:''};
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
+    }, function(err) {
+      console.error('ERR', err);
+     
+    }); 
+    // $scope.viewNoticia = viewNoticia;
+    // $scope.modal.show();
+  }
+
+ $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
  
   
 

@@ -9,6 +9,8 @@
 </div>
     <div class=""><img class="full-image galeriablur blur" ng-src="img/imagenes/{{imagen.Imagen}}" />
 </div>
+
+
 </div>
 						    </div>
 
@@ -28,8 +30,10 @@
       {{imagen.IdUsuario}} - 2016-06-16 03:07:40<br>
       <p>{{imagen.Descripcion}}</p>
     <p>
-      <a href="#" class="subdued"><i class="ion-heart"></i>1 Like</a>
-      <a href="#" class="subdued"><i class="ion-chatbox"></i>  5 Comments</a>
+      <a href="#" class="subdued"  ng-click="StartEvent($event)" id="btnEventStart"><i class="ion-heart"></i> Favorito</a>
+
+       
+      <a href="#" class="subdued"><i class="ion-chatbox"></i>  Comentarios</a>
        <a href="#" class="subdued"> <i class="ion-android-done-all"></i>  60 Vistos</a>
     </p>
 
