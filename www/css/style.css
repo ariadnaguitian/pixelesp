@@ -634,9 +634,10 @@ filter: blur(50px);
 -webkit-transform: scale(1.4, 1);
   }
 
+.rojo{
+  color: #0000;
 
-
-
+}
 
 @-webkit-keyframes ripple {
     100% {

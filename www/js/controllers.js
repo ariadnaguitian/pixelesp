@@ -797,6 +797,7 @@ $scope.EventRunning = false;
      $scope.StartEvent = function (event) {
             event.preventDefault();
             $scope.EventRunning = true;
+            
             // your code
             $scope.imgfavoritos={};
             $scope.imgfavoritos.idimagen= $scope.imagen.id;
