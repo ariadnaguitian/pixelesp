@@ -6523,9 +6523,7 @@ progress {
     float: right;
     padding-right: 0;
     padding-left: 0.2em; }
-  .button.button-block, .button.button-full {
-    margin-top: 10px;
-    margin-bottom: 10px; }
+  .button.button-block, .button.button-full { }
   .button.button-light {
     border-color: #ddd;
     background-color: #fff;

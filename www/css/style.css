@@ -9,6 +9,10 @@ body * {
   font-family: 'OpenSans', Fallback, sans-serif;
 }
 
+.botoneslogin {
+  font-size: 16px;
+}
+
 .floatleft {
       display: block;
     float: left;
@@ -124,7 +128,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .gem-ion-content {color: #
         .gem-label.success, .gem-success {background: #27AE60;}
         .gem-label.primary, .gem-primary {background: #428bca;}
         .button {margin-right: 7px;}
-        .item .button {font-size: 13px; padding: 3px 17px;}
+        .item .button {font-size: 15px; padding: 3px 17px;}
         .button, .button.gem-default, .button.gem-outline, .button.gem-warning, .button.gem-primary, .button.gem-danger, .button.gem-success {color: #fff; padding: 3px 17px; /*border: none;*/ border-radius: 3px;}
         .button-rounded {border-radius: 35px; padding-left: 30px; padding-right: 30px;}
         .button.gem-outline {border: 1px solid rgba(0, 0, 0, 0.3); color: #333;}
@@ -144,10 +148,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .gem-ion-content {color: #
 /*Login Screen*/
 .gem-splash_background {background:#7FAD71 url('../img/gemionic/fondo.png') repeat-x;}
 .gem-form {margin: 0% 3%;}
-.gem-form .button {margin: 15px 5px;}
+.gem-form .button {}
 .gem-form .item.item-input,  .gem-form .item.item-input .input-label, .gem-form .item {background: none;}
 .gem-bar-clear {background: none;}
-.gem-splash-logo { text-align: center; margin: 20% 0 0 0;}
+.gem-splash-logo { text-align: center; margin: 4% 0 0 0;}
 
 /*Styles for ion-content*/
 	.gem-ion-content {font-size: 14px; /*overflow-y:scroll;*/ }
@@ -629,6 +633,9 @@ filter: blur(50px);
 -ms-transform: scale(1.4, 1);
 -webkit-transform: scale(1.4, 1);
   }
+
+
+
 
 
 @-webkit-keyframes ripple {
