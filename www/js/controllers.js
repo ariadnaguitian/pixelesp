@@ -464,6 +464,7 @@ angular.module('starter.controllers', [])
 
 
 
+
 })
 
 .controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
@@ -703,7 +704,8 @@ angular.module('starter.controllers', [])
 //imagenes:
 
 
-.controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $location, CONFIG, $ionicModal, $rootScope) {
+.controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $state, $location, CONFIG, $ionicModal, $rootScope) {
+
 
   $scope.imagen = {};
 
@@ -739,6 +741,7 @@ angular.module('starter.controllers', [])
     var viewImagen = imagen;
     $scope.viewImagen = viewImagen;
     $scope.newCommentario = {text:''};
+      
   }
   $scope.guardarComentario = function  (newCommentarioForm) {
 
@@ -748,8 +751,8 @@ angular.module('starter.controllers', [])
         console.log(resp);
         var newCommentario = {
           idusuario : resp.data.data.id,
-          id_imagen : $scope.viewImagen.id,
-          text : newCommentarioForm.text,
+           id_imagen : $scope.imagen.id,
+           text : newCommentarioForm.text,
         };
         $http.post(CONFIG.APIURL+'imgcomments',newCommentario ).then(function(resp) {
           console.log(resp.data);
@@ -767,15 +770,16 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
      
     }); 
-    // $scope.viewNoticia = viewNoticia;
-    // $scope.modal.show();
-  }
 
- $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope,
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+    
+  }
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+     scope: $scope,
+   }).then(function(modal) {
+     $scope.modal = modal;
+   });
+
+
  
  //favoritos
 
@@ -870,6 +874,8 @@ $scope.EventRunning = false;
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
     };
+
+
 
   
   }
