@@ -89,11 +89,11 @@
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
             <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
-              <i  class="icon ion-thumbsup balanced"></i>
-             Me gusta
-            </a>
-
-           
+            
+            
+ <span ng-hide="EventRunning"><button class="button button-clear icon ion-heart pull-left" ng-click="StartEvent($event)" id="btnEventStart"> Favorito</button></span>
+      <span ng-show="EventRunning"><button class="button icon-left ion-heart button-clear button-assertive" ng-click="StopEvent($event)" id="btnStopEvent"></button></span>
+           </a>
 
             <a class="tab-item"  ng-click="abrirComentarios(noticia)">
               <i class="icon ion-chatbox balanced"></i>
