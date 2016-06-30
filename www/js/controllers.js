@@ -264,6 +264,7 @@ angular.module('starter.controllers', [])
   $scope.usuario.password='';
 
   $scope.usuario.username='';
+    $scope.usuario.imagen='loginart.png';
   $scope.usuario.email='';
   $scope.usuario.id =''; 
   
@@ -293,6 +294,7 @@ angular.module('starter.controllers', [])
      
 
     };
+    
   
 })
 
@@ -463,8 +465,45 @@ angular.module('starter.controllers', [])
   }
 
 
+//favoritos noticias:
+     $scope.StartEvent = function (event) {
+            event.preventDefault();
+            $scope.EventRunning = true;
+            
+            // your code
+            $scope.newsfavoritos={};
+            $scope.newsfavoritos.idnoticia= $scope.noticias.id;
+        
+
+          
+               $http.post('http://pixelesp-api.herokuapp.com/newsfavoritos', $scope.newsfavoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+                 console.log(resp.data);
+
+             }, function(err) {
+               console.error('ERR', err);
+               // err.status will contain the status code
+             });
+
+    }
 
 
+    $scope.StopEvent = function (event) {
+            event.preventDefault();
+            $scope.EventRunning = false;
+            // your code
+            $scope.newsfavoritos={};
+            $scope.newsfavoritos.idnoticia = $scope.noticias.id;
+
+               $http.delete('http://pixelesp-api.herokuapp.com/delfavoritos', $scope.favoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+                 console.log(resp.data);
+
+             }, function(err) {
+               console.error('ERR', err);
+               // err.status will contain the status code+
+
+             });
+
+    }
 
 
 
@@ -505,14 +544,8 @@ angular.module('starter.controllers', [])
         $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia).then(function(resp) {
               console.log(resp.data);
            
-   var alertPopup = $ionicPopup.alert({
-      title: 'Noticia creada con exito',
-                 template: 'OK'
-   });
-
-   alertPopup.then(function(res) {
        $location.path('/app/inicio');
-   });
+
 
               
         }, function(err) {
@@ -706,13 +739,7 @@ angular.module('starter.controllers', [])
    $scope.doRegister = function() {
       $http.post('http://pixelesp-api.herokuapp.com/trabajos',$scope.trabajo ).then(function(resp) {
         console.log(resp.data);
-         var alertPopup = $ionicPopup.alert({
-             title: 'Trabajo creado con exito',
-             template: 'OK'
-           });
-           alertPopup.then(function(res) {
              $location.path('/app/trabajo');
-           });
           
     }, function(err) {
       console.error('ERR', err);
@@ -843,7 +870,7 @@ $scope.EventRunning = false;
             $scope.imgfavoritos={};
             $scope.imgfavoritos.idimagen = $scope.imagen.id;
 
-               $http.delete('http://api-geoalquiler.herokuapp.com/delfavoritos', $scope.favoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+               $http.delete('http://pixelesp-api.herokuapp.com/delfavoritos', $scope.favoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
                  console.log(resp.data);
 
              }, function(err) {

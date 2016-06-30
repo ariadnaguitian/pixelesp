@@ -9,6 +9,11 @@ body * {
   font-family: 'OpenSans', Fallback, sans-serif;
 }
 
+.validaciones {
+    font-size: 14px;
+    color: #5c8053;
+}
+
 .botoneslogin {
   font-size: 16px;
 }
@@ -642,7 +647,13 @@ filter: blur(50px);
 .available-scroller {
   height: 120px;
 }
-
+.corazon {
+  align-items: center;
+    text-align: center;
+}
+.megusta {
+  font-size: 10px !important;
+}
 
 @-webkit-keyframes ripple {
     100% {

@@ -1,0 +1,19 @@
+diff a/www/templates/social/registrarse.html b/www/templates/social/registrarse.html	(rejected hunks)
+@@ -33,6 +33,17 @@
+    
+ 
+ 
++=======
++             
++            <li class="item" ng-show="myForm.username.$error.minlength">■ Tu nombre de usuario tiene que ser mas largo que 5 caracteres</li>
++            
++           
++            <li class="item" ng-show="myForm.email.$error.minlength">■ Tu email tiene que ser válido</li>
++            
++          
++            <li class="item" ng-show="myForm.password.$error.minlength">■  Tu contraseña tiene que tener más 5 caracteres</li>
++      </ul>
++>>>>>>> 65a22c59151bb9815f7f7bc020602713c720b9a7
+ 
+          <label class="item">
+           <button ng-disabled="myForm.$invalid" class="button button-block button-balanced">Registrarse</button>
