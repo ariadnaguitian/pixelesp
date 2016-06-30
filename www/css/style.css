@@ -112,7 +112,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .gem-ion-content {color: #
       .gem-sidebar.dark .gem-sidebar-profile-box {padding:15px 10px;}
       .gem-sidebar.dark .gem-sidebar-profile-box .title, .gem-sidebar.dark .gem-sidebar-profile-box .action-links {margin: 4px 0;}
       .gem-sidebar.dark .item-complex .item-content, .gem-sidebar.dark .item {background-color: #131313; border-color: #1c1c1c; color: #fff; text-transform: uppercase; font-size: 13px;}
-      .gem-sidebar.dark .item-ng-click, .item-complex .item-content, .item-radio .item-content {padding-left: 20px;}
+      .gem-sidebar.dark .item-ng-click, .item-complex .item-content, .item-radio .item-content {padding-left: 70px;}
 
       /*Profile Section*/
       .gem-sidebar.dark .gem-profile-image { border-radius:50px; width:100%; border: 4px solid rgba(255, 255, 255, 0.2);}
@@ -633,11 +633,16 @@ filter: blur(50px);
 -ms-transform: scale(1.4, 1);
 -webkit-transform: scale(1.4, 1);
   }
-
-.rojo{
-  color: #0000;
-
+  .imagen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.available-scroller {
+  height: 120px;
+}
+
 
 @-webkit-keyframes ripple {
     100% {
@@ -645,4 +650,6 @@ filter: blur(50px);
         transform: scale(2.5);
     }
 }
+
+
 

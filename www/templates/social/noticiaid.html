@@ -1,0 +1,56 @@
+<ion-view view-title="{{noticia.Titulo}}">
+  <ion-content>
+
+    </div>
+			
+  <div class="item item-body">
+ <h1>
+      <img src="img/paintprogram.png" alt="" class="img">{{noticia.Titulo}}
+    </h1>
+
+
+    <p>
+      {{noticia.Descripcion}}
+    </p>
+                  <p>
+
+  
+      <a href="#" class="subdued"><i class="ion-heart"></i>1 Like</a>
+      <a href="#" class="subdued" ><i class="ion-chatbox" ng-click="abrirComentarios(noticia)"></i>  5 Comments</a>
+       <a href="#" class="subdued"> <i class="ion-android-done-all"></i>  60 Vistos</a>
+    </p>
+
+<ion-thread comments="comments" post="post"></ion-thread>
+    <label class="item item-input">
+    <textarea placeholder="Escribe un comentario"></textarea>
+  </label>
+  <button class="button button-block button-balanced">
+ Comentar
+</button>
+ <a class="item item-avatar" href="#">
+      <img src="img/gemionic/profile-image.jpg">
+      <h2>Zeo</h2>
+      <p>Muy bueno! me gusta el estilo!</p>
+    </a>
+    <a class="item item-avatar" href="#">
+      <img src="img/gemionic/profile-image-3.jpg">
+      <h2>Metaru</h2>
+      <p>Sigue así!</p>
+    </a>
+    <a class="item item-avatar" href="#">
+      <img src="img/gemionic/profile-image-4.jpg">
+      <h2>Matriax</h2>
+      <p>Este pixel art me encanta!</p>
+    </a>
+  </div>
+  <div class="list list-inset">
+
+
+</div>
+
+	</div>
+   
+
+</ion-content></ion-view>
+
+  

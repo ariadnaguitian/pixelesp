@@ -298,7 +298,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  })
 
+.state('app.noticia', {
+ url: '/inicio/:NoticiaId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/noticiaid.html',
+    controller: 'NoticiasinicioCtrl'
+       
 
+ }
+ }
+ })
  .state('app.usuario', {
  url: '/comunidad/:UsuarioId',
  views: {

@@ -19,28 +19,18 @@
 
   <ion-content class="has-header gem-ion-content " >
 
+   <ion-scroll direction="x" class="available-scroller">
+      <div class="imagen" collection-repeat="imagen in imagenes"
+         item-height="120" item-width="imagen.width + 115">
+            <img ng-src="img/imagenes/{{imagen.Previa}}">
+      </div>
+    </ion-scroll>
 
-
-
-   <ks-swiper-container initial-slide="1" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="40" pagination-clickable="true" on-ready="onReadySwiper(swiper)">
-    
-      <ks-swiper-slide class="swiper-slide swiper-slide-active" data-ng-repeat="imagen in imagenes" style="width:110px; margin-right:auto;">
-           <div  class="contenedor5">
-             <div class="cont-image5"> 
-              <img ng-src="img/imagenes/{{imagen.Previa}}">
-             </div> 
-           </div>
-      </ks-swiper-slide>  
-    
-     <ks-swiper-pagination> 
-     </ks-swiper-pagination>   
-  </ks-swiper-container>
 
 
   <ion-refresher on-refresh="doRefresh()">
                      
       </ion-refresher>
-
 
 
 
@@ -50,17 +40,17 @@
     <!-- News Item (With Poster and content text summary) -->
 
       <ion-list ng-repeat="noticia in noticias" >
-     
+   
     
             <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
-           <ion-item class="item item-thumbnail-left" >
-            <img src="img/paintprogram.png" alt="" class="img">
-         
+           <ion-item href="#/app/inicio/{{noticia.id}}"  class="item item-thumbnail-left" >
+
+            <img src="img/paintprogram.png" alt="" class="imagencita" >       
             <!-- End Poster -->
 
             <!-- Content -->
 
-            <div class="news-content">
+            <div class="news-content" >
               <h2>{{noticia.Titulo}}</h2>
 
               <h4>
@@ -98,10 +88,11 @@
 
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0">
-              <i class="icon ion-thumbsup balanced"></i>
+            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
+              <i  class="icon ion-thumbsup balanced"></i>
              Me gusta
             </a>
+
            
 
             <a class="tab-item"  ng-click="abrirComentarios(noticia)">

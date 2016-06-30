@@ -359,7 +359,8 @@ angular.module('starter.controllers', [])
 
 
 .controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout) {
-
+  
+ 
 
   $scope.noticias = [];
   $scope.$on('$ionicView.beforeEnter', function() {
@@ -400,6 +401,8 @@ angular.module('starter.controllers', [])
     });
 
   });
+
+
 
   $scope.abrirComentarios = function  (noticia) {
     var viewNoticia = noticia;
@@ -467,6 +470,21 @@ angular.module('starter.controllers', [])
 
 })
 
+.controller('NoticiasinicioCtrl', function($scope, $stateParams, $http, $location) {
+
+   $scope.noticia = {};
+
+  $http.get('http://pixelesp-api.herokuapp.com/noticias/'+ $stateParams.NoticiaId).then(function(resp) {
+    $scope.noticia = resp.data.data;
+
+     
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  });
+
+
+ })
 .controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
             
         $scope.noticia={};
@@ -486,13 +504,16 @@ angular.module('starter.controllers', [])
 
         $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia).then(function(resp) {
               console.log(resp.data);
-              var alertPopup = $ionicPopup.alert({
-                 title: 'Noticia creada con exito',
+           
+   var alertPopup = $ionicPopup.alert({
+      title: 'Noticia creada con exito',
                  template: 'OK'
-               });
-               alertPopup.then(function(res) {
-                 $location.path('/app/inicio');
-               });
+   });
+
+   alertPopup.then(function(res) {
+       $location.path('/app/inicio');
+   });
+
               
         }, function(err) {
           console.error('ERR', err);
