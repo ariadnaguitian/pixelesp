@@ -15,7 +15,10 @@
 						    </div>
 
     <div class="list card">
+
     <div class="item item-body">
+ <span ng-hide="EventRunning"><button class="button button-clear icon ion-heart pull-left" ng-click="StartEvent($event)" id="btnEventStart"> Favorito</button></span>
+      <span ng-show="EventRunning"><button class="button icon-left ion-heart button-clear button-assertive" ng-click="StopEvent($event)" id="btnStopEvent"></button></span>
 <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
 
 
@@ -30,88 +33,48 @@
       {{imagen.IdUsuario}} - 2016-06-16 03:07:40<br>
       <p>{{imagen.Descripcion}}</p>
     <p>
-      <a href="#" class="subdued"  ng-click="StartEvent($event)" id="btnEventStart"><i class="ion-heart"></i> Favorito</a>
-
+  <a href="#" class="subdued"><i class="ion-heart"></i>  10 Favoritos</a>
        
-      <a href="#" class="subdued"><i class="ion-chatbox"></i>  Comentarios</a>
+      <a href="#" class="subdued"><i class="ion-chatbox"></i> {{imagen.comentarios.lenght}} Comentarios</a>
        <a href="#" class="subdued"> <i class="ion-android-done-all"></i>  60 Vistos</a>
     </p>
 
 <ion-thread comments="comments" post="post"></ion-thread>
   <div class="list list-inset">
 
-  <label class="item item-input">
-      <textarea placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
-
-  </label>
-  <button class="button button-block button-balanced" ng-click="guardarComentario(newCommentario)">
- Comentar
-</button>
-</div>
-
-  <ion-item ng-repeat="comentario in viewImagen.comentarios track by comentario.id" class="item item-avatar">
-                <img src="img/paintprogram.png" alt="" class="img">
-                <h2>{{comentario.name}}</h2>
-                <p>{{comentario.text}}</p>
-                <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
-             </ion-item>
-
-
-<script id="templates/modal.html" type="text/ng-template">
-        <ion-modal-view>
-          <ion-header-bar class="bar bar-dark bar-header">
-            <h1 class="title">Comentarios - {{viewImagen.Titulo}}</h1>
-            <button class="button button-clear button-primary" ng-click="modal.hide()">Cerrar</button>
-          </ion-header-bar>
-
-          <ion-content class="padding">
-              <ion-item class="item item-thumbnail-left" >
-            <img src="img/paintprogram.png" alt="" class="img">
-          <div class="news-content">
-              <h2>{{viewImagen.Titulo}}</h2>
-
-              <h4>
-                por <a href="#">{{viewImagen.name}}</a> - <i class="icon ion-clock"></i>{{viewImagen.created_at}}
-              </h4>
-             <p>{{viewImagen.Descripcion}}</p>
-
-
-              <!-- Stat Section -->
-              <div class="other-stats" >
-                      <div class="news-more-action">
-
-            
-</div>
-      </div>
-
-</div> 
-</ion-item>
-            <div class="list">
-              <label class="item item-input">
-                <textarea placeholder="Escriba su comentario" ></textarea>
-              </label>
-              <button class="button button-full button-dark">Comentar</button>
-            </div>
-            <ion-list>
-              <ion-item ng-repeat="comentario in viewImagen.comentarios track by comentario.id" class="item item-avatar">
-                <img src="img/paintprogram.png" alt="" class="img">
-                <h2>{{comentario.name}}</h2>
-                <p>{{comentario.text}}</p>
-                <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
-             </ion-item>
-            </ion-list>
-          </ion-content>
-        </ion-modal-view>
-    </script>
-
-
-        
-  </div>
-
-
-	</div>
-   
-
-</ion-content></ion-view>
-
   
+
+
+    <label class="item item-input">
+           <textarea placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
+     </label>
+     <button class="button button-block button-balanced" ng-click="guardarComentario(newCommentario)">
+      Comentar
+     </button>
+    </div>
+  
+   <ion-item ng-repeat="comentario in imagen.comentarios track by comentario.id" class="item item-avatar">
+       <img src="img/paintprogram.png" alt="" class="img">
+       <h2>{{comentario.idusuario}}</h2>
+       <p>{{comentario.text}}</p>
+       <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
+   </ion-item>
+ <!-- 
+    <div class="list">
+     <ion-list>
+       <ion-item ng-repeat="comentario in viewImagen.comentarios track by comentario.id" class="item item-avatar">
+         <img src="img/paintprogram.png" alt="" class="img">
+         <h2>{{comentario.name}}</h2>
+         <p>{{comentario.text}}</p>
+         <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
+       </ion-item>
+     </ion-list>
+   </div>
+  -->
+  
+    </div>
+     
+ 
+ </ion-content></ion-view>
+ 
+   

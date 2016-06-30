@@ -24,11 +24,13 @@
     <div class="item item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-search placeholder-icon"></i>
+
         <input type="text" placeholder="Search" ng-model="Query" >
-      </label>
+      </label> 
+
     </div>    
     <!-- End Search box-->
-
+ 
   
 
 
@@ -36,10 +38,11 @@
 
     <ul class="list gem-friend-list">
           <!-- Single Friend Item -->
-          <li class="item">
+  
+         <li class="item">
 
 
-    <ion-list>
+    <ion-list>  <h2>  Todos los usuarios {{(usuarios|filter:Query).length}}</h2>  
       <ion-item ng-repeat="usuario in usuarios | filter:Query" href="#/app/comunidad/{{usuario.id}}">
       
           <!-- Single Friend Item -->
@@ -48,6 +51,7 @@
             <img src="img/avatar/{{usuario.imagen}}" alt="" class="gem-friend-list-profile-pic"> 
 
 <div class="gem-friend-list-text">
+
               <b>{{usuario.name}} </b>
               <span class="signature">{{usuario.email}}  </span>
                    <span class="signature"> {{usuario.city}} - {{usuario.country}} </span>
@@ -55,6 +59,7 @@
 
       </ion-item>
     </ion-list>
+
 
     </li>
     </ul>

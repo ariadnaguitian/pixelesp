@@ -360,7 +360,8 @@ angular.module('starter.controllers', [])
 
 
 .controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout) {
-
+  
+ 
 
   $scope.noticias = [];
   $scope.$on('$ionicView.beforeEnter', function() {
@@ -401,6 +402,8 @@ angular.module('starter.controllers', [])
     });
 
   });
+
+
 
   $scope.abrirComentarios = function  (noticia) {
     var viewNoticia = noticia;
@@ -465,8 +468,24 @@ angular.module('starter.controllers', [])
 
 
 
+
 })
 
+.controller('NoticiasinicioCtrl', function($scope, $stateParams, $http, $location) {
+
+   $scope.noticia = {};
+
+  $http.get('http://pixelesp-api.herokuapp.com/noticias/'+ $stateParams.NoticiaId).then(function(resp) {
+    $scope.noticia = resp.data.data;
+
+     
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  });
+
+
+ })
 .controller('NoticiaNuevaCtrl', function($scope, $stateParams, $http, $ionicPopup, $location,$rootScope ) {
             
         $scope.noticia={};
@@ -486,13 +505,16 @@ angular.module('starter.controllers', [])
 
         $http.post('http://pixelesp-api.herokuapp.com/noticias',$scope.noticia).then(function(resp) {
               console.log(resp.data);
-              var alertPopup = $ionicPopup.alert({
-                 title: 'Noticia creada con exito',
+           
+   var alertPopup = $ionicPopup.alert({
+      title: 'Noticia creada con exito',
                  template: 'OK'
-               });
-               alertPopup.then(function(res) {
-                 $location.path('/app/inicio');
-               });
+   });
+
+   alertPopup.then(function(res) {
+       $location.path('/app/inicio');
+   });
+
               
         }, function(err) {
           console.error('ERR', err);
@@ -704,7 +726,8 @@ angular.module('starter.controllers', [])
 //imagenes:
 
 
-.controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $location, CONFIG, $ionicModal, $rootScope) {
+.controller('ImagengaleriaCtrl', function($scope, $stateParams, $http, $state, $location, CONFIG, $ionicModal, $rootScope) {
+
 
   $scope.imagen = {};
 
@@ -740,6 +763,7 @@ angular.module('starter.controllers', [])
     var viewImagen = imagen;
     $scope.viewImagen = viewImagen;
     $scope.newCommentario = {text:''};
+      
   }
   $scope.guardarComentario = function  (newCommentarioForm) {
 
@@ -749,8 +773,8 @@ angular.module('starter.controllers', [])
         console.log(resp);
         var newCommentario = {
           idusuario : resp.data.data.id,
-          id_imagen : $scope.viewImagen.id,
-          text : newCommentarioForm.text,
+           id_imagen : $scope.imagen.id,
+           text : newCommentarioForm.text,
         };
         $http.post(CONFIG.APIURL+'imgcomments',newCommentario ).then(function(resp) {
           console.log(resp.data);
@@ -768,15 +792,16 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
      
     }); 
-    // $scope.viewNoticia = viewNoticia;
-    // $scope.modal.show();
-  }
 
- $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope,
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+    
+  }
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+     scope: $scope,
+   }).then(function(modal) {
+     $scope.modal = modal;
+   });
+
+
  
  //favoritos
 
@@ -794,6 +819,7 @@ $scope.EventRunning = false;
      $scope.StartEvent = function (event) {
             event.preventDefault();
             $scope.EventRunning = true;
+            
             // your code
             $scope.imgfavoritos={};
             $scope.imgfavoritos.idimagen= $scope.imagen.id;
@@ -871,6 +897,8 @@ $scope.EventRunning = false;
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
     };
+
+
 
   
   }
