@@ -9,6 +9,11 @@ body * {
   font-family: 'OpenSans', Fallback, sans-serif;
 }
 
+.validaciones {
+    font-size: 14px;
+    color: #5c8053;
+}
+
 .botoneslogin {
   font-size: 16px;
 }
