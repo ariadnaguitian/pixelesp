@@ -89,8 +89,11 @@
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
             <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
-              <i  class="icon ion-thumbsup balanced"></i>
-             Me gusta
+<div class="megusta">
+ <span ng-hide="EventRunning"><button class="button button-clear icon ion-thumbsup megusta" ng-click="StartEvent($event)" id="btnEventStart"> Me gusta</button></span>
+ <span ng-show="EventRunning"><button class="button button-clear icon ion-thumbsup button-balanced megusta" ng-click="StopEvent($event)" id="btnStopEvent"> Me gusta</button></span>
+        
+             </div>
             </a>
 
            

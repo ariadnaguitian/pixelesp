@@ -17,8 +17,10 @@
     <div class="list card">
 
     <div class="item item-body">
- <span ng-hide="EventRunning"><button class="button button-clear icon ion-heart pull-left" ng-click="StartEvent($event)" id="btnEventStart"> Favorito</button></span>
-      <span ng-show="EventRunning"><button class="button icon-left ion-heart button-clear button-assertive" ng-click="StopEvent($event)" id="btnStopEvent"></button></span>
+    <div class="corazon">
+ <span ng-hide="EventRunning"><button class="button button-clear icon ion-heart" ng-click="StartEvent($event)" id="btnEventStart"></button></span>
+ <span ng-show="EventRunning"><button class="button button-clear icon ion-heart button-assertive" ng-click="StopEvent($event)" id="btnStopEvent"></button></span>
+      </div>
 <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
 
 
@@ -42,11 +44,10 @@
 <ion-thread comments="comments" post="post"></ion-thread>
   <div class="list list-inset">
 
-  
 
 
-    <label class="item item-input">
-           <textarea placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
+    <label class="item item-input fondoinput">
+           <input type="text" placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
      </label>
      <button class="button button-block button-balanced" ng-click="guardarComentario(newCommentario)">
       Comentar

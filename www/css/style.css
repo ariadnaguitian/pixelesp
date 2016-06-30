@@ -647,7 +647,13 @@ filter: blur(50px);
 .available-scroller {
   height: 120px;
 }
-
+.corazon {
+  align-items: center;
+    text-align: center;
+}
+.megusta {
+  font-size: 10px !important;
+}
 
 @-webkit-keyframes ripple {
     100% {
