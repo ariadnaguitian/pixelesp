@@ -277,7 +277,7 @@ angular.module('starter.controllers', [])
              template: 'Ingresa ahora'
            });
            alertPopup.then(function(res) {
-             $location.path('/app/inicio');
+             $location.path('/app/start');
            });
           
     }, function(err) {
