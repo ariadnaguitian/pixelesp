@@ -264,7 +264,7 @@ angular.module('starter.controllers', [])
   $scope.usuario.password='';
 
   $scope.usuario.username='';
-    $scope.usuario.imagen='loginart.png';
+    $scope.usuario.imagen='';
   $scope.usuario.email='';
   $scope.usuario.id =''; 
   
