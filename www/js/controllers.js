@@ -50,7 +50,7 @@ angular.module('starter.controllers', [])
     
     $http.get('http://pixelesp-api.herokuapp.com/usuarios').then(function(resp) {
       $scope.usuarios = resp.data.data;
-
+ console.log('Succes', resp.data.data);
 
 
     }, function(err) {
@@ -61,7 +61,6 @@ angular.module('starter.controllers', [])
 
 
   });
-
 
 
 
@@ -217,6 +216,7 @@ angular.module('starter.controllers', [])
 })
  
 
+
 .controller('UsuarioCtrl', function($scope, $stateParams, $http, $location) {
 
   $scope.usuario = {};
@@ -264,9 +264,14 @@ angular.module('starter.controllers', [])
   $scope.usuario.password='';
 
   $scope.usuario.username='';
+<<<<<<< HEAD
     $scope.usuario.imagen='';
+=======
+ 
+>>>>>>> f451a6bc438c59fcc05441074e1ef127cf84a007
   $scope.usuario.email='';
   $scope.usuario.id =''; 
+
   
    $scope.doRegister = function() {
       $http.post('http://pixelesp-api.herokuapp.com/usuarios',$scope.usuario ).then(function(resp) {
@@ -276,7 +281,7 @@ angular.module('starter.controllers', [])
              template: 'Ingresa ahora'
            });
            alertPopup.then(function(res) {
-             $location.path('/app/inicio');
+             $location.path('/app/start');
            });
           
     }, function(err) {

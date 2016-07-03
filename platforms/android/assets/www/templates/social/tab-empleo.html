@@ -7,7 +7,7 @@
   RIGHT SIDE BUTTON
   ====================== -->
   <ion-nav-buttons side="right">
-    <a href="#/app/creartrabajo" target="_self" button class="button button-icon icon ion-compose"> Crear trabajo</button></a>
+    <a href="#/app/creartrabajo" target="_self" button class="button button-icon icon ion-compose"> Crear empleo</button></a>
   </ion-nav-buttons>
 
   <!-- ======================
@@ -63,10 +63,24 @@
         </div>
         
 
-        </div> 
+        </div> </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
+              <i class="icon ion-tshirt balanced"></i>
+              Aplicar
+            </a>
+            <a class="tab-item"  ng-click="abrirComentarios(noticia)">
+              <i class="icon ion-chatbox balanced"></i>
+            Comentar
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share balanced"></i>
+              Compartir
+            </a>
+          </div>
+
+    </ion-list>
      </div>
-     <div class="floatright">
-     <button class="button button-balanced button-borderless button-small"><i class="ion-tshirt"></i> Aplicar</button> 
+
       <!-- End Content --></div>
 
 

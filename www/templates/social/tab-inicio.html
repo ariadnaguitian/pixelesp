@@ -22,7 +22,7 @@
    <ion-scroll direction="x" class="available-scroller">
       <div class="imagen" collection-repeat="imagen in imagenes"
          item-height="120" item-width="imagen.width + 115">
-            <img ng-src="img/imagenes/{{imagen.Previa}}">
+            <a href="#/app/galeria/{{imagen.id}}"><img ng-src="img/imagenes/{{imagen.Previa}}"></a>
       </div>
     </ion-scroll>
 
@@ -43,7 +43,7 @@
    
     
             <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
-           <ion-item href="#/app/inicio/{{noticia.id}}"  class="item item-thumbnail-left" >
+           <ion-item ng-click="abrirComentarios(noticia)"  class="item item-thumbnail-left" >
 
             <img src="img/paintprogram.png" alt="" class="imagencita" >       
             <!-- End Poster -->
@@ -70,7 +70,7 @@
 </div> 
 
 
-      <h4 class="item-note"><i class="ion-heart"></i> {{count}} | <i class="ion-chatbox"></i> 82 |  <i class="ion-android-done-all"></i> 90 vistos</h4>
+      <h4 class="item-note"><i class="ion-heart"></i> {{count}} | <i class="ion-chatbox"></i> 2 |  <i class="ion-android-done-all"></i> 10 vistos</h4>
       
 
      
@@ -89,14 +89,12 @@
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
             <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
-<div class="megusta">
- <span ng-hide="EventRunning"><button class="button button-clear icon ion-thumbsup megusta" ng-click="StartEvent($event)" id="btnEventStart"> Me gusta</button></span>
- <span ng-show="EventRunning"><button class="button button-clear icon ion-thumbsup button-balanced megusta" ng-click="StopEvent($event)" id="btnStopEvent"> Me gusta</button></span>
-        
-             </div>
+              <i class="icon ion-thumbsup balanced"></i>
+              Me gusta
             </a>
 
            
+
 
             <a class="tab-item"  ng-click="abrirComentarios(noticia)">
               <i class="icon ion-chatbox balanced"></i>
@@ -140,7 +138,7 @@
 </ion-item>
             <div class="list">
               <label class="item item-input">
-                <textarea placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
+                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
               </label>
               <button class="button button-full button-dark" ng-click="guardarComentario(newCommentario)">Comentar</button>
             </div>
