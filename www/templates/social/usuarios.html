@@ -1,9 +1,24 @@
 <ion-view view-title="Usuarios">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="usuario in usuarios" href="#/app/usuarios/{{usuario.id}}">
-        {{usuario.username}}
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+
+        <input type="text" placeholder="Search" ng-model="Query" >
+      </label> 
+
+    </div>  
+  
+    <ion-list >
+  <div class="padding"><h4>  <b>Todos los usuarios {{(usuarios|filter:Query).length}}</b></h4></div>
+ 
+      <ion-item ng-repeat="usuario in usuarios  | filter:Query" href="#/app/usuarios/{{usuario.id}}"  class="item item-thumbnail-left">
+       <img src="img/avatar/{{usuario.imagen}}" alt="">  
+       <div class="gem-friend-list-text padding"><h2>{{usuario.username}} </h2>
+        </div>
       </ion-item>
     </ion-list>
+
+  
   </ion-content>
 </ion-view>
