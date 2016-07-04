@@ -264,11 +264,7 @@ angular.module('starter.controllers', [])
   $scope.usuario.password='';
 
   $scope.usuario.username='';
-<<<<<<< HEAD
     $scope.usuario.imagen='';
-=======
- 
->>>>>>> f451a6bc438c59fcc05441074e1ef127cf84a007
   $scope.usuario.email='';
   $scope.usuario.id =''; 
 
