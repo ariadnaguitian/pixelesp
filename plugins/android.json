@@ -72,11 +72,10 @@
         },
         "org.apache.cordova.file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.aplicacion209748"
-        }
-    },
-    "dependent_plugins": {
+        },
         "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.ionicframework.aplicacion209748"
         }
-    }
+    },
+    "dependent_plugins": {}
 }

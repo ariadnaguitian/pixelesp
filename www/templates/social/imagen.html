@@ -54,9 +54,9 @@
      </button>
     </div>
   
-   <ion-item ng-repeat="comentario in imagen.comentarios track by comentario.id" class="item item-avatar">
-       <img src="img/paintprogram.png" alt="" class="img">
-       <h2>{{comentario.idusuario}}</h2>
+   <ion-item ng-repeat="comentario in imagen.comentarios track by comentario.id" class="item item-thumbnail-left">
+       <img src="img/avatar/{{comentario.imagen}}" alt="" >
+       <h2>{{comentario.username}}</h2>
        <p>{{comentario.text}}</p>
        <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
    </ion-item>

@@ -2,15 +2,31 @@
   <ion-content>
   	<div class="card">
 		<div class="item item-text-wrap">
-						  <div class="gem-profile-media">
+					
+    <div class="gem-profile-media">
       <div class="gem-profile-details profile2">
-        <div class="text-center">
-        <h1>{{usuario.name}}</h1>
-          <i class="icon ion-plus-circled add-user-pic-icon"></i>
-          <p class="uppercase">Agregar imagen</p>
-        </div>
-      </div>
+
+         <div class="text-center">
+       <img src="img/avatar/{{usuario.imagen}}" alt="" >
+    
+        <h1 class="gem-white">{{usuario.name}}</h1>
+      
+
+
+        <h2 class="gem-white">{{usuario.username}} </h2>
+               <h3 class="gem-white">{{usuario.email}}</h3>
+        <h3 class="gem-white">{{usuario.city}} , {{usuario.country}}</h3>
+        {{usuario.biografia}}
+         </div>
+     
+         
+  </div>
+     
+      <!-- Background Image -->
+      <img src="img/gemionic/post-img.jpg" alt="" class="fluid-image profile-background-image">
+
     </div>
+
 			<div class="list">
 			  <label class="item item-input  item-stacked-label">
 			   <span class="input-label">Primer Nombre</span>
@@ -27,6 +43,10 @@
 			<label class="item item-input  item-stacked-label">
 			 <span class="input-label">Pais</span>
 			    <input type="text" placeholder="Pais" ng-model="usuario.country">
+			  </label>
+			  <label class="item item-input  item-stacked-label">
+			 <span class="input-label">Biografía</span>
+			    <input type="text" placeholder="Biografía" ng-model="usuario.biografia">
 			  </label>
 			</div>
 			<button ng-click="doSave()" class="button button-energized">

@@ -59,7 +59,6 @@ angular.module('starter.controllers', [])
     });
 
 
-
   });
 
 
@@ -420,6 +419,7 @@ angular.module('starter.controllers', [])
         console.log(resp);
         var newCommentario = {
           idusuario : resp.data.data.id,
+         username : resp.data.data.username,
           id_noticia : $scope.viewNoticia.id,
           text : newCommentarioForm.text,
         };
@@ -757,7 +757,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.imagen = {};
-
+   $scope.$on('$ionicView.beforeEnter', function() {
   $http.get('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.ImagenId).then(function(resp) {
     $scope.imagen = resp.data.data;
 
@@ -766,6 +766,7 @@ angular.module('starter.controllers', [])
     console.error('ERR', err);
     // err.status will contain the status code
   }); 
+  });
   
       $scope.ratingsObject = {
         iconOn : 'ion-ios-star',
@@ -794,15 +795,17 @@ angular.module('starter.controllers', [])
   }
   $scope.guardarComentario = function  (newCommentarioForm) {
 
-
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
-        console.log(newCommentarioForm);
+    
+       console.log(newCommentarioForm);
         console.log(resp);
         var newCommentario = {
           idusuario : resp.data.data.id,
+           username : resp.data.data.username,
+               imagen : resp.data.data.imagen,
            id_imagen : $scope.imagen.id,
            text : newCommentarioForm.text,
-        };
+        };    
         $http.post(CONFIG.APIURL+'imgcomments',newCommentario ).then(function(resp) {
           console.log(resp.data);
 
@@ -819,6 +822,7 @@ angular.module('starter.controllers', [])
       console.error('ERR', err);
      
     }); 
+
 
     
   }
@@ -924,6 +928,35 @@ $scope.EventRunning = false;
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
     };
+
+$scope.testFileUpload = function () {
+  // Destination URL 
+var url = "http://example.gajotres.net/upload/upload.php";
+ 
+//File for Upload
+var targetPath = cordova.file.externalRootDirectory + "logo_radni.png";
+ 
+// File name only
+var filename = targetPath.split("/").pop();
+ 
+var options = {
+     fileKey: "file",
+     fileName: filename,
+     chunkedMode: false,
+     mimeType: "image/jpg",
+ params : {'directory':'upload', 'fileName':filename} // directory represents remote directory,  fileName represents final remote file name
+ };
+      
+ $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
+     console.log("SUCCESS: " + JSON.stringify(result.response));
+ }, function (err) {
+     console.log("ERROR: " + JSON.stringify(err));
+ }, function (progress) {
+     // PROGRESS HANDLING GOES HERE
+ });
+  // Function code goes here
+}
+
 
 
 
