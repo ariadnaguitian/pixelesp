@@ -12,8 +12,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
 
 
 
-.run(function ($ionicPlatform) {
+.run(function ($ionicPlatform, $rootScope, $location) {
             $ionicPlatform.ready(function () {
+ setTimeout(function() {
+        if (device.platform == "Android") {
+            $cordovaSplashscreen.hide();
+        }
+        if (device.platform == "iPhone" || device.platform == "iOS") {
+            navigator.splashscreen.hide();
+        }
+    }, 500);
+
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                     // for form inputs)
@@ -23,12 +32,26 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
                     // from snapping when text inputs are focused. Ionic handles this internally for
                     // a much nicer keyboard experience.
                     cordova.plugins.Keyboard.disableScroll(true);
+
                 }
                 if (window.StatusBar) {
                     StatusBar.styleDefault();
                 }
-            });
+
+
+
+  
+           
+
+
+
+ });
+
         })
+
+
+
+
 
 .constant('CONFIG', {
   // APIURL: ,"http://localhost/pixelsApp/api/index.php/"
@@ -266,7 +289,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/crearpost.html',
-      controller:'PostNuevoCtrl'
+      controller:'subirimagen'
    
        
 

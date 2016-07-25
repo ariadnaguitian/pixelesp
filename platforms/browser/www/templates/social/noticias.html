@@ -1,7 +1,17 @@
 <ion-view view-title="Noticias">
   <ion-content>
+   <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-search placeholder-icon"></i>
+
+        <input type="text" placeholder="Search" ng-model="Query" >
+      </label> 
+
+    </div> 
+
     <ion-list>
-      <ion-item ng-repeat="noticia in noticias" href="#/app/noticias/{{noticia.id}}">
+      <div class="padding"><h4>  <b>Todas las noticias {{(noticias|filter:Query).length}}</b></h4>  </div>
+      <ion-item ng-repeat="noticia in noticias | filter:Query" href="#/app/noticias/{{noticia.id}}" >
         {{noticia.Titulo}}
       </ion-item>
     </ion-list>

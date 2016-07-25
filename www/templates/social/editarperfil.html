@@ -18,28 +18,36 @@
     GEMIONIC PROFILE SECTION
     ====================== -->
     <div class="gem-profile-media">
-      <div class="gem-profile-details profile2">
+      <div class="gem-profile-details profile2a">
       <div class="partesuperior">
        <img src="img/avatar/{{usuario.imagen}}" alt="" class="profile-image floatleft">
         <h3 class="gem-white marginpading">{{usuario.username}}</h3>
 </div>
 <div class="list">
         <label class="item item-input">
-    <input type="text" placeholder="{{usuario.name}}">
+    <input type="text" placeholder="Nombre" ng-model="usuario.name">
   </label>
        
    <label class="item item-input">
-    <input type="text" placeholder="{{usuario.email}}">
+    <input type="text"  placeholder="E-Mail" ng-model="usuario.email">
   </label>
      <label class="item item-input">
-    <input type="text" placeholder="{{usuario.city}}">
+    <input type="text"  placeholder="Ciudad" ng-model="usuario.city">
   </label>
-  </div>
+  <label class="item item-input">
+      
+          <input type="text" placeholder="Pais" ng-model="usuario.country">
+        </label>
+  
   <label class="item item-input biografia">
-    <textarea class="biografia" placeholder="{{usuario.biografia}}"></textarea>
-  </label>
+    <textarea class="biografia" placeholder="Biografía" ng-model="usuario.biografia"></textarea>
+  </label></div>
+<button ng-click="doSave()" class="button button-balanced">
+        Guardar
+      </button>
+      
   </div>
-     
+       
       <!-- Background Image -->
       <img src="img/gemionic/post-img.jpg" alt="" class="fluid-image profile-background-image">
 
@@ -48,76 +56,9 @@
 
     <!-- Profile Stats - ionic '.row' extended with profile-3. .gem-center centralizes -->
     <!-- Profile Feed -->
-    <div class="profile-feed">
-        <!-- Title and Button -->
-  
-        <!-- Title and Button -->
-
-        <!-- Gemionic Gallery (extends .row with .row-wrap for easy ng-repeat) -->
-        <section class="tab" ng-app="starter" ng-controller="TabController as tab">
-<div class="tabs-striped tabs-top tabs-background-balanced tabs-color-light" >
-    <div class="tabs tabs3linea" >
-
-      <a href ng-class="{ active: tab.isSet(1) }" ng-click="tab.setTab(1)" class="tab-item" >
-            <div class="col stat">
-        <h5 class="gem-white"><i class="ion-images gem-white"></i> 543</h5>
-      </div>
-      </a>
-      <a href  ng-class="{ active: tab.isSet(2) }" ng-click="tab.setTab(2)" class="tab-item" >
-            <div class="col stat">
-        <h5 class="gem-white"><i class="ion-heart gem-white"></i> 352</h5>
-      </div>     
-      </a>
-      
-     <a ng-class="{ active: tab.isSet(3) }" href  ng-click="tab.setTab(3)" class="tab-item" >
-            <div class="col stat">
-        <h5 class="gem-white"><i class="ion-chatbubble gem-white"></i> 985</h5>
-      </div>
-      </a>
-     
-     <a href ng-class="{ active: tab.isSet(4) }" ng-click="tab.setTab(4)" class="tab-item" >
-            <div class="col stat">
-        <h5 class="gem-white"><i class="ion-person gem-white"></i> 349</h5>
-      </div>
-      </a>
-           <a href ng-class="{ active: tab.isSet(5) }" ng-click="tab.setTab(5)" class="tab-item" >
-            <div class="col stat">
-        <h5 class="gem-white"><i class="ion-android-star gem-white"></i> 1536</h5>
-      </div>
-      </a>
-    </div>
-  </div>
+   
 
 
-
-  <div ng-show="tab.isSet(1)">
-      <div class="title">
-          <h4><i class="ion-images"></i> <b>543 imagenes</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
-        </div>
-  </div>
-  <div ng-show="tab.isSet(2)">
-     <div class="title">
-          <h4><i class="ion-heart"></i> <b>352 favoritos</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
-        </div>
-  </div>
-
-  <div ng-show="tab.isSet(3)">
-     <div class="title">
-          <h4><i class="ion-chatbubble"></i> <b>985 comentarios</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
-        </div>
-        </div>
-                  <div ng-show="tab.isSet(4)">
-     <div class="title">
-          <h4><i class="ion-person"></i> <b>349 amigos</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
-        </div>
-        </div>
-          <div ng-show="tab.isSet(5)">
-     <div class="title">
-          <h4><i class="ion-android-star"></i> <b>1536 ratings</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
-        </div>
-  </div>
-
-</section>
 
 
 
@@ -133,6 +74,6 @@
         
         <!-- End Friend list (Grid) -->
 
-      </div>
+     
   </ion-content>
 </ion-view>

@@ -41,6 +41,9 @@
         },
         "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.ionicframework.aplicacion209748"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "com.ionicframework.aplicacion209748"
         }
     },
     "dependent_plugins": {}

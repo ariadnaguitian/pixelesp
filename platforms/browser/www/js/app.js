@@ -8,11 +8,11 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages'])
+angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages', 'ngCordova','ngStorage'])
 
 
 
-.run(function ($ionicPlatform) {
+.run(function ($ionicPlatform, $rootScope, $localStorage, $location) {
             $ionicPlatform.ready(function () {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -27,8 +27,19 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
                 if (window.StatusBar) {
                     StatusBar.styleDefault();
                 }
-            });
+
+
+
+  
+          
+
+ });
+
         })
+
+
+
+
 
 .constant('CONFIG', {
   // APIURL: ,"http://localhost/pixelsApp/api/index.php/"
@@ -266,7 +277,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  views: {
         'menuContent' :{
      templateUrl: 'templates/social/crearpost.html',
-      controller:'PostNuevoCtrl'
+      controller:'subirimagen'
    
        
 
@@ -298,7 +309,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  })
 
+.state('app.noticia', {
+ url: '/inicio/:NoticiaId',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/noticiaid.html',
+    controller: 'NoticiasinicioCtrl'
+       
 
+ }
+ }
+ })
  .state('app.usuario', {
  url: '/comunidad/:UsuarioId',
  views: {

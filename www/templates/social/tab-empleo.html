@@ -27,8 +27,8 @@
 <!-- End Media section --> 
 
     <!-- News Item (With Poster and content text summary) -->
-        <ion-list>
-      <ion-item ng-repeat="trabajo in trabajos | filter:Query" class="item item-avatar">
+        <ion-list ng-repeat="trabajo in trabajos | filter:Query" >
+      <ion-item ng-click="abrirComentarios(trabajo)" class="item item-avatar">
     
       <!-- Poster Thumb -->
    
@@ -68,7 +68,7 @@
               <i class="icon ion-tshirt balanced"></i>
               Aplicar
             </a>
-            <a class="tab-item"  ng-click="abrirComentarios(noticia)">
+            <a class="tab-item"  ng-click="abrirComentarios(trabajo)">
               <i class="icon ion-chatbox balanced"></i>
             Comentar
             </a>
@@ -79,6 +79,54 @@
           </div>
 
     </ion-list>
+
+    <script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view>
+          <ion-header-bar class="bar bar-dark bar-header">
+            <h1 class="title">Comentarios - {{viewEmpleo.Titulo}}</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cerrar</button>
+          </ion-header-bar>
+
+          <ion-content class="padding">
+              <ion-item class="item item-thumbnail-left" >
+            <img src="img/paintprogram.png" alt="" class="img">
+          <div class="news-content">
+              <h2>{{viewEmpleo.Titulo}}</h2>
+
+              <h4>
+                por <a href="#">{{viewEmpleo.username}}</a> - <i class="icon ion-clock"></i>{{viewEmpleo.created_at}}
+              </h4>
+             <p>{{viewEmpleo.Descripcion}}</p>
+
+
+              <!-- Stat Section -->
+              <div class="other-stats" >
+                      <div class="news-more-action">
+
+            
+</div>
+      </div>
+
+</div> 
+</ion-item>
+            <div class="list">
+              <label class="item item-input">
+                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
+              </label>
+              <button class="button button-full button-dark" ng-click="guardarComentario(newCommentario)">Comentar</button>
+            </div>
+          
+            <ion-list>
+              <ion-item ng-repeat="comentario in viewEmpleo.comentarios track by comentario.id"  class="item item-thumbnail-left">
+                <img src="img/avatar/{{comentario.imagen}}" alt="" >
+                <h2>{{comentario.username}}</h2>
+                <p>{{comentario.text}}</p>
+                <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
+             </ion-item>
+            </ion-list>
+          </ion-content>
+        </ion-modal-view>
+    </script>
      </div>
 
       <!-- End Content --></div>
