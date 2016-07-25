@@ -1,8 +1,17 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+        "id": "cordova-plugin-x-socialsharing.SocialSharing",
+        "pluginId": "cordova-plugin-x-socialsharing",
+        "clobbers": [
+            "window.plugins.socialsharing"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-console/www/logger.js",
         "id": "cordova-plugin-console.logger",
+        "pluginId": "cordova-plugin-console",
         "clobbers": [
             "cordova.logger"
         ]
@@ -10,6 +19,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
         "id": "cordova-plugin-console.console",
+        "pluginId": "cordova-plugin-console",
         "clobbers": [
             "console"
         ]
@@ -17,6 +27,7 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-device/www/device.js",
         "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
         "clobbers": [
             "device"
         ]
@@ -24,11 +35,13 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
         "id": "cordova-plugin-device.DeviceProxy",
+        "pluginId": "cordova-plugin-device",
         "runs": true
     },
     {
         "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
         "id": "cordova-plugin-splashscreen.SplashScreen",
+        "pluginId": "cordova-plugin-splashscreen",
         "clobbers": [
             "navigator.splashscreen"
         ]
@@ -36,11 +49,13 @@ module.exports = [
     {
         "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
         "id": "cordova-plugin-splashscreen.SplashScreenProxy",
+        "pluginId": "cordova-plugin-splashscreen",
         "runs": true
     },
     {
         "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
         "id": "cordova-plugin-statusbar.statusbar",
+        "pluginId": "cordova-plugin-statusbar",
         "clobbers": [
             "window.StatusBar"
         ]
@@ -48,6 +63,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file-transfer/www/FileTransferError.js",
         "id": "org.apache.cordova.file-transfer.FileTransferError",
+        "pluginId": "org.apache.cordova.file-transfer",
         "clobbers": [
             "window.FileTransferError"
         ]
@@ -55,6 +71,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file-transfer/www/FileTransfer.js",
         "id": "org.apache.cordova.file-transfer.FileTransfer",
+        "pluginId": "org.apache.cordova.file-transfer",
         "clobbers": [
             "window.FileTransfer"
         ]
@@ -62,6 +79,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.DirectoryEntry"
         ]
@@ -69,6 +87,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/DirectoryReader.js",
         "id": "org.apache.cordova.file.DirectoryReader",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.DirectoryReader"
         ]
@@ -76,6 +95,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/Entry.js",
         "id": "org.apache.cordova.file.Entry",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.Entry"
         ]
@@ -83,6 +103,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/File.js",
         "id": "org.apache.cordova.file.File",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.File"
         ]
@@ -90,6 +111,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileEntry.js",
         "id": "org.apache.cordova.file.FileEntry",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileEntry"
         ]
@@ -97,6 +119,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileError.js",
         "id": "org.apache.cordova.file.FileError",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileError"
         ]
@@ -104,6 +127,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileReader.js",
         "id": "org.apache.cordova.file.FileReader",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileReader"
         ]
@@ -111,6 +135,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileSystem.js",
         "id": "org.apache.cordova.file.FileSystem",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileSystem"
         ]
@@ -118,6 +143,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileUploadOptions.js",
         "id": "org.apache.cordova.file.FileUploadOptions",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileUploadOptions"
         ]
@@ -125,6 +151,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileUploadResult.js",
         "id": "org.apache.cordova.file.FileUploadResult",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileUploadResult"
         ]
@@ -132,6 +159,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/FileWriter.js",
         "id": "org.apache.cordova.file.FileWriter",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.FileWriter"
         ]
@@ -139,6 +167,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/Flags.js",
         "id": "org.apache.cordova.file.Flags",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.Flags"
         ]
@@ -146,6 +175,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/LocalFileSystem.js",
         "id": "org.apache.cordova.file.LocalFileSystem",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.LocalFileSystem"
         ],
@@ -156,6 +186,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/Metadata.js",
         "id": "org.apache.cordova.file.Metadata",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.Metadata"
         ]
@@ -163,17 +194,20 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/ProgressEvent.js",
         "id": "org.apache.cordova.file.ProgressEvent",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.ProgressEvent"
         ]
     },
     {
         "file": "plugins/org.apache.cordova.file/www/fileSystems.js",
-        "id": "org.apache.cordova.file.fileSystems"
+        "id": "org.apache.cordova.file.fileSystems",
+        "pluginId": "org.apache.cordova.file"
     },
     {
         "file": "plugins/org.apache.cordova.file/www/requestFileSystem.js",
         "id": "org.apache.cordova.file.requestFileSystem",
+        "pluginId": "org.apache.cordova.file",
         "clobbers": [
             "window.requestFileSystem"
         ]
@@ -181,6 +215,7 @@ module.exports = [
     {
         "file": "plugins/org.apache.cordova.file/www/resolveLocalFileSystemURI.js",
         "id": "org.apache.cordova.file.resolveLocalFileSystemURI",
+        "pluginId": "org.apache.cordova.file",
         "merges": [
             "window"
         ]
@@ -189,6 +224,7 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
+    "cordova-plugin-x-socialsharing": "5.1.2",
     "cordova-plugin-console": "1.0.1",
     "cordova-plugin-device": "1.0.1",
     "cordova-plugin-splashscreen": "2.1.0",

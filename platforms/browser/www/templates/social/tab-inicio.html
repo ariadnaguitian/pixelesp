@@ -1,4 +1,4 @@
-<ion-view title="PixelEsp" >
+<ion-view title="PixelEsp" hide-back-button="true">
   <ion-nav-buttons>
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
@@ -19,23 +19,18 @@
 
   <ion-content class="has-header gem-ion-content " >
 
+   <ion-scroll direction="x" class="available-scroller">
+      <div class="imagen" collection-repeat="imagen in imagenes"
+         item-height="120" item-width="imagen.width + 115">
+            <a href="#/app/galeria/{{imagen.id}}"><img ng-src="img/imagenes/{{imagen.Previa}}"></a>
+      </div>
+    </ion-scroll>
 
 
 
-   <ks-swiper-container initial-slide="1" speed="2000" loop="true" show-nav-buttons="false" slides-per-view="4" space-between="40" pagination-clickable="true" on-ready="onReadySwiper(swiper)">
-    
-      <ks-swiper-slide class="swiper-slide" data-ng-repeat="imagen in imagenes">
-           <div  class="contenedor5">
-             <div class="cont-image5"> 
-              <img ng-src="img/imagenes/{{imagen.Previa}}">
-             </div> 
-           </div>
-      </ks-swiper-slide>  
-    
-     <ks-swiper-pagination> 
-     </ks-swiper-pagination>   
-  </ks-swiper-container>
-
+  <ion-refresher on-refresh="doRefresh()">
+                     
+      </ion-refresher>
 
 
 
@@ -44,48 +39,44 @@
 
     <!-- News Item (With Poster and content text summary) -->
 
-      <ion-list>
-      <ion-item ng-repeat="noticia in noticias" class="item item-avatar">
+      <ion-list ng-repeat="noticia in noticias" >
+   
     
-            <!-- Poster Thumb -->
-         
-            <img src="img/paintprogram.png" alt="" class="img">
-         
+            <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
+           <ion-item ng-click="abrirComentarios(noticia)"  class="item item-thumbnail-left" >
+
+            <img src="img/paintprogram.png" alt=""  >       
             <!-- End Poster -->
 
             <!-- Content -->
 
-            <div class="news-content">
+            <div class="news-content" >
               <h2>{{noticia.Titulo}}</h2>
 
               <h4>
-                por <a href="#">{{noticia.name}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
+                por <a href="#/app/comunidad/{{noticia.IdUsuario}}">{{noticia.username}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
               </h4>
              <p>{{noticia.Descripcion}}</p>
 
 
               <!-- Stat Section -->
-              <div class="other-stats" >
-                      <div class="news-more-action">
-              <i class="icon ion-more"></i>
+             
+                      <div class="news-more-action" >
+             <a ng-click="popover.show($event)" class="trespuntos"> <i class="icon ion-more" ></i></a>
 
             
+</div>
+      
+</div> 
 
-      </div>
 
+      <h4 class="item-note"><i class="ion-heart"></i> {{count}} | <i class="ion-chatbox"></i> 2 |  <i class="ion-android-done-all"></i> 10 vistos</h4>
+      
 
-
-
-      <h4 class="item-note"><i class="ion-heart"></i> 82 - <i class="ion-chatbox"></i> 82 -  <i class="ion-android-done-all"></i> 90 vistos</h4>
-      </br>
-      <div class="row">
-
-          <button class="button button-balanced button-borderless button-small"><i class="ion-heart"></i> Me gusta</button> 
-          <button class="button button-balanced button-outline button-small" ng-click="abrirComentarios(noticia)"><i class="ion-chatbox"></i> Comentar</button>
-          <button class="button button-stable button-outline button-small"><i class="ion-android-share-alt"></i> </button>
-          </div>
-        </div> 
-     </div>
+     
+     
+        
+     
 
 
 
@@ -96,7 +87,25 @@
       <!-- End Button -->
 
    
-     </ion-item>
+</ion-item><div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
+              <i class="icon ion-thumbsup balanced"></i>
+              Me gusta
+            </a>
+
+           
+
+
+            <a class="tab-item"  ng-click="abrirComentarios(noticia)">
+              <i class="icon ion-chatbox balanced"></i>
+            Comentar
+            </a>
+            <a class="tab-item" href="#">
+              <i class="icon ion-share balanced"></i>
+              Compartir
+            </a>
+          </div>
+
     </ion-list>
     <script id="templates/modal.html" type="text/ng-template">
         <ion-modal-view>
@@ -106,17 +115,38 @@
           </ion-header-bar>
 
           <ion-content class="padding">
+              <ion-item class="item item-thumbnail-left" >
+            <img src="img/paintprogram.png" alt="" class="img">
+          <div class="news-content">
+              <h2>{{viewNoticia.Titulo}}</h2>
+
+              <h4>
+                por <a href="#">{{viewNoticia.username}}</a> - <i class="icon ion-clock"></i>{{viewNoticia.created_at}}
+              </h4>
+             <p>{{viewNoticia.Descripcion}}</p>
+
+
+              <!-- Stat Section -->
+              <div class="other-stats" >
+                      <div class="news-more-action">
+
+            
+</div>
+      </div>
+
+</div> 
+</ion-item>
             <div class="list">
               <label class="item item-input">
-                <span class="input-label">Comentario</span>
-                <textarea ng-model="newCommentario.text" ></textarea>
+                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
               </label>
               <button class="button button-full button-dark" ng-click="guardarComentario(newCommentario)">Comentar</button>
             </div>
+          
             <ion-list>
-              <ion-item ng-repeat="comentario in viewNoticia.comentarios track by comentario.id" class="item item-avatar">
-                <img src="img/paintprogram.png" alt="" class="img">
-                <h2>{{comentario.name}}</h2>
+              <ion-item ng-repeat="comentario in viewNoticia.comentarios track by comentario.id"  class="item item-thumbnail-left">
+                <img src="img/avatar/{{comentario.imagen}}" alt="" >
+                <h2>{{comentario.username}}</h2>
                 <p>{{comentario.text}}</p>
                 <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
              </ion-item>
@@ -131,3 +161,22 @@
 
   </ion-content>
 </ion-view>
+
+<script id="templates/popover.html" type="text/ng-template">
+    <ion-popover-view>
+      <ion-content>
+        <div class="list">
+          <a class="item" href="#">
+              Reportar
+            </a>
+          <a class="item" href="#/app/EntrarAdmin">
+              Editar
+            </a>
+          <a class="item" href="#/app/EntrarAdmin">
+              Eliminar
+            </a>
+        </div>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+

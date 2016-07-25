@@ -3,13 +3,18 @@
   <head>
   
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <meta http-equiv="Content-Security-Policy" content="img-src *; default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-      <!-- <script src="http://cdn.cssobfuscator.com/style/iq2xjn7duj9ujpgbahl2j449q08gjsj8"></script> -->
-    <link href="lib\ionic-advanced-carousel\dist\advanced-carousel.min.css" rel="stylesheet">
+<link href="lib/swiper/dist/css/swiper.min.css" rel="stylesheet"/>   
+<!-- <script src="http://cdn.cssobfuscator.com/style/iq2xjn7duj9ujpgbahl2j449q08gjsj8"></script> -->
+
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -17,65 +22,60 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+     <script src="lib/ngstorage/ngStorage.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="js/ng-cordova.min.js"></script>
+
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+   
 
-    <script src="lib\ionic-advanced-carousel\dist\advanced-carousel.min.js"></script>
-    <script src="lib\ionic-advanced-carousel\dist\advanced-carousel.min.js"></script>
+
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/packery/1.4.3/packery.pkgd.min.js"></script>
-        
     <script src="angular-packery.js"></script>
+ 
+ 
+
+<script src="lib/swiper/dist/js/swiper.js"></script>
+<script src="lib/angular-swiper/dist/angular-swiper.js"></script>   
+<script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+
+<script src="js/slidingTabsDirective.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.js"></script> 
+
+    <script src="lib/swiper/dist/js/swiper.js"></script>
+    <script src="lib/angular-swiper/dist/angular-swiper.js"></script>   
+    <script src="lib/ionic-ratings/dist/ionic-ratings.min.js"></script>
+    <script src="lib/ionic-threads/ionic.threads.js"></script>
+    <script src="js/slidingTabsDirective.js"></script>
 
 
-  </head>
+
+
+
+  
+<!-- End Dependencies -->
+ 
+
+</head>
 
   <!-- All views are loaded into the <ion-nav-view> element below -->
-  <body ng-app="starter" class="platform-browser platform-cordova platform-webview">
-
-  
-
-
-    <ion-tabs class="tabs-background-dark  tabs-color-energized tabs-icon-top">
-
-  <ion-tab title="Inicio" icon-on="icon ion-home" icon-off="icon ion-home"  href="/app/inicio">
-    <ion-nav-view name="tab-inicio"></ion-nav-view>
-   
-
-  </ion-tab>
-
-  <ion-tab title="Galeria" icon-on="icon ion-images" icon-off="icon ion-images"  href="/app/galeria">
-    <ion-nav-view name="tab-galeria"></ion-nav-view>
-  
-
-  </ion-tab>
-
-  </ion-tab>
-  <ion-tab title="Foro" icon-on="icon ion-chatboxes" icon-off="icon ion-chatboxes"  href="/app/foro">
-  <ion-nav-view name="tab-foro"></ion-nav-view>
-    
-
-  </ion-tab>
-
-  <ion-tab title="Comunidad" icon-on="icon ion-android-contacts" icon-off="icon ion-android-contacts" href="/app/comunidad">
-          <ion-nav-view name="tab-comunidad"></ion-nav-view>
-    
-
-  </ion-tab>
-
-</ion-tabs>
-  
-  
+  <body ng-app="starter" >
 
     <ion-nav-view>
 
 
     </ion-nav-view>
-  </body>
+
+      
+  </body>    
+
+
 </html>

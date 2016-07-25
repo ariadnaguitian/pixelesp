@@ -9,6 +9,12 @@ body * {
   font-family: 'OpenSans', Fallback, sans-serif;
 }
 
+.trespuntos{
+  z-index: 0;
+
+
+}
+
 .validaciones {
     font-size: 14px;
     color: #5c8053;
@@ -331,6 +337,7 @@ border-top: 1px solid rgba(0, 0, 0, 0.2);}
     /*Profile Version 2*/
     .gem-profile-text {margin: 10px;}
     .gem-profile-details.profile2 { margin-top: 15px;}
+     .gem-profile-details.profile2a{ margin-top: 15px; height:600px;}
     .profile-feed .profile-post {margin: 0 0 15px 0;}
     .profile-feed .profile-post img {width: 100%; border-bottom: 1px solid #ccc;}
     .profile-feed .profile-post p {margin:8px 2px;}

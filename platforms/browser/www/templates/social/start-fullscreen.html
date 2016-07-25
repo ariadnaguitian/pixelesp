@@ -1,12 +1,11 @@
 <!-- View header bar is hidden using attribute 'hide-nav-bar="true"' -->
-<ion-view title="Login-Fullscreen" hide-nav-bar="true"  hide-nav-bar="true">
+<ion-view title="Iniciar sesion" hide-nav-bar="true"  hide-nav-bar="true">
   <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
   <ion-content class="gem-splash_background" hide-ion-side-menu-content="true" >
     <div class="gem-form text-center">
       <!-- Logo as you please -->
       <div class="gem-splash-logo">
-        <img src="img/gemionic/gem-logo.png" alt="Logo" width="100">
-        <h3 class="gem-white">PixelEsp</h3>
+        <img src="img/gemionic/gem-logo.gif" alt="Logo">
       </div>
       <!-- end Logo -->
 
@@ -19,15 +18,24 @@
           <input type="password" ng-model="user.password" placeholder="Contraseña">
         </label>
         <label class="item">
-          <button class="button button-block button-balanced">Entrar</button>
-        </label>
-        <a href="http://gmail.com">Olvidé mi contraseña</a>
- </div>
-    </form>
 
-   <div class="text-center padding">
-        <a href="#/app/registrarse" target="_self" class="button button-royal">Registrate!</a>
-        </div>
+          <button class="button button-block button-royal botoneslogin">Entrar</button>
+        </label>
+  <div class="item">
+     <a href="#/app/registrarse" target="_self" class="button button-block button-balanced">Registrate!</a>
+    </div>  
+      <div class="item"><a href="http://gmail.com" class="button button-block button-assertive botoneslogin">
+          Olvidé mi contraseña</a>
+        </div> 
+       </div> 
+
+    </form>  
+        
+      
+          
+
+
+
 
       <!-- buttons. .button-rounded can be added for more roundness -->
     
