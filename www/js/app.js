@@ -8,21 +8,12 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings','ngCordova'])
 
 
 
-.run(function ($ionicPlatform, $rootScope, $location) {
+.run(function ($ionicPlatform, $rootScope) {
             $ionicPlatform.ready(function () {
- setTimeout(function() {
-        if (device.platform == "Android") {
-            $cordovaSplashscreen.hide();
-        }
-        if (device.platform == "iPhone" || device.platform == "iOS") {
-            navigator.splashscreen.hide();
-        }
-    }, 500);
-
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                     // for form inputs)

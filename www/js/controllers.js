@@ -31,18 +31,7 @@ angular.module('starter.controllers', [])
     });
   });
 
-  console.log($rootScope.userToken);     
-    
-    $scope.user = [];
-    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
-      $scope.user = resp.data.data;
-      console.log('Succes', resp.data.data);
-      $location.path('/app/inicio');
-    }, function(err) {
-      console.error('ERR', err);
-      $location.path('/app/start');
-      // err.status will contain the status code
-    });
+
 
 
 
@@ -123,7 +112,7 @@ angular.module('starter.controllers', [])
             console.log(resp.data.data);
 
             console.log('Succes', resp.data.data);
-       
+        
           }, function(err) {
             console.error('ERR', err);
             $location.path('/app/inicio');
@@ -132,7 +121,7 @@ angular.module('starter.controllers', [])
             // err.status will contain the status code
           });
 
-             $location.path('/app/inicio');
+            $location.path('/app/inicio');
      
        
           
@@ -373,7 +362,7 @@ angular.module('starter.controllers', [])
  })
 
 
-.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout, $cordovaSocialSharing) {
+.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout, $cordovaSocialSharing, $stateParams) {
   
    console.log($rootScope.userToken);     
     
@@ -534,16 +523,9 @@ angular.module('starter.controllers', [])
 
     }
 
-   $scope.noticia = {};
-
-  $http.get('http://pixelesp-api.herokuapp.com/noticias/'+ $stateParams.NoticiaId).then(function(resp) {
-    $scope.noticia = resp.data.data;
-
-     
-  }, function(err) {
-    console.error('ERR', err);
-    // err.status will contain the status code
-  });
+  $scope.compartir = function() {
+        $cordovaSocialSharing.share("This is your message", "This is your subject", "www/img/gemionic/gem-logo.gif", "https://www.pixelesp.com");
+    }
 
 })
 
