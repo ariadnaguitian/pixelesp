@@ -798,6 +798,9 @@ var options = {
     }, 1000);
       
   };
+
+
+
 $scope.abrirComentarios = function  (trabajo) {
     var viewEmpleo = trabajo;
     $scope.viewEmpleo = viewEmpleo;
@@ -812,6 +815,8 @@ $scope.abrirComentarios = function  (trabajo) {
         var newCommentario = {
           idusuario : resp.data.data.id,
          username : resp.data.data.username,
+         imagen : resp.data.data.imagen,
+
            trabajo : resp.data.data.trabajo,
           id_empleo : $scope.viewEmpleo.id,
          
@@ -867,7 +872,7 @@ $scope.abrirComentarios = function  (trabajo) {
         $scope.trabajo={};
         $scope.trabajo.Titulo='';
         $scope.trabajo.Descripcion='';
-        $scope.trabajo.id =''; 
+        $scope.trabajo.IdUsuario =''; 
   
    $scope.doRegister = function() {
       $http.post('http://pixelesp-api.herokuapp.com/trabajos',$scope.trabajo ).then(function(resp) {

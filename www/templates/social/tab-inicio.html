@@ -45,7 +45,7 @@
             <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
            <ion-item ng-click="abrirComentarios(noticia)"  class="item item-thumbnail-left" >
 
-            <img src="img/paintprogram.png" alt=""  >       
+            <img src="img/avatar/{{noticia.imagen}}" alt=""  >       
             <!-- End Poster -->
 
             <!-- Content -->
@@ -116,10 +116,14 @@
           <ion-content class="padding">
                       
               <ion-item class="item item-thumbnail-left" >
+<<<<<<< HEAD
 <i ng-click="popover.show($event)" class="icon ion-more trespuntos" ></i></a>
 
             <img src="img/paintprogram.png" alt="" class="img galeriafb">
 
+=======
+            <img src="img/avatar/{{viewNoticia.imagen}}" alt="" class="img">
+>>>>>>> 8d4a6b8bf13c3a4dcc1b1da1fdefb68785d54e58
           <div class="news-content">
 
               <h2>{{viewNoticia.Titulo}}</h2>
