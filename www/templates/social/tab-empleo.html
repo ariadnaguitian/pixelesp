@@ -32,7 +32,7 @@
     
       <!-- Poster Thumb -->
    
-        <img src="img/trabajo.png" alt="" class="img">
+        <img src="img/avatar/{{trabajo.imagen}}" alt="" class="img">
    
       <!-- End Poster -->
 
@@ -41,7 +41,7 @@
       <div class="news-content">
         <h2>{{trabajo.Titulo}}</h2>
                    <h4>
-          Por <a href="#" >Administrador</a> - <i class="icon ion-clock"></i> {{trabajo.created_at}}</h4>
+          Por <a href="#" >{{trabajo.username}}</a> - <i class="icon ion-clock"></i> {{trabajo.created_at}}</h4>
 
        <p>{{trabajo.Descripcion}}</p>
 
@@ -89,7 +89,7 @@
 
           <ion-content class="padding">
               <ion-item class="item item-thumbnail-left" >
-            <img src="img/paintprogram.png" alt="" class="img">
+            <img src="img/avatar/{{viewEmpleo.imagen}}" alt="" class="img">
           <div class="news-content">
               <h2>{{viewEmpleo.Titulo}}</h2>
 
