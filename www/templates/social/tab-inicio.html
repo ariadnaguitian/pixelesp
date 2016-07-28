@@ -56,7 +56,9 @@
               <h4>
                 por <a href="#/app/comunidad/{{noticia.IdUsuario}}">{{noticia.username}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
               </h4>
-             <p>{{noticia.Descripcion}}</p>
+                <div class="item-text-wrap">
+    {{noticia.Descripcion}}
+  </div>
 
 
               <!-- Stat Section -->
@@ -116,14 +118,10 @@
           <ion-content class="padding">
                       
               <ion-item class="item item-thumbnail-left" >
-<<<<<<< HEAD
+
 <i ng-click="popover.show($event)" class="icon ion-more trespuntos" ></i></a>
 
-            <img src="img/paintprogram.png" alt="" class="img galeriafb">
-
-=======
-            <img src="img/avatar/{{viewNoticia.imagen}}" alt="" class="img">
->>>>>>> 8d4a6b8bf13c3a4dcc1b1da1fdefb68785d54e58
+            <img src="img/avatar/{{viewNoticia.imagen}}" alt="" class="img galeriafb">
           <div class="news-content">
 
               <h2>{{viewNoticia.Titulo}}</h2>
@@ -131,7 +129,11 @@
               <h4>
                 por <a href="#">{{viewNoticia.username}}</a> - <i class="icon ion-clock"></i>{{viewNoticia.created_at}}
               </h4>
-             <p>{{viewNoticia.Descripcion}}</p>
+
+                <div class="item-text-wrap">
+    {{viewNoticia.Descripcion}}
+  </div>
+             
 
 
               <!-- Stat Section -->

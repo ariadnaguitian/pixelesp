@@ -6875,6 +6875,7 @@ a.button {
  * --------------------------------------------------
  */
 .galeriafb {
+  margin-left: -70px;
     display: block;
   float: left;
 }
