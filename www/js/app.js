@@ -337,6 +337,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings','ngCo
 
 
 
+
  .state('app.usuarios', {
  url: '/usuarios',
  views: {

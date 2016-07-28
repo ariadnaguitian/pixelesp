@@ -80,8 +80,7 @@ angular.module('starter.controllers', [])
     console.error('ERR', err);
     // err.status will contain the status code
   }); 
- 
-  
+
 
 
  })
