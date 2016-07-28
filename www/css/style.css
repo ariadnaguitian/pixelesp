@@ -11,6 +11,8 @@ body * {
 
 .trespuntos{
   z-index: 0;
+  display: block;
+  float: right;
 
 
 }

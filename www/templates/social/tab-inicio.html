@@ -61,11 +61,7 @@
 
               <!-- Stat Section -->
              
-                      <div class="news-more-action" >
-             <a ng-click="popover.show($event)" class="trespuntos"> <i class="icon ion-more" ></i></a>
 
-            
-</div>
       
 </div> 
 
@@ -111,15 +107,21 @@
     </ion-list>
     <script id="templates/modal.html" type="text/ng-template">
         <ion-modal-view>
+
           <ion-header-bar class="bar bar-dark bar-header">
             <h1 class="title">Comentarios - {{viewNoticia.Titulo}}</h1>
             <button class="button button-clear button-primary" ng-click="modal.hide()">Cerrar</button>
           </ion-header-bar>
 
           <ion-content class="padding">
+                      
               <ion-item class="item item-thumbnail-left" >
-            <img src="img/paintprogram.png" alt="" class="img">
+<i ng-click="popover.show($event)" class="icon ion-more trespuntos" ></i></a>
+
+            <img src="img/paintprogram.png" alt="" class="img galeriafb">
+
           <div class="news-content">
+
               <h2>{{viewNoticia.Titulo}}</h2>
 
               <h4>
