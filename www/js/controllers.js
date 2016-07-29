@@ -728,7 +728,20 @@ var options = {
   
  
 
-.controller('TrabajoCtrl', function($scope, $stateParams, $http, $location) {
+.controller('TrabajoCtrl', function($scope, $stateParams, $http, $location, $rootScope) {
+
+     console.log($rootScope.userToken);     
+    
+    $scope.user = [];
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+      $scope.user = resp.data.data;
+      console.log('Succes', resp.data.data);
+ 
+    }, function(err) {
+      console.error('ERR', err);
+      $location.path('/app/start');
+      // err.status will contain the status code
+    }); 
 
   $scope.trabajo = {};
 
@@ -867,23 +880,51 @@ $scope.abrirComentarios = function  (trabajo) {
 
 })
 
-.controller('TrabajoNuevoCtrl', function($scope, $stateParams, $http, $ionicPopup, $location ) {
+.controller('TrabajoNuevoCtrl', function($scope, $stateParams, $http, $ionicPopup, $location, $rootScope) {
             
         $scope.trabajo={};
         $scope.trabajo.Titulo='';
         $scope.trabajo.Descripcion='';
-        $scope.trabajo.IdUsuario =''; 
+        $scope.trabajo.id=''; 
   
-   $scope.doRegister = function() {
-      $http.post('http://pixelesp-api.herokuapp.com/trabajos',$scope.trabajo ).then(function(resp) {
-        console.log(resp.data);
-             $location.path('/app/trabajo');
+   // $scope.doRegister = function() {
+   //    $http.post('http://pixelesp-api.herokuapp.com/trabajos',$scope.trabajo ).then(function(resp) {
+   //      console.log(resp.data);
+   //           $location.path('/app/trabajo');
           
+   //  }, function(err) {
+   //    console.error('ERR', err);
+   //    // err.status will contain the status code
+   //  });
+   //  };
+      $scope.doRegister = function() {
+    
+    $scope.trabajo.username =''; 
+
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+
+
+        $scope.trabajo.idusuario = resp.data.data.id;
+
+        $http.post('http://pixelesp-api.herokuapp.com/trabajos',$scope.trabajo).then(function(resp) {
+              console.log(resp.data);
+           
+       $location.path('/app/trabajo');
+
+
+              
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
     }, function(err) {
       console.error('ERR', err);
-      // err.status will contain the status code
-    });
-    };
+     
+    }); 
+  };
   
 })
 
@@ -909,7 +950,7 @@ $scope.abrirComentarios = function  (trabajo) {
         iconOn : 'ion-ios-star',
         iconOff : 'ion-ios-star-outline',
         iconOnColor: 'rgb(200, 200, 100)',
-        iconOffColor:  'rgb(200, 100, 100)',
+        iconOffColor:  'rgb(150, 150, 150)',
         rating:  2,
         minRating:1,
         callback: function(rating) {
@@ -923,11 +964,11 @@ $scope.abrirComentarios = function  (trabajo) {
 
 
 
-
-       $scope.abrirComentarios = function  (imagen) {
+       $scope.abrirFavoritos = function  (imagen) {
     var viewImagen = imagen;
     $scope.viewImagen = viewImagen;
     $scope.newCommentario = {text:''};
+    $scope.modal.show();
       
   }
   $scope.guardarComentario = function  (newCommentarioForm) {
@@ -1025,7 +1066,7 @@ $scope.EventRunning = false;
 
 
 
-  
+
 
 
  })
@@ -1065,9 +1106,6 @@ $scope.EventRunning = false;
     $scope.slideChanged = function(index) {
       $scope.slideIndex = index;
     };
-
-
-
 
 
   
