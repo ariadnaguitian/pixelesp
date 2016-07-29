@@ -964,11 +964,11 @@ $scope.abrirComentarios = function  (trabajo) {
 
 
 
-
-       $scope.abrirComentarios = function  (imagen) {
+       $scope.abrirFavoritos = function  (imagen) {
     var viewImagen = imagen;
     $scope.viewImagen = viewImagen;
     $scope.newCommentario = {text:''};
+    $scope.modal.show();
       
   }
   $scope.guardarComentario = function  (newCommentarioForm) {
@@ -1065,20 +1065,7 @@ $scope.EventRunning = false;
     }
 
 
-   $scope.imgfavoritos = [];
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-      
-      $http.get('http://pixelesp-api.herokuapp.com/misfavoritosimg').then(function(resp) {
-        $scope.imgfavoritos = resp.data.data;
-        //$scope.imgLoadedCallback();
-
-      }, function(err) {
-        console.error('ERR', err);
-        // err.status will contain the status code
-      });
-
-    });
 
 
 

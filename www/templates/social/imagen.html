@@ -35,7 +35,7 @@
       {{imagen.IdUsuario}} - 2016-06-16 03:07:40<br>
       <p>{{imagen.Descripcion}}</p>
     <p>
-  <a href="#" class="subdued"><i class="ion-heart"></i>  {{imagen.favoritos.length}}Favoritos</a>
+  <a href="#" class="subdued"  ng-click="abrirFavoritos(imagen)"><i class="ion-heart"></i> {{imagen.favoritos.length}} Favoritos</a>
        
       <a href="#" class="subdued"><i class="ion-chatbox"></i> {{imagen.comentarios.length}} Comentarios</a>
        <a href="#" class="subdued"> <i class="ion-android-done-all"></i>  60 Vistos</a>
@@ -60,6 +60,41 @@
        <p>{{comentario.text}}</p>
        <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
    </ion-item>
+
+     <ion-item ng-repeat="favorito in imagen.favoritos track by favorito.id" class="item item-thumbnail-left">
+       <img src="img/avatar/{{favorito.imagen}}" alt="" >
+       <h2>{{favorito.username}}</h2>
+       <p>{{favorito.text}}</p>
+       <h4 class="item-note"><i class="icon ion-clock"></i>{{favorito.created_at}}</h4>
+   </ion-item>
+
+
+
+
+
+<script id="templates/modal.html" type="text/ng-template">
+        <ion-modal-view>
+
+          <ion-header-bar class="bar bar-dark bar-header">
+            <h1 class="title">Personas a las que les gusto {{viewImagen.Titulo}}</h1>
+            <button class="button button-clear button-primary" ng-click="modal.hide()">Cerrar</button>
+          </ion-header-bar>
+
+          <ion-content class="padding">
+                      
+              <ion-item ng-repeat="favorito in imagen.favoritos track by favorito.id"  class="item item-thumbnail-left" >
+
+            <img src="img/avatar/{{favorito.imagen}}" width="32px" height="32px" alt="" class="img galeriafb">
+
+<h2>{{favorito.username}}</h2>
+        
+</ion-item>
+           
+          </ion-content>
+        </ion-modal-view>
+    </script>
+
+
  <!-- 
     <div class="list">
      <ion-list>
