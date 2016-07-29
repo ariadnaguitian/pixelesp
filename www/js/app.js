@@ -8,7 +8,7 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngCordova'])
 
 
 
