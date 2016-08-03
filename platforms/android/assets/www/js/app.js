@@ -8,7 +8,7 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngCordova'])
 
 
 
@@ -335,6 +335,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings','ngCo
  }
  })
 
+ .state('app.subirimagenes', {
+ url: '/subirimagenes',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/subirimagen.html',
+    controller: 'subirimagenes'
+       
+
+ }
+ }
+ })
 
 
  .state('app.usuarios', {

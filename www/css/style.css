@@ -18,8 +18,14 @@ body * {
   z-index: 0;
   display: block;
   float: right;
+}
 
+.areadetexto {
+height: 80px;
+}
 
+.comentariosimg {
+margin-top: 0px;
 }
 
 .validaciones {

@@ -335,7 +335,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngC
  }
  })
 
+ .state('app.subirimagenes', {
+ url: '/subirimagenes',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/subirimagen.html',
+    controller: 'subirimagenes'
+       
 
+ }
+ }
+ })
 
 
  .state('app.usuarios', {

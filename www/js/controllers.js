@@ -114,7 +114,7 @@ angular.module('starter.controllers', [])
         
           }, function(err) {
             console.error('ERR', err);
-            $location.path('/app/inicio');
+            $location.path('/app/start');
  
 
             // err.status will contain the status code
@@ -500,6 +500,7 @@ angular.module('starter.controllers', [])
                console.error('ERR', err);
                // err.status will contain the status code
              });
+
 
     }
 
@@ -965,12 +966,17 @@ $scope.abrirComentarios = function  (trabajo) {
 
 
        $scope.abrirFavoritos = function  (imagen) {
+
     var viewImagen = imagen;
     $scope.viewImagen = viewImagen;
     $scope.newCommentario = {text:''};
+
     $scope.modal.show();
-      
+   
   }
+
+
+
   $scope.guardarComentario = function  (newCommentarioForm) {
 
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
@@ -1004,6 +1010,7 @@ $scope.abrirComentarios = function  (trabajo) {
 
     
   }
+
   $ionicModal.fromTemplateUrl('templates/modal.html', {
      scope: $scope,
    }).then(function(modal) {
@@ -1014,21 +1021,16 @@ $scope.abrirComentarios = function  (trabajo) {
  
  //favoritos
 
-$scope.imagen = {};
-    $http.get('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.ImagenId).then(function(resp) {
-      console.log(resp.data);
-      $scope.imagen = resp.data.data;
-    }, function(err) {
-      console.error('ERR', err);
-      // err.status will contain the status code  
-    });
+
 
 $scope.EventRunning = false;
-
+  
      $scope.StartEvent = function (event) {
+         
             event.preventDefault();
+          
             $scope.EventRunning = true;
-            
+          
             // your code
             $scope.imgfavoritos={};
             $scope.imgfavoritos.idimagen= $scope.imagen.id;
@@ -1036,8 +1038,9 @@ $scope.EventRunning = false;
 
           
                $http.post('http://pixelesp-api.herokuapp.com/imgfavoritos', $scope.imgfavoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
-                 console.log(resp.data);
-
+                 
+                   console.log(resp.data);
+$state.reload();
              }, function(err) {
                console.error('ERR', err);
                // err.status will contain the status code
@@ -1045,16 +1048,16 @@ $scope.EventRunning = false;
 
     }
 
-
     $scope.StopEvent = function (event) {
             event.preventDefault();
             $scope.EventRunning = false;
             // your code
             $scope.imgfavoritos={};
-            $scope.imgfavoritos.idimagen = $scope.imagen.id;
 
-               $http.delete('http://pixelesp-api.herokuapp.com/delfavoritos', $scope.favoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+
+               $http.delete('http://pixelesp-api.herokuapp.com/delfavoritos', $scope.imgfavoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
                  console.log(resp.data);
+                 $state.reload();
 
              }, function(err) {
                console.error('ERR', err);
@@ -1067,9 +1070,14 @@ $scope.EventRunning = false;
 
 
 
-
-
  })
+
+
+
+
+
+
+
 
 .controller('imagenesCtrl', function ($scope, $ionicModal, $ionicSlideBoxDelegate, $http, $location) {
 
@@ -1108,9 +1116,38 @@ $scope.EventRunning = false;
     };
 
 
+
   
   }
-);
+)
+.controller('subirimagenes', function($scope, $cordovaFileTransfer) {
+         
+   $scope.upload = function () {
+     // Destination URL 
+     var url = "https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload";
+      
+     //File for Upload
+     var targetPath = "https://s3.amazonaws.com/ionic-forum-static/forum-logo.png" ;
+      
+     // File name only 
+      
+     var options = {
+          fileKey: "avatar",
+          fileName: "image.png",
+          chunkedMode: false,
+          mimeType: "image/png",
+         
+      };
+           
+      $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
+          console.log("SUCCESS: " + JSON.stringify(result.response));
+      }, function (err) {
+          console.log("ERROR: " + JSON.stringify(err));
+      }, function (progress) {
+          // PROGRESS HANDLING GOES HERE
+      });
+  }
+});
 
 
 

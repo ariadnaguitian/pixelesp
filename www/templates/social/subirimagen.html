@@ -1,0 +1,64 @@
+<!-- Title for the ion view -->
+<ion-view title="Nueva noticia">
+  <!-- ======================
+  LEFT SIDE BUTTON
+  ====================== -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <!-- ======================
+  END LEFT SIDE BUTTON
+  ====================== -->
+
+  <!-- ======================
+  RIGHT SIDE BUTTON
+  ====================== -->
+  <!-- ======================
+  EMD RIGHT SIDE BUTTON
+  ====================== -->
+  
+  <!-- ======================
+  MAIN CONTENT SECTION
+  ====================== -->
+  <ion-content class="has-header gem-ion-content">
+    <!-- ======================
+    GEMIONIC EDIT SECTION
+    ====================== -->
+    <div class="gem-edit-section">
+      <div class="gem-poster">
+        <div class="padding">
+         
+
+
+
+          <div class="padding">
+      <!--  ng-submit="doRegister() y agregar ng-model, ejemplo : ng-model="imagen.Descripcion" -->
+    <form">
+      <div class="list">
+        <label class="item item-input">
+          <input type="text" placeholder="Titulo">
+        </label>
+         <label class="item item-input">
+          <textarea type="text" placeholder="Descripcion"></textarea>
+        </label>
+       
+        <label class="item">
+       <button class="button button-full button-royal" ng-click="upload()">Test File Upload</button>  
+       <button class="button button-block button-dark">Crear imagen</button>    
+        </label>
+      
+      </div>
+    </form>
+          </div>
+        </div>
+      </div>
+      
+   
+    <!-- ======================
+    END GEMIONIC EDIT SECTION
+    ====================== -->
+  </ion-content>
+  <!-- ======================
+  END MAIN CONTENT SECTION
+  ====================== -->
+</ion-view>

@@ -28,11 +28,11 @@
 
     <!-- News Item (With Poster and content text summary) -->
         <ion-list ng-repeat="trabajo in trabajos | filter:Query" >
-      <ion-item ng-click="abrirComentarios(trabajo)" class="item item-avatar">
+      <ion-item ng-click="abrirComentarios(trabajo)" class="item item-thumbnail-left">
     
       <!-- Poster Thumb -->
    
-        <img src="img/trabajo.png" alt="" class="img">
+        <img src="img/avatar/{{trabajo.imagen}}" alt="" class="img">
    
       <!-- End Poster -->
 
@@ -41,7 +41,7 @@
       <div class="news-content">
         <h2>{{trabajo.Titulo}}</h2>
                    <h4>
-          Por <a href="#" >Administrador</a> - <i class="icon ion-clock"></i> {{trabajo.created_at}}</h4>
+          Por <a href="#" >{{trabajo.username}}</a> - <i class="icon ion-clock"></i> {{trabajo.created_at}}</h4>
 
        <p>{{trabajo.Descripcion}}</p>
 
@@ -57,7 +57,7 @@
 
 
 <div class="floatright">
-      <h4 class="item-note"><i class="ion-chatbox"></i> 82 -  <i class="ion-android-done-all"></i> 90 vistos -  <i class="ion-android-share-alt"></i></h4></div>
+      <h4 class="item-note"><i class="ion-chatbox"></i>{{trabajo.comentarios.length}} -  <i class="ion-android-done-all"></i> 90 vistos -  <i class="ion-android-share-alt"></i></h4></div>
 <div class="floatleft">
  
         </div>
@@ -89,7 +89,7 @@
 
           <ion-content class="padding">
               <ion-item class="item item-thumbnail-left" >
-            <img src="img/paintprogram.png" alt="" class="img">
+            <img src="img/avatar/{{viewEmpleo.imagen}}" alt="" class="img">
           <div class="news-content">
               <h2>{{viewEmpleo.Titulo}}</h2>
 
@@ -111,7 +111,7 @@
 </ion-item>
             <div class="list">
               <label class="item item-input">
-                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
+                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" class="areadetexto"></textarea>
               </label>
               <button class="button button-full button-dark" ng-click="guardarComentario(newCommentario)">Comentar</button>
             </div>

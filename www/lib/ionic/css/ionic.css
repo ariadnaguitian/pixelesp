@@ -5034,7 +5034,7 @@ a.item-content {
 .item-thumbnail-left, .item-thumbnail-left .item-content {
   padding-top: 8px;
   padding-left: 82px;
-  min-height: 100px; }
+  min-height: auto; }
 
  
   .item-thumbnail-left > img:first-child, .item-thumbnail-left .item-image, .item-thumbnail-left .item-content > img:first-child, .item-thumbnail-left .item-content .item-image {

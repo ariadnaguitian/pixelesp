@@ -58,15 +58,15 @@
        <img src="img/avatar/{{comentario.imagen}}" alt="" >
        <h2>{{comentario.username}}</h2>
        <p>{{comentario.text}}</p>
-       <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
+       <h4 class="comentariosimg item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
    </ion-item>
 
-     <ion-item ng-repeat="favorito in imagen.favoritos track by favorito.id" class="item item-thumbnail-left">
-       <img src="img/avatar/{{favorito.imagen}}" alt="" >
-       <h2>{{favorito.username}}</h2>
-       <p>{{favorito.text}}</p>
-       <h4 class="item-note"><i class="icon ion-clock"></i>{{favorito.created_at}}</h4>
-   </ion-item>
+
+
+
+
+
+
 
 
 
@@ -81,18 +81,23 @@
           </ion-header-bar>
 
           <ion-content class="padding">
+
+
+     <ion-item ng-repeat="favorito in imagen.favoritos track by favorito.id" class="item item-thumbnail-left">
+       <img src="img/avatar/{{favorito.imagen}}" alt=""  width="32" height="32">
+       <h2>{{favorito.username}}</h2>
+   
+   
+   </ion-item>
                       
-              <ion-item ng-repeat="favorito in imagen.favoritos track by favorito.id"  class="item item-thumbnail-left" >
-
-            <img src="img/avatar/{{favorito.imagen}}" width="32px" height="32px" alt="" class="img galeriafb">
-
-<h2>{{favorito.username}}</h2>
-        
-</ion-item>
+           
            
           </ion-content>
         </ion-modal-view>
     </script>
+
+
+
 
 
  <!-- 
