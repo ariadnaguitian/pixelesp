@@ -68,7 +68,7 @@
 </div> 
 
 
-      <h4 class="item-note"><i class="ion-heart"></i> {{count}} | <i class="ion-chatbox"></i> {{noticia.comentarios.length}} |  <i class="ion-android-done-all"></i> 10 vistos</h4>
+      <h4 class="item-note"><i class="ion-heart"></i> {{$storage.x}} | <i class="ion-chatbox"></i> {{noticia.comentarios.length}} |  <i class="ion-android-done-all"></i> 10 vistos</h4>
       
 
      
@@ -86,7 +86,7 @@
 
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
+            <a class="tab-item" href="#" ng-click="$storage.x = $storage.x + 1"ng-init="count=0" >
               <i class="icon ion-thumbsup balanced"></i>
               Me gusta
             </a>

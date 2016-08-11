@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $http,$location) {
+.controller('AppCtrl', function($rootScope, $scope, $ionicModal, $timeout, $http,$location,$localStorage) {
 
  
 
@@ -32,9 +32,27 @@ angular.module('starter.controllers', [])
   });
 
 
+   if($localStorage.authorization !== undefined) {
+  $rootScope.userToken  = $localStorage.authorization;    
+    $scope.user = [];
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+      $scope.user = resp.data.data;
+      console.log('Succes', resp.data.data);
+      $location.path('/app/inicio');
+    }, function(err) {
+      console.error('ERR', err);
+      $location.path('/app/start');
+      // err.status will contain the status code
+    }); 
+}
 
+   
 
-
+  $scope.remove = function() {   
+    delete $localStorage.authorization; 
+     
+    
+  }; 
 
 
 
@@ -45,9 +63,9 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('UsuariosCtrl', function($scope, $rootScope, $http, $location) {
+.controller('UsuariosCtrl', function($scope, $rootScope, $http, $location, $localStorage) {
 
-
+ 
   $scope.usuarios = [];
    $scope.$on('$ionicView.beforeEnter', function() {
     
@@ -64,11 +82,12 @@ angular.module('starter.controllers', [])
 
   });
 
+ 
 
 
 })
 
-.controller('UsuariocomunidadCtrl', function($scope, $stateParams, $http, $location) {
+.controller('UsuariocomunidadCtrl', function($scope,$state, $stateParams, $http, $location, $ionicModal, $ionicPopover, $rootScope, CONFIG, $localStorage) {
 
   $scope.usuario = {};
 
@@ -82,19 +101,93 @@ angular.module('starter.controllers', [])
   }); 
 
 
+  $scope.noticias = {};
+
+  $http.get('http://pixelesp-api.herokuapp.com/noticiasusuario/'+ $stateParams.UsuarioId).then(function(resp) {
+    $scope.noticias = resp.data.data;
+
+     
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  }); 
+  $scope.abrirComentarios = function  (noticia) {
+    var viewNoticia = noticia;
+    $scope.viewNoticia = viewNoticia;
+    $scope.newCommentario = {text:''};
+    $scope.modal.show();
+  }
+  $scope.guardarComentario = function  (newCommentarioForm) {
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+        console.log(newCommentarioForm);
+        console.log(resp);
+        var newCommentario = {
+          idusuario : resp.data.data.id,
+         username : resp.data.data.username,
+          id_noticia : $scope.viewNoticia.id,
+          text : newCommentarioForm.text,
+        };
+        $http.post(CONFIG.APIURL+'newscomments',newCommentario ).then(function(resp) {
+          console.log(resp.data);
+
+           $state.go($state.current, {}, {reload: true});
+           $scope.modal.hide();
+           $scope.viewNoticia = {};
+           $scope.newCommentario = {text:''};
+        }, function(err) {
+          console.error('ERR', err);
+           
+          // err.status will contain the status code
+        });
+
+
+    }, function(err) {
+      console.error('ERR', err);
+        $scope.modal.hide();
+       $location.path('/app/start');
+    }); 
+
+    // $scope.viewNoticia = viewNoticia;
+    // $scope.modal.show();
+  }
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+
+  $ionicPopover.fromTemplateUrl('templates/popover.html', {
+    scope: $scope,
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+
+  $scope.$storage = $localStorage.$default({
+          x: 32
+        });
 
  })
 
 
 
-.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG, $ionicSideMenuDelegate) {
+.controller('EntrarCtrl', function($rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG, $ionicSideMenuDelegate, $localStorage ) {
   
-    $rootScope.userToken = ''; 
+   $rootScope.userToken = ''; 
+
         $scope.user={};
-        $scope.user.username='';
+     
+         $scope.user.username='';
         $scope.user.password =''; 
 
-   
+if($localStorage.authorization !== undefined) {
+  $rootScope.userToken  = $localStorage.authorization;    
+     
+}
+
    $scope.doLogin = function() {
       $http.post('http://pixelesp-api.herokuapp.com/login',$scope.user).then(function(resp) {
         console.log(resp.data);
@@ -104,7 +197,9 @@ angular.module('starter.controllers', [])
 
                     $scope.user = $rootScope.user;
            $scope.user = {};
-          $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+             
+
+     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
             $rootScope.user = resp.data.data;
             console.log('token: '+$rootScope.userToken);
 
@@ -120,9 +215,20 @@ angular.module('starter.controllers', [])
             // err.status will contain the status code
           });
 
+
+  if(typeof(Storage) != "undefined") {
+ 
+      $localStorage.authorization =   $rootScope.userToken;
+        console.log( $localStorage.authorization );
+ 
+     
+  } else {
+      alert("LocalStorage not supported!"); 
+  }
+
             $location.path('/app/inicio');
      
-       
+             
           
     }, function(err) {
       console.error('ERR', err);
@@ -135,6 +241,7 @@ angular.module('starter.controllers', [])
            });
       // err.status will contain the status code
     });
+
     };
   $ionicSideMenuDelegate.canDragContent(false)
 
@@ -361,10 +468,14 @@ angular.module('starter.controllers', [])
  })
 
 
-.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout, $cordovaSocialSharing, $stateParams) {
-  
-   console.log($rootScope.userToken);     
-    
+.controller('NoticiasCtrl', function($scope, $http, $state,CONFIG,$ionicModal, $rootScope,  $location, $ionicPopover, $timeout, $cordovaSocialSharing, $stateParams, $localStorage) {
+      
+    if($localStorage.authorization !== undefined) {
+  $rootScope.userToken  = $localStorage.authorization;    
+     
+   console.log($rootScope.userToken); 
+}
+
     $scope.user = [];
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
       $scope.user = resp.data.data;
@@ -403,6 +514,10 @@ angular.module('starter.controllers', [])
     }, 1000);
       
   };
+
+  $scope.$storage = $localStorage.$default({
+          x: 32
+        });
 
   $scope.imagenes = [];
   $scope.$on('$ionicView.beforeEnter', function() {
