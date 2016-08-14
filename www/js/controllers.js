@@ -170,6 +170,23 @@ angular.module('starter.controllers', [])
           x: 32
         });
 
+  $scope.imagenes = [];
+   
+
+        $http.get('http://pixelesp-api.herokuapp.com/listarfavoritos/' + $stateParams.UsuarioId).then(function (resp) {
+
+            $scope.imagenes = resp.data.data;
+
+            console.log('Succes', resp.data.data);
+
+        }, function (err) {
+
+            console.error('ERR', err);
+            // err.status will contain the status code
+
+        });
+ 
+
  })
 
 
@@ -1170,7 +1187,8 @@ $state.reload();
             $scope.imgfavoritos={};
 
 
-               $http.delete('http://pixelesp-api.herokuapp.com/delfavoritos', $scope.imgfavoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+   $http.delete('http://pixelesp-api.herokuapp.com/imgfavoritos/' + $stateParams.ImagenId, {headers: {'auth-token': $rootScope.userToken}}).then(function (resp) {
+               
                  console.log(resp.data);
                  $state.reload();
 
@@ -1262,6 +1280,148 @@ $state.reload();
           // PROGRESS HANDLING GOES HERE
       });
   }
+})
+
+.controller('CrearMensajeCtrl', function ($scope, $stateParams, $http, $location, $ionicPopup, $ionicLoading, $ionicHistory, $localStorage, $rootScope) {
+
+   $scope.mensaje = {};
+
+    $scope.mensaje.asunto = '';
+    $scope.mensaje.mensaje = '';
+
+    $scope.usuario = {};
+ 
+
+
+ $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+
+
+        $scope.mensaje.id_origen = resp.data.data.id;
+}, function(err) {
+      console.error('ERR', err);
+     
+    }); 
+  
+    $scope.doSend = function () {
+
+        $http.post('http://pixelesp-api.herokuapp.com/crearmensaje/' + $stateParams.UsuarioId, $scope.mensaje).then(function (resp) {
+
+            console.log('Creado');
+
+            var alertPopup = $ionicPopup.alert({
+                title: 'Perfecto!',
+                template: '¡Mensaje enviado!'
+            });
+
+            alertPopup.then(function (res) {
+                $ionicHistory.goBack();
+            });
+
+        }, function (err) {
+
+            console.error('ERR', err);
+
+            var alertPopup = $ionicPopup.alert({
+                title: 'Error',
+                template: err.data.msg
+            });
+
+            alertPopup.then(function (res) {});
+
+        });
+
+    };
+
+    
+
+
+
+})
+.controller('MensajesCtrl', function ($scope, $http, $stateParams, $rootScope) {
+
+    $scope.mensajes = [];
+  
+ $scope.$on('$ionicView.beforeEnter', function () {
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+        $scope.mensajes.idusuario = resp.data.data.id;
+
+   }, function(err) {
+      console.error('ERR', err);
+
+  }); 
+
+        $http.get('http://pixelesp-api.herokuapp.com/listarmensajes/' + $stateParams.UsuarioId).then(function (resp) {
+
+            $scope.mensajes = resp.data.data;
+   
+        }, function (err) {
+
+            console.error('ERR', err);
+            // err.status will contain the status code
+
+        });
+   
+ });
+
+   
+
+})
+.controller('MensajeCtrl', function ($scope, $state, $stateParams, $http, $location, $ionicPopup, $ionicLoading, $ionicHistory) {
+
+    $scope.mensaje = {};
+
+    $scope.$on('$ionicView.beforeEnter', function () {
+        $http.get('http://pixelesp-api.herokuapp.com/mensaje/' + $stateParams.IdMensaje).then(function (resp) {
+
+            //Saco el icono de Cargando.
+            $ionicLoading.hide();
+
+            $scope.mensaje = resp.data.data[0];
+
+            console.log($scope.mensaje);
+
+        }, function (err) {
+
+            //Saco el icono de Cargando.
+            $ionicLoading.hide();
+
+            console.error('ERR', err);
+            // err.status will contain the status code
+        });
+    });
+
+    $scope.doBorrar = function () {
+
+        console.log('Borrado!');
+
+        $http.delete('http://pixelesp-api.herokuapp.com/borrarmensaje/' + $stateParams.IdMensaje).then(function (resp) {
+
+           
+           
+            var alertPopup = $ionicPopup.alert({
+              
+                template: '¡Mensaje Borrado!'
+            });
+
+            alertPopup.then(function (res) {
+                $ionicHistory.goBack();
+                
+            });
+
+        }, function (err) {
+
+            console.error('ERR', err);
+            // err.status will contain the status code
+
+            var alertPopup = $ionicPopup.alert({
+                title: 'Error',
+                template: err.data.msg
+            });
+
+            alertPopup.then(function (res) { });
+
+        });
+    };
 });
 
 

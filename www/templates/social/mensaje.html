@@ -24,33 +24,31 @@
     <!-- ======================
     GEMIONIC EDIT SECTION
     ====================== -->
-    <div class="gem-edit-section">
-      <div class="gem-poster">
-        <div class="padding">
-         
 
+      <div class="list card">
 
+  <div class="item">
+   
 
-          <div class="padding">
-      
-    <form>
-      <div class="list">
-        <label class="item item-input">
-          <input type="text" placeholder="Asunto" ng-model="mensaje.asunto">
-        </label>
-         <label class="item item-input">
-          <textarea type="text" placeholder="Escriba su mensaje" ng-model="mensaje.mensaje"></textarea>
-        </label>
+    <h2>{{mensaje.name}}</h2>
+    <p>{{mensaje.created_at}}</p>
+    
+  </div>
+  
+  <div class="item item-body">
+     <h2>{{mensaje.asunto}}</h2>
+    <p>
+     {{mensaje.msj}}
+    </p>
+   
+  </div>
+   <a class="linksinestilo" href="#/app/mensajeprivado/{{mensaje.from}}"><button  class="button button-block button-balanced">Responder</button></a>
+         <button  ng-click="doBorrar()" class="button button-block button-assertive">Borrar mensaje</button>
+  
+</div>
+
+        
        
-        <label class="item">
-          <a class="linksinestilo"><button ng-click="doSend()" class="button button-block button-balanced">Enviar mensaje</button></a>
-        </label>
-      
-      </div>
-    </form>
-          </div>
-        </div>
-      </div>
       
    
     <!-- ======================

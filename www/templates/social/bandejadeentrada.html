@@ -1,0 +1,68 @@
+<!-- Title for header bar (refer to www/index.html) -->
+<ion-view title="Notificaciones">
+  <!-- left button -->
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <!-- right button -->
+
+  
+  <!-- ======================
+  MAIN SECTION CONTENT - timeline
+  ====================== -->
+
+  <ion-content class="has-header gem-ion-content">
+      <!-- Subheader - using ionic's subheader. '.gem-position-relative' is to shift the child icon to the right -->
+           <div class="bar bar-header bar-balanced gem-position-relative">
+        <h2 class="title text-left">
+          {{mensajes.length}} Mensajes 
+        </h2>
+      </div>
+   
+
+    <ul class="list gem-friend-list">
+          <!-- Single Friend Item -->
+  
+         <li class="item">
+
+
+    <ion-list>
+      <ion-item ng-repeat="mensaje in mensajes" | filter:Query" href="#/app/mensaje/{{mensaje.id}}">
+      
+        
+            <!-- thumb image (round) -->
+            <img src="img/avatar/{{mensaje.imagen}}" alt="" class="gem-friend-list-profile-pic"> 
+
+<div class="gem-friend-list-text">
+
+              <b>{{mensaje.name}} </b>
+             <span class="signature">  <h3>{{mensaje.asunto}} </h3> </span>
+                   <span class="signature"> {{mensaje.created_at}} </span>
+            </div>
+
+      </ion-item>
+
+      </ion-list>
+      </li>
+      </ul>
+
+
+
+
+    
+      <!-- End subheader -->
+
+      <!-- Gemionic Timeline -->
+      
+      <!-- End gemionic timeline -->
+
+      <!-- Title separator -->
+ 
+      <!-- End Title separator -->
+
+
+      <!-- Gemionic Timeline -->
+      
+  </ion-content>
+</ion-view>

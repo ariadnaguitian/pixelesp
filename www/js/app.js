@@ -526,12 +526,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngC
       }
     })
    .state('app.enviarmensaje', {
-      url: "/mensajeprivado",
+      url: "/mensajeprivado/:UsuarioId",
       views: {
         'menuContent' :{
           templateUrl: "templates/social/mensajeprivado.html",
+            controller:  'CrearMensajeCtrl'
         }
       }
+    })
+
+     .state('app.bandejadeentrada', {
+      url: "/bandejadeentrada/:UsuarioId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/bandejadeentrada.html",
+            controller:  'MensajesCtrl'
+        }
+      }
+    })
+
+     .state('app.mensaje', {
+        url: '/mensaje/:IdMensaje',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/social/mensaje.html',
+                controller: 'MensajeCtrl'
+            }
+        }
     })
    
 

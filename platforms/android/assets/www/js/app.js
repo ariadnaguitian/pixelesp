@@ -8,7 +8,7 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngCordova', 'ngStorage'])
 
 
 
@@ -55,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngC
       url: "/app",   
         abstract: true, 
       templateUrl: "templates/social/menu.html",
-      controller: 'AppCtrl' ['UsuariosCtrl']
+      controller: 'AppCtrl' 
 
     })
 
@@ -79,7 +79,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngC
       views: {
         'menuContent' :{
           templateUrl: "templates/social/start-fullscreen.html",
-          controller: 'EntrarCtrl'
+          controller: 'EntrarCtrl',
+         
         }
       }
     })
@@ -529,6 +530,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngC
       views: {
         'menuContent' :{
           templateUrl: "templates/social/mensajeprivado.html",
+            controller:  'CrearMensajeCtrl'
         }
       }
     })

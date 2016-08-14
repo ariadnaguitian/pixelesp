@@ -114,48 +114,89 @@
   </div>
   <div ng-show="tab.isSet(2)">
      <div class="title">
-          <h4><i class="ion-heart"></i> <b>352 favoritos</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
+          <h4><i class="ion-heart"></i> <b>{{imagenes.length}} favoritos</b> <a href="#/app/galeria" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
-        <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/pj0mb.png"> </div>
-  </div>
+        <div id="" class="contenedor5" ng-repeat="imagen in imagenes" ><div class="cont-image5" >
+        <a href="#/app/galeria/{{imagen.id}}"><img class="centrado5" src="img/imagenes/{{imagen.Previa}}"></a> </div>
+    
+  </div>          
   </div>
 
   <div ng-show="tab.isSet(3)">
      <div class="title">
-          <h4><i class="ion-chatbubble"></i> <b>985 comentarios</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
+<!--       // antes era comentarios
+ -->      
+      <h4><i class="ion-chatbubble"></i> <b>{{noticias.length}} noticias</b> <a  href="#/app/inicio" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
-        <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
-  </div>          <div id="" class="contenedor5"><div class="cont-image5">
-    <img class="centrado5" src="img/imagenes/tcg328pre.png"> </div>
+     
+       <ion-list ng-repeat="noticia in noticias" >
+   
+    
+            <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
+           <ion-item   class="item item-thumbnail-left" >
+
+            <img src="img/avatar/{{noticia.imagen}}" alt=""  >       
+            <!-- End Poster -->
+
+            <!-- Content -->
+
+            <div class="news-content" >
+              <h2>{{noticia.Titulo}}</h2>
+
+              <h4>
+                por <a href="#/app/comunidad/{{noticia.IdUsuario}}">{{noticia.username}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
+              </h4>
+                <div class="item-text-wrap">
+    {{noticia.Descripcion}}
   </div>
+
+
+              <!-- Stat Section -->
+             
+
+      
+</div> 
+
+
+      <h4 class="item-note"><i class="ion-heart"></i> {{$storage.x}} | <i class="ion-chatbox"></i> {{noticia.comentarios.length}} |  <i class="ion-android-done-all"></i> 10 vistos</h4>
+      
+
+     
+     
+        
+     
+
+
+
+       <!-- End Content -->
+
+      <!-- Mock trigger button for action sheet for this post -->
+    
+      <!-- End Button -->
+
+   
+</ion-item><div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#" ng-click="$storage.x = $storage.x + 1" >
+              <i class="icon ion-thumbsup balanced"></i>
+              Me gusta
+            </a>
+
+           
+
+
+            <a class="tab-item"  ng-click="abrirComentarios(noticia)">
+              <i class="icon ion-chatbox balanced"></i>
+            Comentar
+            </a>
+               <a class="tab-item"  ng-click="compartir()">
+            
+              <i class="icon ion-share balanced"></i>
+              Compartir
+           
+          </a>
+          </div>
+
+    </ion-list>
         </div>
                   <div ng-show="tab.isSet(4)">
      <div class="title">
@@ -167,6 +208,7 @@
           <h4><i class="ion-android-star"></i> <b>1536 ratings</b> <a href="" class="button button-positive button-small gem-more-button">Ver más <i class="ion-chevron-right"></i></a></h4>
         </div>
   </div>
+
 
 </section>
 

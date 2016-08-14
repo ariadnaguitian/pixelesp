@@ -40,7 +40,7 @@
          <li class="item">
 
 
-    <ion-list>  <h2>  Todos los usuarios {{(usuarios|filter:Query).length}}</h2>  
+    <h2>  Todos los usuarios {{(usuarios|filter:Query).length}}</h2>  
       <ion-item ng-repeat="usuario in usuarios | filter:Query" href="#/app/comunidad/{{usuario.id}}">
       
           <!-- Single Friend Item -->
@@ -56,7 +56,7 @@
             </div>
 
       </ion-item>
-    </ion-list>
+
 
 
     </li>
