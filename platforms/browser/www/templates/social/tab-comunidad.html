@@ -21,14 +21,12 @@
   ====================== -->
   <ion-content class="has-header gem-ion-content">
     <!-- Standard Ionic Markup for search -->
-    <div class="item item-input-inset">
-      <label class="item-input-wrapper">
+       <div class="list list-inset">
+      <label class="item item-input">
         <i class="icon ion-search placeholder-icon"></i>
-
-        <input type="text" placeholder="Search" ng-model="Query" >
-      </label> 
-
-    </div>    
+        <input type="text" placeholder="Buscar" ng-model="Query" >
+      </label>
+    </div>
     <!-- End Search box-->
  
   
@@ -42,7 +40,7 @@
          <li class="item">
 
 
-    <ion-list>  <h2>  Todos los usuarios {{(usuarios|filter:Query).length}}</h2>  
+    <h2>  Todos los usuarios {{(usuarios|filter:Query).length}}</h2>  
       <ion-item ng-repeat="usuario in usuarios | filter:Query" href="#/app/comunidad/{{usuario.id}}">
       
           <!-- Single Friend Item -->
@@ -58,7 +56,7 @@
             </div>
 
       </ion-item>
-    </ion-list>
+
 
 
     </li>

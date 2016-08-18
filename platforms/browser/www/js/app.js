@@ -8,11 +8,11 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper', 'ionic-ratings','ngMessages', 'ngCordova','ngStorage'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ionic-ratings', 'ngCordova', 'ngStorage'])
 
 
 
-.run(function ($ionicPlatform, $rootScope, $localStorage, $location) {
+.run(function ($ionicPlatform, $rootScope) {
             $ionicPlatform.ready(function () {
                 if (window.cordova && window.cordova.plugins.Keyboard) {
                     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -23,6 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
                     // from snapping when text inputs are focused. Ionic handles this internally for
                     // a much nicer keyboard experience.
                     cordova.plugins.Keyboard.disableScroll(true);
+
                 }
                 if (window.StatusBar) {
                     StatusBar.styleDefault();
@@ -31,7 +32,9 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
 
 
   
-          
+           
+
+
 
  });
 
@@ -52,7 +55,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
       url: "/app",   
         abstract: true, 
       templateUrl: "templates/social/menu.html",
-      controller: 'AppCtrl' ['UsuariosCtrl']
+      controller: 'AppCtrl' 
 
     })
 
@@ -76,7 +79,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
       views: {
         'menuContent' :{
           templateUrl: "templates/social/start-fullscreen.html",
-          controller: 'EntrarCtrl'
+          controller: 'EntrarCtrl',
+         
         }
       }
     })
@@ -332,6 +336,17 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
  }
  })
 
+ .state('app.subirimagenes', {
+ url: '/subirimagenes',
+ views: {
+        'menuContent' :{
+     templateUrl: 'templates/social/subirimagen.html',
+    controller: 'subirimagenes'
+       
+
+ }
+ }
+ })
 
 
  .state('app.usuarios', {
@@ -511,12 +526,33 @@ angular.module('starter', ['ionic', 'starter.controllers','ngPackery','ksSwiper'
       }
     })
    .state('app.enviarmensaje', {
-      url: "/mensajeprivado",
+      url: "/mensajeprivado/:UsuarioId",
       views: {
         'menuContent' :{
           templateUrl: "templates/social/mensajeprivado.html",
+            controller:  'CrearMensajeCtrl'
         }
       }
+    })
+
+     .state('app.bandejadeentrada', {
+      url: "/bandejadeentrada/:UsuarioId",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/social/bandejadeentrada.html",
+            controller:  'MensajesCtrl'
+        }
+      }
+    })
+
+     .state('app.mensaje', {
+        url: '/mensaje/:IdMensaje',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/social/mensaje.html',
+                controller: 'MensajeCtrl'
+            }
+        }
     })
    
 

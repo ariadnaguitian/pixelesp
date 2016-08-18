@@ -1071,6 +1071,8 @@ $scope.abrirComentarios = function  (trabajo) {
    $scope.$on('$ionicView.beforeEnter', function() {
   $http.get('http://pixelesp-api.herokuapp.com/imagenes/'+ $stateParams.ImagenId).then(function(resp) {
     $scope.imagen = resp.data.data;
+  
+
 
      
   }, function(err) {
@@ -1152,13 +1154,18 @@ $scope.abrirComentarios = function  (trabajo) {
 
  
  //favoritos
+     
+        
 
-
-
-$scope.EventRunning = false;
+    $scope.EventRunning = false;
+       
   
-     $scope.StartEvent = function (event) {
-         
+   
+
+
+      $scope.StartEvent = function (event) {
+     
+
             event.preventDefault();
           
             $scope.EventRunning = true;
@@ -1166,11 +1173,10 @@ $scope.EventRunning = false;
             // your code
             $scope.imgfavoritos={};
             $scope.imgfavoritos.idimagen= $scope.imagen.id;
-        
-
+       
           
                $http.post('http://pixelesp-api.herokuapp.com/imgfavoritos', $scope.imgfavoritos, {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
-                 
+                    
                    console.log(resp.data);
 $state.reload();
              }, function(err) {
@@ -1178,7 +1184,7 @@ $state.reload();
                // err.status will contain the status code
              });
 
-    }
+  } 
 
     $scope.StopEvent = function (event) {
             event.preventDefault();
@@ -1253,34 +1259,121 @@ $state.reload();
   
   }
 )
-.controller('subirimagenes', function($scope, $cordovaFileTransfer) {
-         
-   $scope.upload = function () {
-     // Destination URL 
-     var url = "https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload";
+
+.controller('subirimagenes', function($scope, $cordovaFileTransfer, $cordovaCamera, $http, $q, $stateParams, $ionicPopup, $location, $rootScope) {
+
+   $scope.imagen={};
+        $scope.imagen.Titulo='';
+        $scope.imagen.Descripcion='';
       
-     //File for Upload
-     var targetPath = "https://s3.amazonaws.com/ionic-forum-static/forum-logo.png" ;
-      
-     // File name only 
-      
-     var options = {
-          fileKey: "avatar",
-          fileName: "image.png",
-          chunkedMode: false,
-          mimeType: "image/png",
-         
-      };
-           
-      $cordovaFileTransfer.upload(url, targetPath, options).then(function (result) {
+        $scope.imagen.id =''; 
+        $scope.imagen.Imagen =''; 
+  document.addEventListener("deviceready",function(){
+        
+        $scope.upload = function (){
+            console.log("encotro");
+            navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI ,sourceType: Camera.PictureSourceType.PHOTOLIBRARY });            
+            function onSuccess(imageURI) {
+                var image = document.getElementById('fotoServidor');
+                image.src = imageURI;
+                 $scope.imagen.Imagen = image; 
+                 var deferred = $q.defer();
+                subirImagen(); 
+  function subirImagen() {
+                
+                 var options = {                     
+                    
+                        params : { 
+                  'upload_preset': 'c5o7wpot',            
+                  'api_key': 584471834239559,                 
+                
+
+                }
+                    
+                                    } 
+
+
+     $cordovaFileTransfer.upload("https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload", imageURI, options).then(function (result) {
+    
           console.log("SUCCESS: " + JSON.stringify(result.response));
-      }, function (err) {
+
+             var response = JSON.parse(decodeURIComponent(result.response));
+                  deferred.resolve(response);
+
+ $http.post('http://pixelesp-api.herokuapp.com/api/post/images',imageUri).then(function(resp) { 
+        console.log(resp.data);
+                 
+    }, function(err) {
+      console.error('ERR', err);
+            
+    }) ;
+
+     }, function (err) {
           console.log("ERROR: " + JSON.stringify(err));
-      }, function (progress) {
-          // PROGRESS HANDLING GOES HERE
+
+             deferred.reject(err);
+     }, function (progress) {
+           
       });
-  }
+           
+                       
+
+             
+
+            }
+
+            }
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }            
+          
+
+            function uploadSuccess(r) {
+                console.log("Code = " + r.responseCode+" Response = " + r.response+" Sent = " + r.bytesSent);
+                var image = document.getElementById('fotoServidor');
+                image.src = r.response;
+            }
+
+            function uploadFail(error) {
+                console.log("An error has occurred: Code = " + error.code+ " upload error source " + error.source+" upload error target " + error.target);
+            }            
+        }        
+    },false);  
+
+        $scope.SubirImagen = function() {
+    
+    $scope.imagen.username =''; 
+
+
+    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
+        
+
+        $scope.imagen.idusuario = resp.data.data.id;
+
+      
+
+        $http.post('http://pixelesp-api.herokuapp.com/imagenes',$scope.imagen).then(function(resp) {
+              console.log(resp.data);
+           
+       $location.path('/app/galeria');
+
+
+              
+        }, function(err) {
+          console.error('ERR', err);
+          // err.status will contain the status code
+        });
+
+
+    }, function(err) {
+      console.error('ERR', err);
+     
+    }); 
+  };
+         
+  
 })
+        
 
 .controller('CrearMensajeCtrl', function ($scope, $stateParams, $http, $location, $ionicPopup, $ionicLoading, $ionicHistory, $localStorage, $rootScope) {
 
@@ -1397,16 +1490,10 @@ $state.reload();
         $http.delete('http://pixelesp-api.herokuapp.com/borrarmensaje/' + $stateParams.IdMensaje).then(function (resp) {
 
            
-           
-            var alertPopup = $ionicPopup.alert({
-              
-                template: '¡Mensaje Borrado!'
-            });
-
-            alertPopup.then(function (res) {
+          
                 $ionicHistory.goBack();
                 
-            });
+           
 
         }, function (err) {
 

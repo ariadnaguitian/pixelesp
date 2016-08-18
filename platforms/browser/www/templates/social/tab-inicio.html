@@ -7,7 +7,7 @@
   RIGHT SIDE BUTTON
   ====================== -->
   <ion-nav-buttons side="right">
-
+       <a href="#/app/bandejadeentrada/{{user.id}}" target="_self" button class="button button-icon icon ion-email"></button></a>
       <a href="#/app/msg" target="_self" button class="button button-icon icon ion-android-notifications"><div class="badge badge-assertive">4</div></button></a>
     <a href="#/app/crearnoticia" target="_self" button class="button button-icon icon ion-compose"></button></a>
   </ion-nav-buttons>
@@ -45,7 +45,7 @@
             <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
            <ion-item ng-click="abrirComentarios(noticia)"  class="item item-thumbnail-left" >
 
-            <img src="img/paintprogram.png" alt=""  >       
+            <img src="img/avatar/{{noticia.imagen}}" alt=""  >       
             <!-- End Poster -->
 
             <!-- Content -->
@@ -56,21 +56,19 @@
               <h4>
                 por <a href="#/app/comunidad/{{noticia.IdUsuario}}">{{noticia.username}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
               </h4>
-             <p>{{noticia.Descripcion}}</p>
+                <div class="item-text-wrap">
+    {{noticia.Descripcion}}
+  </div>
 
 
               <!-- Stat Section -->
              
-                      <div class="news-more-action" >
-             <a ng-click="popover.show($event)" class="trespuntos"> <i class="icon ion-more" ></i></a>
 
-            
-</div>
       
 </div> 
 
 
-      <h4 class="item-note"><i class="ion-heart"></i> {{count}} | <i class="ion-chatbox"></i> 2 |  <i class="ion-android-done-all"></i> 10 vistos</h4>
+      <h4 class="item-note"><i class="ion-heart"></i> {{$storage.x}} | <i class="ion-chatbox"></i> {{noticia.comentarios.length}} |  <i class="ion-android-done-all"></i> 10 vistos</h4>
       
 
      
@@ -88,7 +86,7 @@
 
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
+            <a class="tab-item" href="#" ng-click="$storage.x = $storage.x + 1"ng-init="count=0" >
               <i class="icon ion-thumbsup balanced"></i>
               Me gusta
             </a>
@@ -100,30 +98,42 @@
               <i class="icon ion-chatbox balanced"></i>
             Comentar
             </a>
-            <a class="tab-item" href="#">
+               <a class="tab-item"  ng-click="compartir()">
+            
               <i class="icon ion-share balanced"></i>
               Compartir
-            </a>
+           
+          </a>
           </div>
 
     </ion-list>
     <script id="templates/modal.html" type="text/ng-template">
         <ion-modal-view>
+
           <ion-header-bar class="bar bar-dark bar-header">
             <h1 class="title">Comentarios - {{viewNoticia.Titulo}}</h1>
             <button class="button button-clear button-primary" ng-click="modal.hide()">Cerrar</button>
           </ion-header-bar>
 
           <ion-content class="padding">
+                      
               <ion-item class="item item-thumbnail-left" >
-            <img src="img/paintprogram.png" alt="" class="img">
+
+<i ng-click="popover.show($event)" class="icon ion-more trespuntos" ></i></a>
+
+            <img src="img/avatar/{{viewNoticia.imagen}}" alt="" class="img galeriafb">
           <div class="news-content">
+
               <h2>{{viewNoticia.Titulo}}</h2>
 
               <h4>
                 por <a href="#">{{viewNoticia.username}}</a> - <i class="icon ion-clock"></i>{{viewNoticia.created_at}}
               </h4>
-             <p>{{viewNoticia.Descripcion}}</p>
+
+                <div class="item-text-wrap">
+    {{viewNoticia.Descripcion}}
+  </div>
+             
 
 
               <!-- Stat Section -->
@@ -138,7 +148,7 @@
 </ion-item>
             <div class="list">
               <label class="item item-input">
-                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" ></textarea>
+                <textarea rows="1" placeholder="Escriba su comentario" ng-model="newCommentario.text" class="areadetexto"></textarea>
               </label>
               <button class="button button-full button-dark" ng-click="guardarComentario(newCommentario)">Comentar</button>
             </div>

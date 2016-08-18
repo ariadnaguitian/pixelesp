@@ -33,20 +33,22 @@
 
           <div class="padding">
       <!--  ng-submit="doRegister() y agregar ng-model, ejemplo : ng-model="imagen.Descripcion" -->
-    <form">
+    <form  >
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="Titulo">
+          <input type="text" ng-model="imagen.Titulo"  placeholder="Titulo">
         </label>
          <label class="item item-input">
-          <textarea type="text" placeholder="Descripcion"></textarea>
+          <textarea type="text"  ng-model="imagen.Descripcion" placeholder="Descripcion"></textarea>
         </label>
        
         <label class="item">
        <button class="button button-full button-royal" ng-click="upload()">Test File Upload</button>  
-       <button class="button button-block button-dark">Crear imagen</button>    
+       <img id="fotoServidor" ng-src="{{imagen.Imagen}}"  width="100px" height="100px">  
+
+         
         </label>
-      
+       <button class="button button-block button-dark" ng-click="SubirImagen()">Crear imagen</button> 
       </div>
     </form>
           </div>
