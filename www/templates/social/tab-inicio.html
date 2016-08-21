@@ -22,7 +22,7 @@
    <ion-scroll direction="x" class="available-scroller">
       <div class="imagen" collection-repeat="imagen in imagenes"
          item-height="120" item-width="imagen.width + 115">
-            <a href="#/app/galeria/{{imagen.id}}"><img ng-src="img/imagenes/{{imagen.Previa}}"></a>
+            <a href="#/app/galeria/{{imagen.id}}"><img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.Imagen}}" width="100px" height="100px"></a>
       </div>
     </ion-scroll>
 

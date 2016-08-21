@@ -348,7 +348,7 @@ if($localStorage.authorization !== undefined) {
  
 
 
-.controller('UsuarioCtrl', function($scope, $stateParams, $http, $location, $ionicPopup) {
+.controller('UsuarioCtrl', function($scope, $stateParams, $http, $location, $ionicPopup, $cordovaFileTransfer, $cordovaCamera, $q, $rootScope) {
 
   $scope.usuario = {};
 
@@ -360,6 +360,94 @@ if($localStorage.authorization !== undefined) {
     console.error('ERR', err);
     // err.status will contain the status code
   }); 
+
+
+
+//cambiar avatar:
+  document.addEventListener("deviceready",function(){
+        
+        $scope.upload = function (){
+            console.log("encotro");
+            navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI ,sourceType: Camera.PictureSourceType.PHOTOLIBRARY });            
+    
+   
+function onSuccess(imageURI) {
+
+                var image = document.getElementById('fotoServidor3');
+                image.src = imageURI;
+
+                
+                 var deferred = $q.defer();
+                subirImagen(); 
+  function subirImagen() {
+
+                
+                 var options = {  
+ 
+                  
+                        params : { 
+                          
+                  'upload_preset': 'c5o7wpot',            
+                  'api_key': 584471834239559,  
+                  'folder' : 'Avatar'
+
+                
+
+                }
+                    
+                                    } 
+
+
+     $cordovaFileTransfer.upload(encodeURI("https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload"), imageURI, options).then(function (result) {
+    
+          console.log("SUCCESS: " + JSON.stringify(result.response));
+
+             var response = JSON.parse(decodeURIComponent(result.response));
+                  deferred.resolve(response);
+                  var resultado = JSON.stringify(result.response);
+var url = response.url;
+
+ $scope.usuario.imagen = url.substr(url.lastIndexOf('d/') + 2); 
+
+         console.log("SUCCESS2: " +  url.substr(url.lastIndexOf('d/') + 2));
+
+   console.log("SUCCESS2: " +  resultado.substr(resultado.lastIndexOf('/') + 1));
+
+
+     }, function (err) {
+          console.log("ERROR: " + JSON.stringify(err));
+
+             deferred.reject(err);
+     }, function (progress) {
+           
+      });
+           
+                       
+
+             
+
+            }
+
+            }
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }            
+          
+
+            function uploadSuccess(r) {
+                console.log("Code = " + r.responseCode+" Response = " + r.response+" Sent = " + r.bytesSent);
+                var image = document.getElementById('fotoServidor3');
+                image.src = r.response;
+            }
+
+            function uploadFail(error) {
+                console.log("An error has occurred: Code = " + error.code+ " upload error source " + error.source+" upload error target " + error.target);
+            }            
+        }
+
+
+ 
+  },false); 
 
   $scope.doSave = function() {
     $http.put('http://pixelesp-api.herokuapp.com/usuarios/'+ $stateParams.UsuarioId, $scope.usuario).then(function(resp) {
@@ -375,8 +463,6 @@ if($localStorage.authorization !== undefined) {
       // err.status will contain the status code
     });
      };
-
-
   
 
 
@@ -1268,24 +1354,34 @@ $state.reload();
       
         $scope.imagen.id =''; 
         $scope.imagen.Imagen =''; 
+        $scope.imagen.Previa =''; 
   document.addEventListener("deviceready",function(){
         
         $scope.upload = function (){
             console.log("encotro");
             navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI ,sourceType: Camera.PictureSourceType.PHOTOLIBRARY });            
-            function onSuccess(imageURI) {
+    
+   
+function onSuccess(imageURI) {
+
                 var image = document.getElementById('fotoServidor');
                 image.src = imageURI;
-                 $scope.imagen.Imagen = image; 
+
+                
                  var deferred = $q.defer();
                 subirImagen(); 
   function subirImagen() {
+
                 
-                 var options = {                     
-                    
+                 var options = {  
+ 
+                  
                         params : { 
+                          
                   'upload_preset': 'c5o7wpot',            
-                  'api_key': 584471834239559,                 
+                  'api_key': 584471834239559,  
+
+
                 
 
                 }
@@ -1293,20 +1389,106 @@ $state.reload();
                                     } 
 
 
-     $cordovaFileTransfer.upload("https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload", imageURI, options).then(function (result) {
+     $cordovaFileTransfer.upload(encodeURI("https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload"), imageURI, options).then(function (result) {
     
           console.log("SUCCESS: " + JSON.stringify(result.response));
 
              var response = JSON.parse(decodeURIComponent(result.response));
                   deferred.resolve(response);
+                  var resultado = JSON.stringify(result.response);
+var url = response.url;
 
- $http.post('http://pixelesp-api.herokuapp.com/api/post/images',imageUri).then(function(resp) { 
-        console.log(resp.data);
-                 
-    }, function(err) {
-      console.error('ERR', err);
-            
-    }) ;
+ $scope.imagen.Imagen = url.substr(url.lastIndexOf('d/') + 2); 
+
+         console.log("SUCCESS2: " +  url.substr(url.lastIndexOf('d/') + 2));
+
+   console.log("SUCCESS2: " +  resultado.substr(resultado.lastIndexOf('/') + 1));
+
+
+     }, function (err) {
+          console.log("ERROR: " + JSON.stringify(err));
+
+             deferred.reject(err);
+     }, function (progress) {
+           
+      });
+           
+                       
+
+             
+
+            }
+
+            }
+            function onFail(message) {
+                alert('Failed because: ' + message);
+            }            
+          
+
+            function uploadSuccess(r) {
+                console.log("Code = " + r.responseCode+" Response = " + r.response+" Sent = " + r.bytesSent);
+                var image = document.getElementById('fotoServidor');
+                image.src = r.response;
+            }
+
+            function uploadFail(error) {
+                console.log("An error has occurred: Code = " + error.code+ " upload error source " + error.source+" upload error target " + error.target);
+            }            
+        }
+
+
+ 
+  },false);  
+
+//subirprevia:
+
+document.addEventListener("deviceready",function(){
+$scope.upload2 = function (){
+            console.log("encotro");
+            navigator.camera.getPicture(onSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI ,sourceType: Camera.PictureSourceType.PHOTOLIBRARY });            
+    
+   
+function onSuccess(imageURI) {
+
+                var image = document.getElementById('fotoServidor2');
+                image.src = imageURI;
+
+                
+                 var deferred = $q.defer();
+                subirImagen(); 
+  function subirImagen() {
+
+                
+                 var options = {  
+ 
+                  
+                        params : { 
+                          
+                  'upload_preset': 'c5o7wpot',            
+                  'api_key': 584471834239559,    
+                   'folder': 'Previa',             
+                
+
+                }
+                    
+                                    } 
+
+
+     $cordovaFileTransfer.upload(encodeURI("https://api.cloudinary.com/v1_1/hyktxhgfc/image/upload"), imageURI, options).then(function (result) {
+    
+          console.log("SUCCESS: " + JSON.stringify(result.response));
+
+             var response = JSON.parse(decodeURIComponent(result.response));
+                  deferred.resolve(response);
+                  var resultado = JSON.stringify(result.response);
+var url = response.url;
+
+ $scope.imagen.Previa = url.substr(url.lastIndexOf('d/') + 2); 
+
+         console.log("SUCCESS2: " +  url.substr(url.lastIndexOf('d/') + 2));
+
+   console.log("SUCCESS2: " +  resultado.substr(resultado.lastIndexOf('/') + 1));
+
 
      }, function (err) {
           console.log("ERROR: " + JSON.stringify(err));
@@ -1338,7 +1520,9 @@ $state.reload();
                 console.log("An error has occurred: Code = " + error.code+ " upload error source " + error.source+" upload error target " + error.target);
             }            
         }        
-    },false);  
+
+
+  },false);  
 
         $scope.SubirImagen = function() {
     

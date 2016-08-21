@@ -14,6 +14,11 @@ body * {
   padding-bottom: 50px;
 }
 
+.margencambiaravatar{
+margin-bottom: 20px;
+
+}
+
 .trespuntos{
   z-index: 0;
   display: block;

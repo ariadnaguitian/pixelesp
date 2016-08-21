@@ -5,7 +5,7 @@
 						    
 
      <div class="containergal">
-    <div class=""><img class="full-image imageOne image zindex ov2" ng-src="img/imagenes/{{imagen.Imagen}}" />
+    <div class=""><img class="full-image imageOne image zindex ov2" ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.Imagen}}"/>
 </div>
     <div class=""><img class="full-image galeriablur blur" ng-src="img/imagenes/{{imagen.Imagen}}" />
 </div>
@@ -32,7 +32,7 @@
   <div class="item item-body">
 
       <h1>{{imagen.Titulo}}</h1>
-      {{imagen.usuario.username}} bcvbc- 2016-06-16 03:07:40<br>
+      Por <a href="#/app/comunidad/{{imagen.IdUsuario}}">{{imagen.username}}</a> - 2016-06-16 03:07:40<br>
       <p>{{imagen.Descripcion}}</p>
     <p>
   <a href="#" class="subdued"  ng-click="abrirFavoritos(imagen)"><i class="ion-heart"></i> {{imagen.favoritos.length}} Favoritos</a>
@@ -55,8 +55,8 @@
     </div>
   
    <ion-item ng-repeat="comentario in imagen.comentarios track by comentario.id" class="item item-thumbnail-left">
-       <img src="img/avatar/{{comentario.imagen}}" alt="" >
-       <h2>{{comentario.username}}</h2>
+     <img src="img/avatar/{{comentario.imagen}}" alt="" > 
+      <a href="#/app/comunidad/{{comentario.idusuario}}"><h2>{{comentario.username}}</h2></a>
        <p>{{comentario.text}}</p>
        <h4 class="comentariosimg item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
    </ion-item>
