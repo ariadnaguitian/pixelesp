@@ -3,12 +3,17 @@
 
 		 <div class="gem-profile-media3">
 						    
+  <!-- 
+      <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
+        <div style="width: 5000px; height: 5000px; background: url('//upload.wikimedia.org/wikipedia/commons/a/ad/Europe_geological_map-en.jpg') repeat"></div>
+      </ion-scroll>
+  -->
 
-     <div class="containergal">
+     <ion-scroll  zooming="true" direction="xy" class="containergal">
     <div class=""><img class="full-image imageOne image zindex ov2" ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.Imagen}}"/>
 </div>
-    <div class=""><img class="full-image galeriablur blur" ng-src="img/imagenes/{{imagen.Imagen}}" />
-</div>
+    <div class=""><img class="full-image galeriablur blur" ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.Imagen}}" />
+</ion-scroll>
 
 
 </div>
@@ -21,7 +26,7 @@
  <span ng-hide="EventRunning"><button class="button button-clear icon ion-heart" ng-click="StartEvent($event)" id="btnEventStart"></button></span>
  <span ng-show="EventRunning"><button class="button button-clear icon ion-heart button-assertive" ng-click="StopEvent($event)" id="btnStopEvent"></button></span>
       </div>
-<ionic-ratings ratingsobj='ratingsObject'></ionic-ratings>
+<!-- <ionic-ratings ratingsobj='ratingsObject'></ionic-ratings> -->
 
 
 
@@ -38,7 +43,7 @@
   <a href="#" class="subdued"  ng-click="abrirFavoritos(imagen)"><i class="ion-heart"></i> {{imagen.favoritos.length}} Favoritos</a>
        
       <a href="#" class="subdued"><i class="ion-chatbox"></i> {{imagen.comentarios.length}} Comentarios</a>
-       <a href="#" class="subdued"> <i class="ion-android-done-all"></i>  60 Vistos</a>
+<!--        <a href="#" class="subdued"> <i class="ion-android-done-all"></i>  60 Vistos</a> -->
     </p>
 
 <ion-thread comments="comments" post="post"></ion-thread>
@@ -55,7 +60,7 @@
     </div>
   
    <ion-item ng-repeat="comentario in imagen.comentarios track by comentario.id" class="item item-thumbnail-left">
-     <img src="img/avatar/{{comentario.imagen}}" alt="" > 
+     <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{comentario.imagen}}" alt="" > 
       <a href="#/app/comunidad/{{comentario.idusuario}}"><h2>{{comentario.username}}</h2></a>
        <p>{{comentario.text}}</p>
        <h4 class="comentariosimg item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>

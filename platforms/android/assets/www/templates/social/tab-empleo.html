@@ -32,7 +32,7 @@
     
       <!-- Poster Thumb -->
    
-        <img src="img/avatar/{{trabajo.imagen}}" alt="" class="img">
+        <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{trabajo.imagen}}" alt="" class="img">
    
       <!-- End Poster -->
 
@@ -89,7 +89,7 @@
 
           <ion-content class="padding">
               <ion-item class="item item-thumbnail-left" >
-            <img src="img/avatar/{{viewEmpleo.imagen}}" alt="" class="img">
+            <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{viewEmpleo.imagen}}" alt="" class="img">
           <div class="news-content">
               <h2>{{viewEmpleo.Titulo}}</h2>
 
@@ -118,7 +118,7 @@
           
             <ion-list>
               <ion-item ng-repeat="comentario in viewEmpleo.comentarios track by comentario.id"  class="item item-thumbnail-left">
-                <img src="img/avatar/{{comentario.imagen}}" alt="" >
+                <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{comentario.imagen}}" alt="" >
                 <h2>{{comentario.username}}</h2>
                 <p>{{comentario.text}}</p>
                 <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>

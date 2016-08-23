@@ -7,8 +7,7 @@
   RIGHT SIDE BUTTON
   ====================== -->
   <ion-nav-buttons side="right">
-       <a href="#/app/bandejadeentrada/{{user.id}}" target="_self" button class="button button-icon icon ion-email"></button></a>
-      <a href="#/app/msg" target="_self" button class="button button-icon icon ion-android-notifications"><div class="badge badge-assertive">4</div></button></a>
+       <a href="#/app/bandejadeentrada/{{user.id}}" target="_self" button class="button button-icon icon ion-email"><div class="badge badge-assertive">{{mensajes.length}}</div></button></a>
     <a href="#/app/crearnoticia" target="_self" button class="button button-icon icon ion-compose"></button></a>
   </ion-nav-buttons>
   
@@ -17,12 +16,12 @@
   ====================== -->
 
 
-  <ion-content class="has-header gem-ion-content " >
+  <ion-content class="has-header gem-ion-content" >
 
    <ion-scroll direction="x" class="available-scroller">
       <div class="imagen" collection-repeat="imagen in imagenes"
          item-height="120" item-width="imagen.width + 115">
-            <a href="#/app/galeria/{{imagen.id}}"><img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.Imagen}}" width="100px" height="100px"></a>
+            <a href="#/app/galeria/{{imagen.id}}"><img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.Previa}}" max-width="100px" max-height="100px"></a>
       </div>
     </ion-scroll>
 
@@ -45,7 +44,7 @@
             <!-- Poster   <ion-item ng-repeat="noticia in noticias" class="item item-avatar"> Thumb -->
            <ion-item ng-click="abrirComentarios(noticia)"  class="item item-thumbnail-left" >
 
-            <img src="img/avatar/{{noticia.imagen}}" alt=""  >       
+            <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{noticia.imagen}}" alt=""  >       
             <!-- End Poster -->
 
             <!-- Content -->
@@ -54,7 +53,7 @@
               <h2>{{noticia.Titulo}}</h2>
 
               <h4>
-                por <a href="#/app/comunidad/{{noticia.IdUsuario}}">{{noticia.username}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
+                Por <a href="#/app/comunidad/{{noticia.IdUsuario}}">{{noticia.username}}</a> - <i class="icon ion-clock"></i>{{noticia.created_at}}
               </h4>
                 <div class="item-text-wrap">
     {{noticia.Descripcion}}
@@ -68,12 +67,18 @@
 </div> 
 
 
-      <h4 class="item-note"><i class="ion-heart"></i> {{$storage.x}} | <i class="ion-chatbox"></i> {{noticia.comentarios.length}} |  <i class="ion-android-done-all"></i> 10 vistos</h4>
+      <h4 class="item-note">
+  <!--     <i class="ion-heart"></i> {{$storage.x}} |  -->
+
+      <i class="ion-chatbox"></i> 
+      {{noticia.comentarios.length}} 
+
+       <!--    |  <i class="ion-android-done-all"></i> 10 vistos|  -->
       
 
      
      
-        
+        </h4> 
      
 
 
@@ -86,19 +91,18 @@
 
    
 </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="$storage.x = $storage.x + 1"ng-init="count=0" >
+
+           <!--  <a class="tab-item" href="#" ng-click="$storage.x = $storage.x + 1"ng-init="count=0" >
               <i class="icon ion-thumbsup balanced"></i>
               Me gusta
-            </a>
+            </a> -->
 
            
-
-
             <a class="tab-item"  ng-click="abrirComentarios(noticia)">
               <i class="icon ion-chatbox balanced"></i>
             Comentar
             </a>
-               <a class="tab-item"  ng-click="compartir()">
+               <a class="tab-item" ng-click="compartir({{noticia.id}})">
             
               <i class="icon ion-share balanced"></i>
               Compartir
@@ -119,15 +123,17 @@
                       
               <ion-item class="item item-thumbnail-left" >
 
-<i ng-click="popover.show($event)" class="icon ion-more trespuntos" ></i></a>
+<!-- <i ng-click="popover.show($event)"  ></i> -->
+<span class="trespuntos"> </span>
+</a>
 
-            <img src="img/avatar/{{viewNoticia.imagen}}" alt="" class="img galeriafb">
+            <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{viewNoticia.imagen}}" alt="" class="img galeriafb">
           <div class="news-content">
 
               <h2>{{viewNoticia.Titulo}}</h2>
 
               <h4>
-                por <a href="#">{{viewNoticia.username}}</a> - <i class="icon ion-clock"></i>{{viewNoticia.created_at}}
+                Por <a href="#/app/comunidad/{{viewNoticia.IdUsuario}}">{{viewNoticia.username}}</a> - <i class="icon ion-clock"></i>{{viewNoticia.created_at}}
               </h4>
 
                 <div class="item-text-wrap">
@@ -155,7 +161,7 @@
           
             <ion-list>
               <ion-item ng-repeat="comentario in viewNoticia.comentarios track by comentario.id"  class="item item-thumbnail-left">
-                <img src="img/avatar/{{comentario.imagen}}" alt="" >
+                <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{comentario.imagen}}" alt="" >
                 <h2>{{comentario.username}}</h2>
                 <p>{{comentario.text}}</p>
                 <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
@@ -172,7 +178,7 @@
   </ion-content>
 </ion-view>
 
-<script id="templates/popover.html" type="text/ng-template">
+<!-- <script id="templates/popover.html" type="text/ng-template">
     <ion-popover-view>
       <ion-content>
         <div class="list">
@@ -188,5 +194,5 @@
         </div>
       </ion-content>
     </ion-popover-view>
-  </script>
+  </script> -->
 

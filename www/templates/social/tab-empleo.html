@@ -32,7 +32,7 @@
     
       <!-- Poster Thumb -->
    
-        <img src="img/avatar/{{trabajo.imagen}}" alt="" class="img">
+        <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{trabajo.imagen}}" alt="" class="img">
    
       <!-- End Poster -->
 
@@ -49,7 +49,7 @@
         <!-- Stat Section -->
         <div class="other-stats" >
                 <div class="news-more-action">
-        <i class="icon ion-more"></i>
+
 
       
 
@@ -57,25 +57,27 @@
 
 
 <div class="floatright">
-      <h4 class="item-note"><i class="ion-chatbox"></i>{{trabajo.comentarios.length}} -  <i class="ion-android-done-all"></i> 90 vistos -  <i class="ion-android-share-alt"></i></h4></div>
+      <h4 class="item-note"><i class="ion-chatbox"></i>{{trabajo.comentarios.length}}</h4></div>
 <div class="floatleft">
  
         </div>
         
 
         </div> </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
-              <i class="icon ion-tshirt balanced"></i>
-              Aplicar
+            <a class="tab-item" href="#/app/mensajeprivado/{{trabajo.IdUsuario}}">
+              <i class="icon ion-email balanced"></i>
+              Contactar
             </a>
             <a class="tab-item"  ng-click="abrirComentarios(trabajo)">
               <i class="icon ion-chatbox balanced"></i>
             Comentar
             </a>
-            <a class="tab-item" href="#">
+              <a class="tab-item" ng-click="compartir({{trabajo.id}})">
+            
               <i class="icon ion-share balanced"></i>
               Compartir
-            </a>
+           
+          </a>
           </div>
 
     </ion-list>
@@ -89,7 +91,7 @@
 
           <ion-content class="padding">
               <ion-item class="item item-thumbnail-left" >
-            <img src="img/avatar/{{viewEmpleo.imagen}}" alt="" class="img">
+            <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{viewEmpleo.imagen}}" alt="" class="img">
           <div class="news-content">
               <h2>{{viewEmpleo.Titulo}}</h2>
 
@@ -118,7 +120,7 @@
           
             <ion-list>
               <ion-item ng-repeat="comentario in viewEmpleo.comentarios track by comentario.id"  class="item item-thumbnail-left">
-                <img src="img/avatar/{{comentario.imagen}}" alt="" >
+                <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{comentario.imagen}}" alt="" >
                 <h2>{{comentario.username}}</h2>
                 <p>{{comentario.text}}</p>
                 <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>

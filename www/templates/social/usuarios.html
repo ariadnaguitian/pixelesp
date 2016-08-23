@@ -13,8 +13,8 @@
   <div class="padding"><h4>  <b>Todos los usuarios {{(usuarios|filter:Query).length}}</b></h4></div>
  
       <ion-item ng-repeat="usuario in usuarios  | filter:Query" href="#/app/usuarios/{{usuario.id}}"  class="item item-thumbnail-left">
-       <img src="img/avatar/{{usuario.imagen}}" alt="">  
-       <div class="gem-friend-list-text padding"><h2>{{usuario.username}} </h2>
+       <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{usuario.imagen}}" alt="">  
+       <div class="gem-friend-list-text padding"><h2>{{usuario.username}}</h2>
         </div>
       </ion-item>
     </ion-list>

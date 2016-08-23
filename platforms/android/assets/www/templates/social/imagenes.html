@@ -1,7 +1,7 @@
 <ion-view view-title="imagenes">
   <ion-content>
     <ion-list>
-      <ion-item ng-repeat="imagen in imagenes" href="#/app/imagenes/{{imagen.id}}">
+      <ion-item ng-repeat="imagen in imagenes" ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{imagen.id}}">
         {{imagen.Titulo}}
       </ion-item>
     </ion-list>
