@@ -7,7 +7,7 @@
   RIGHT SIDE BUTTON
   ====================== -->
   <ion-nav-buttons side="right">
-    <a href="#/app/creartrabajo" target="_self" button class="button button-icon icon ion-compose"> Crear empleo</button></a>
+    <a href="#/app/creartrabajo" target="_self" button class="button button-icon icon ion-compose"> Crear</button></a>
   </ion-nav-buttons>
 
   <!-- ======================
@@ -42,40 +42,39 @@
         <h2>{{trabajo.Titulo}}</h2>
                    <h4>
           Por <a href="#" >{{trabajo.username}}</a> - <i class="icon ion-clock"></i> {{trabajo.created_at}}</h4>
-
-       <p>{{trabajo.Descripcion}}</p>
-
-
-        <!-- Stat Section -->
-        <div class="other-stats" >
-                <div class="news-more-action">
-        <i class="icon ion-more"></i>
-
-      
-
+ <div class="item-text-wrap">
+       {{trabajo.Descripcion}}
 </div>
 
+  </div>       <!-- Stat Section -->
+          <h4 class="item-note">
+  <!--     <i class="ion-heart"></i> {{$storage.x}} |  -->
 
-<div class="floatright">
-      <h4 class="item-note"><i class="ion-chatbox"></i>{{trabajo.comentarios.length}} -  <i class="ion-android-done-all"></i> 90 vistos -  <i class="ion-android-share-alt"></i></h4></div>
-<div class="floatleft">
- 
-        </div>
-        
+      <i class="ion-chatbox"></i> 
+      {{trabajo.comentarios.length}}
 
-        </div> </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="count = count + 1" ng-init="count=0" >
-              <i class="icon ion-tshirt balanced"></i>
-              Aplicar
+       <!--    |  <i class="ion-android-done-all"></i> 10 vistos|  -->
+      
+
+     
+     
+        </h4> 
+     
+    </ion-item><div class="item tabs tabs-secondary tabs-icon-left">
+            <a class="tab-item" href="#/app/mensajeprivado/{{trabajo.IdUsuario}}">
+              <i class="icon ion-email balanced"></i>
+              Contactar
             </a>
             <a class="tab-item"  ng-click="abrirComentarios(trabajo)">
               <i class="icon ion-chatbox balanced"></i>
             Comentar
             </a>
-            <a class="tab-item" href="#">
+              <a class="tab-item" ng-click="compartir({{trabajo.id}})">
+            
               <i class="icon ion-share balanced"></i>
               Compartir
-            </a>
+           
+          </a>
           </div>
 
     </ion-list>

@@ -9,6 +9,11 @@ body * {
   font-family: 'OpenSans', Fallback, sans-serif;
 }
 
+.editarimagen {
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
 .padleft {
   padding-left: 30px;
   padding-bottom: 50px;

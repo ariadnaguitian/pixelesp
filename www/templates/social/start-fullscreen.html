@@ -9,7 +9,9 @@
       </div>
       <!-- end Logo -->
 
-    <form ng-submit="doLogin()">
+
+
+<form ng-submit="doLogin()">
       <div class="list fondoinicio">
         <label class="item item-input fondoinput">
           <input type="text" ng-model="user.username" placeholder="Usuario">
@@ -17,13 +19,19 @@
         <label class="item item-input fondoinput">
           <input type="password" ng-model="user.password" placeholder="Contraseña">
         </label>
- 
-    </div> 
-          <button class="button button-block button-royal botoneslogin">Entrar</button>
-     <a href="#/app/registrarse" target="_self" class="button button-block button-balanced botoneslogin">Registrate!</a>
-    </form>  
+        <label class="item">
+          <button class="button button-block button-balanced">Entrar</button>
+        </label>
 
+    </form>
+  
 
+      <!-- buttons. .button-rounded can be added for more roundness -->
+     
+       <div class="item">
+          <a href="#/app/registrarse" target="_self" class="button button-block button-royal">Registrarse</a>
+        </div>
+       </div>
       
           
 

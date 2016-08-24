@@ -167,6 +167,9 @@
                 <h4 class="item-note"><i class="icon ion-clock"></i>{{comentario.created_at}}</h4>
              </ion-item>
             </ion-list>
+
+          
+
           </ion-content>
         </ion-modal-view>
     </script>
@@ -174,7 +177,11 @@
     <!-- End News Item -->
 
     <!-- News Item (For Album Art, Artist Name and Player) -->
-
+    <ion-infinite-scroll
+    on-infinite="loadMore()"
+    distance="2">
+  </ion-infinite-scroll>
+      
   </ion-content>
 </ion-view>
 

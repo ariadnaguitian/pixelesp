@@ -21,10 +21,10 @@
       <div class="gem-profile-details profile2a">
       <div class="partesuperior">
           
-      <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{usuario.imagen}}" alt="" class="profile-image floatleft">
+      <img id="fotoServidor3" ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{usuario.imagen}}" alt="" class="profile-image floatleft editarimagen" width="80px" height="80px">
 
-       <img id="fotoServidor3" ng-src="{{usuario.imagen}}"  width="80px" height="80px"> 
-
+<!--        <img  ng-src="{{usuario.imagen}}"  width="80px" height="80px"> 
+ -->
        </br>
 <h3 class="gem-white">{{usuario.username}}</h3> 
        <button class="button button-royal margencambiaravatar" ng-click="upload()">Cambiar avatar</button>  

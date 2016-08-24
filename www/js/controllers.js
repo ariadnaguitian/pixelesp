@@ -26,13 +26,14 @@ angular.module('starter.controllers', [])
 
   $rootScope.userToken  = $localStorage.authorization;    
 
- 
+ }
     $scope.user = [];
+       
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
       $scope.user = resp.data.data;
       console.log('Succes', resp.data.data);
       
-     $state.go('app.inicio', {}, {reload: true});
+     $location.path('/app/inicio');
       
  
     }, function(err) {
@@ -41,7 +42,7 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     }); 
 
-}
+
    
 
   $scope.remove = function() {   
@@ -54,7 +55,7 @@ angular.module('starter.controllers', [])
         $ionicHistory.clearHistory();
         $ionicHistory.nextViewOptions({ disableBack: true, historyRoot: true });
       
-        $state.go('app.start', {}, {reload: true});
+        $state.go('app.start');
 
   }; 
 
@@ -123,7 +124,7 @@ angular.module('starter.controllers', [])
     };
     
   $scope.usuario = {};
-
+   $scope.$on('$ionicView.beforeEnter', function() {
   $http.get('http://pixelesp-api.herokuapp.com/usuarios/'+ $stateParams.UsuarioId).then(function(resp) {
     $scope.usuario = resp.data.data;
 
@@ -132,7 +133,7 @@ angular.module('starter.controllers', [])
     console.error('ERR', err);
     // err.status will contain the status code
   }); 
-
+  }); 
 
   $scope.noticias = {};
 
@@ -242,7 +243,7 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('EntrarCtrl', function($ionicLoading, $ionicHistory, $state, $rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG, $ionicSideMenuDelegate, $localStorage ) {
+.controller('EntrarCtrl', function($ionicHistory, $state, $rootScope, $scope, $stateParams, $http, $ionicPopup, $location, CONFIG, $ionicSideMenuDelegate, $localStorage ) {
   
    $rootScope.userToken = ''; 
 
@@ -257,9 +258,7 @@ if($localStorage.authorization !== undefined) {
 }
 
    $scope.doLogin = function() {
-          $ionicLoading.show({
-            template: '<ion-spinner class="spinner"></ion-spinner>'
-        });
+      
        
 
 
@@ -288,9 +287,9 @@ if($localStorage.authorization !== undefined) {
 
    
           
-$state.go('app.inicio', {}, {reload: true});
+   $location.path('/app/inicio'); 
 
-          $ionicLoading.hide();
+         
     }, function(err) {
       console.error('ERR', err);
       var alertPopup = $ionicPopup.alert({
@@ -298,7 +297,8 @@ $state.go('app.inicio', {}, {reload: true});
              template: 'Usuario o contraseña invalido'
            });
            alertPopup.then(function(resp) {
-             $location.path('/app/start');
+             $location.path('/app/start'); 
+        
            });
       // err.status will contain the status code
     });
@@ -392,7 +392,7 @@ $state.go('app.inicio', {}, {reload: true});
  
 
 
-.controller('UsuarioCtrl', function($scope, $stateParams, $http, $location, $ionicPopup, $cordovaFileTransfer, $cordovaCamera, $q, $rootScope) {
+.controller('UsuarioCtrl', function($ionicHistory, $scope, $stateParams, $http, $location, $ionicPopup, $cordovaFileTransfer, $cordovaCamera, $q, $rootScope) {
 
   $scope.usuario = {};
 
@@ -496,6 +496,7 @@ var url = response.url;
   $scope.doSave = function() {
     $http.put('http://pixelesp-api.herokuapp.com/usuarios/'+ $stateParams.UsuarioId, $scope.usuario).then(function(resp) {
       console.log(resp.data);  
+      $ionicHistory.goBack();
       
     }, function(err) {
       console.error('ERR', err);
@@ -503,6 +504,19 @@ var url = response.url;
              title: 'Completar todos los campos',
              template: 'Volver'
            });
+          
+      // err.status will contain the status code
+    });
+     };
+
+       $scope.doDelete = function() {
+    $http.delete('http://pixelesp-api.herokuapp.com/usuarios/'+ $stateParams.UsuarioId, $scope.usuario).then(function(resp) {
+      console.log(resp.data);  
+      $ionicHistory.goBack();
+      
+    }, function(err) {
+      console.error('ERR', err);
+     
           
       // err.status will contain the status code
     });
@@ -642,6 +656,7 @@ var url = response.url;
   
     $http.get(CONFIG.APIURL+'noticias').then(function(resp) {
       $scope.noticias = resp.data.data;
+
 
     }, function(err) {
       console.error('ERR', err);
@@ -796,8 +811,8 @@ var url = response.url;
     }
 
 
-//listar mensajes
 
+  
 
 
 
@@ -1414,6 +1429,18 @@ $state.reload();
     };
 
 
+$scope.noMoreItemsAvailable = false;
+  
+  $scope.loadMore = function() {
+    $scope.imagenes.push({ id: $scope.imagenes.length});
+   
+    if ( $scope.imagenes.length == 99 ) {
+      $scope.noMoreItemsAvailable = true;
+    }
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
+  
+  $scope.imagenes = [];
 
   
   }

@@ -8,7 +8,7 @@
   ====================== -->
 
 <ion-nav-buttons side="right">
-    <a href="#/app/subirimagenes" target="_self" button class="button button-icon icon ion-compose"></button></a>
+    <a href="#/app/subirimagenes" target="_self" button class="button button-icon icon ion-compose"></button> Subir </a>
   </ion-nav-buttons>
 
 
@@ -36,7 +36,7 @@
   </div>
   </div>
 </section>
-
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
         </ion-content>
 
 
