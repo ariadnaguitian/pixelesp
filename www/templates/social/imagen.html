@@ -92,7 +92,7 @@
 
 
      <ion-item ng-repeat="favorito in imagen.favoritos track by favorito.id" class="item item-thumbnail-left">
-       <img src="img/avatar/{{favorito.imagen}}" alt=""  width="32" height="32">
+       <img ng-src="http://res.cloudinary.com/hyktxhgfc/image/upload/{{favorito.imagen}}" alt=""  width="32" height="32">
        <h2>{{favorito.username}}</h2>
    
    

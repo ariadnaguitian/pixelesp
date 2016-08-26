@@ -666,18 +666,15 @@ var url = response.url;
 
   });
 
-   $scope.doRefresh = function() {
-    
-    console.log('Refreshing!');
-    $timeout( function() {
-      //simulate async response
-      
-
-      //Stop the ion-refresher from spinning
-      $scope.$broadcast('scroll.refreshComplete');
-    
-    }, 1000);
-      
+ $scope.doRefresh = function() {
+    $http.get('/noticias')
+     .success(function(newItems) {
+       $scope.noticias = newItems;
+     })
+     .finally(function() {
+       // Stop the ion-refresher from spinning
+       $scope.$broadcast('scroll.refreshComplete');
+     });
   };
 
   $scope.$storage = $localStorage.$default({
