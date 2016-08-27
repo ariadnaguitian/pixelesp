@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.aplicacion209748" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>aplicacion</name>
+  <name>Pixelesp</name>
   <description>&#xD;
         An Ionic Framework and Cordova project.&#xD;
     </description>
@@ -17,7 +17,7 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="AutoHideSplashScreen" value="false"/>
-  <preference name="ShowSplashScreenSpinner" value="false"/>
+  <preference name="ShowSplashScreenSpinner" value="true"/>
   <preference name="SplashScreenDelay" value="100" /> 
 <preference name="FadeSplashScreen" value="true" />  
 <preference name="FadeSplashScreenDuration" value="1.0" />

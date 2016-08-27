@@ -27,13 +27,13 @@ angular.module('starter.controllers', [])
   $rootScope.userToken  = $localStorage.authorization;    
 
  }
+
     $scope.user = [];
-       
+        $scope.$on('$ionicView.beforeEnter', function() {
     $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
       $scope.user = resp.data.data;
-      console.log('Succes', resp.data.data);
-      
-     $location.path('/app/inicio');
+      console.log('Succes', resp.data.data);     
+
       
  
     }, function(err) {
@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
       // err.status will contain the status code
     }); 
 
-
+ });
    
 
   $scope.remove = function() {   
@@ -69,8 +69,8 @@ angular.module('starter.controllers', [])
 
     };
 
-
-
+ 
+  
 
 
 })
@@ -1717,17 +1717,8 @@ var url = response.url;
 
     
   
-
-
-    $http.get('http://pixelesp-api.herokuapp.com/me', {headers: {'auth-token': $rootScope.userToken}}).then(function(resp) {
-        $scope.user = resp.data.data;
- 
-
-   }, function(err) {
-      console.error('ERR', err);
-
-  }); 
 $scope.mensajes = [];
+  $scope.$on('$ionicView.beforeEnter', function () {
         $http.get('http://pixelesp-api.herokuapp.com/listarmensajes/' + $stateParams.UsuarioId).then(function (resp) {
          
             $scope.mensajes = resp.data.data;
@@ -1739,7 +1730,7 @@ $scope.mensajes = [];
 
         });
    
-
+ });
 
    
 
